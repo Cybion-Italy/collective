@@ -1,4 +1,4 @@
 collective
 ==========
 
-collective
+collective project
