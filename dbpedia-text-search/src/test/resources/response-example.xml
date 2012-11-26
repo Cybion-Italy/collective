@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lookup.dbpedia.org/">
+  <Result>
+    <Label>County Galway</Label>
+    <URI>http://dbpedia.org/resource/County_Galway</URI>
+    <Description>County Galway is one of the twenty-six counties of the Republic of Ireland and one of the thirty-two counties of Ireland. It is located in the province of Connacht. It was named after the city of Galway. There are several strongly Irish-speaking areas (gaeltachts) in the west of the county. The population of the county is 231,670 according to the 2006 census.</Description>
+    <Classes>
+      <Class>
+        <Label>place</Label>
+        <URI>http://dbpedia.org/ontology/Place</URI>
+      </Class>
+      <Class>
+        <Label>populated place</Label>
+        <URI>http://dbpedia.org/ontology/PopulatedPlace</URI>
+      </Class>
+      <Class>
+        <Label>settlement</Label>
+        <URI>http://dbpedia.org/ontology/Settlement</URI>
+      </Class>
+      <Class>
+        <Label>owl#Thing</Label>
+        <URI>http://www.w3.org/2002/07/owl#Thing</URI>
+      </Class>
+    </Classes>
+    <Categories>
+      <Category>
+        <Label>Connacht</Label>
+        <URI>http://dbpedia.org/resource/Category:Connacht</URI>
+      </Category>
+      <Category>
+        <Label>Counties of the Republic of Ireland</Label>
+        <URI>http://dbpedia.org/resource/Category:Counties_of_the_Republic_of_Ireland</URI>
+      </Category>
+      <Category>
+        <Label>County Galway</Label>
+        <URI>http://dbpedia.org/resource/Category:County_Galway</URI>
+      </Category>
+    </Categories>
+    <Templates />
+    <Redirects />
+    <Refcount>1285</Refcount>
+  </Result>
+  <Result>
+    <Label>Galway GAA</Label>
+    <URI>http://dbpedia.org/resource/Galway_GAA</URI>
+    <Description>or Galway GAA is one of the 32 county boards of the GAA in Ireland, and is responsible for Gaelic games in County Galway. The county boards are also responsible for the Galway inter-county teams. Unlike all other counties in Ireland, gaelic games are run by two separate county boards in Galway. Gaelic football is organised by the Galway football board and Hurling is organised by the Galway hurling board.</Description>
+    <Classes />
+    <Categories>
+      <Category>
+        <Label>Gaelic games governing bodies in Connacht</Label>
+        <URI>http://dbpedia.org/resource/Category:Gaelic_games_governing_bodies_in_Connacht</URI>
+      </Category>
+      <Category>
+        <Label>Galway GAA</Label>
+        <URI>http://dbpedia.org/resource/Category:Galway_GAA</URI>
+      </Category>
+      <Category>
+        <Label>Sport in County Galway</Label>
+        <URI>http://dbpedia.org/resource/Category:Sport_in_County_Galway</URI>
+      </Category>
+    </Categories>
+    <Templates />
+    <Redirects />
+    <Refcount>1285</Refcount>
+  </Result>
+  <Result>
+    <Label>Galway</Label>
+    <URI>http://dbpedia.org/resource/Galway</URI>
+    <Description>Galway or City of Galway (Cathair na Gaillimhe) is a city in County Galway, Republic of Ireland. It is the fifth largest and the fastest-growing city in Ireland. It is also the third largest city in the Republic and the only city in the Province of Connacht. Located on the west coast of Ireland, it sits on the River Corrib between Lough Corrib and Galway Bay. The population of Galway city and its environs is 72,729 according to the 2006 census.</Description>
+    <Classes>
+      <Class>
+        <Label>place</Label>
+        <URI>http://dbpedia.org/ontology/Place</URI>
+      </Class>
+      <Class>
+        <Label>populated place</Label>
+        <URI>http://dbpedia.org/ontology/PopulatedPlace</URI>
+      </Class>
+      <Class>
+        <Label>settlement</Label>
+        <URI>http://dbpedia.org/ontology/Settlement</URI>
+      </Class>
+      <Class>
+        <Label>owl#Thing</Label>
+        <URI>http://www.w3.org/2002/07/owl#Thing</URI>
+      </Class>
+    </Classes>
+    <Categories>
+      <Category>
+        <Label>University towns</Label>
+        <URI>http://dbpedia.org/resource/Category:University_towns</URI>
+      </Category>
+      <Category>
+        <Label>Port cities and towns in the Republic of Ireland</Label>
+        <URI>http://dbpedia.org/resource/Category:Port_cities_and_towns_in_the_Republic_of_Ireland</URI>
+      </Category>
+      <Category>
+        <Label>County towns in the Republic of Ireland</Label>
+        <URI>http://dbpedia.org/resource/Category:County_towns_in_the_Republic_of_Ireland</URI>
+      </Category>
+      <Category>
+        <Label>Cities in the Republic of Ireland</Label>
+        <URI>http://dbpedia.org/resource/Category:Cities_in_the_Republic_of_Ireland</URI>
+      </Category>
+      <Category>
+        <Label>Galway</Label>
+        <URI>http://dbpedia.org/resource/Category:Galway</URI>
+      </Category>
+    </Categories>
+    <Templates />
+    <Redirects />
+    <Refcount>1224</Refcount>
+  </Result>
+ </ArrayOfResult>
+ 
+  

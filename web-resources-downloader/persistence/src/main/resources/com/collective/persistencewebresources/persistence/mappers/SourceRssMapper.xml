@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.collective.persistencewebresources.persistence.mappers.SourceRssMapper">
+<!-- to get FonteRss from the one found inside webResource -->
+    <select id="selectAllFonteRss" resultType="sourcerss">
+        SELECT
+            *
+        FROM
+            source_rss
+    </select>
+    
+    <select id="selectFonteRss" parameterType="int" resultMap="fonterssresultmap">
+        SELECT
+            *
+        FROM
+            source_rss
+        WHERE
+        	id = #{id}
+    </select>
+    
+    <select id="selectFonteRssByExample" parameterType="sourcerss" resultMap="fonterssresultmap">
+        SELECT
+            *
+        FROM
+            source_rss
+        <where> 
+	        <if test="lingua != null">lingua LIKE #{lingua}</if> 
+	        <if test="categoria != null">AND categoria LIKE #{categoria}</if>
+	        <if test="parola != null">AND parola LIKE #{parola}</if>
+	        <if test="url != null">AND url_rss LIKE #{url, javaType=url, jdbcType=VARCHAR}</if>
+	        <if test="dataUltimaEstrazione != null">AND data_ultima_estrazione = #{dataUltimaEstrazione, javaType=datetime, jdbcType=BIGINT}</if> 
+      </where>
+    </select>
+    
+    
+    <insert id="insertFonteRss" parameterType="sourcerss" useGeneratedKeys="true" keyProperty="id">
+     INSERT INTO source_rss
+     (lingua, parola, categoria,
+	  url_rss, data_ultima_estrazione, id_fonte) 
+	  VALUES (#{lingua}, #{parola}, #{categoria},
+	  #{url, javaType=url, jdbcType=VARCHAR},
+	  #{dataUltimaEstrazione, javaType=datetime, jdbcType=BIGINT},
+	  #{source.id})
+    </insert>
+    
+    <resultMap id="fonterssresultmap" type="sourcerss">
+    	<id column="id" property="id"/>
+		<result column="lingua" property="lingua" jdbcType="VARCHAR" />
+        <result column="categoria" property="categoria" jdbcType="VARCHAR" />
+		<result column="parola" property="parola" jdbcType="VARCHAR" />
+		
+		<!-- manage with jodatime -->
+		
+		<result column="data_ultima_estrazione" property="dataUltimaEstrazione"
+		        typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+		 
+		<result column="url_rss" property="url"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"
+                jdbcType="VARCHAR" />
+		
+        <!-- one to one with source_rss table -->
+
+        <association property="source" column="id_fonte" javaType="source"
+            select="selectFonteFromFonteRss"/>
+	
+    </resultMap>
+        
+    <select id="selectFonteFromFonteRss" parameterType="int" resultType="source">
+        SELECT
+            *
+        FROM
+            source
+        WHERE
+            id = #{id_fonte}
+    </select>
+    
+   <update id="updateFonteRssIfNecessary" parameterType="sourcerss">
+    UPDATE 
+    	source_rss
+      <set> 
+        <if test="lingua != null">lingua=#{lingua},</if> 
+        <if test="categoria != null">categoria=#{categoria},</if>
+        <if test="parola != null">parola=#{parola},</if>
+        <if test="url != null">url_rss=#{url, javaType=url, jdbcType=VARCHAR},</if>
+        <if test="dataUltimaEstrazione != null">data_ultima_estrazione=#{dataUltimaEstrazione, javaType=datetime, jdbcType=BIGINT}</if> 
+      </set> 
+    WHERE id = #{id} 
+  </update>
+  
+  <delete id="deleteFonteRss" parameterType="int">
+  	DELETE FROM source_rss where id = #{id}
+  </delete>
+
+    
+</mapper> 
+

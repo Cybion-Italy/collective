@@ -1,0 +1,18 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="47" started-at="2011-02-15T16:56:47Z" finished-at="2011-02-15T16:56:47Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="47" started-at="2011-02-15T16:56:47Z" finished-at="2011-02-15T16:56:47Z">
+      <class name="com.collective.profilingline.SimpleProfilingLineTest">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="13" started-at="2011-02-15T16:56:47Z" finished-at="2011-02-15T16:56:47Z">
+        </test-method>
+        <test-method status="PASS" signature="runProfilingLine()" name="runProfilingLine" duration-ms="19" started-at="2011-02-15T16:56:47Z" finished-at="2011-02-15T16:56:47Z">
+        </test-method>
+        <test-method status="PASS" signature="tearDown()" name="tearDown" is-config="true" duration-ms="0" started-at="2011-02-15T16:56:47Z" finished-at="2011-02-15T16:56:47Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

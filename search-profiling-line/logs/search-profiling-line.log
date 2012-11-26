@@ -1,0 +1,12 @@
+0    [pool-1-thread-1] INFO  com.collective.profiler.line.DefaultProfilingLine  - Profiling input: 'ProfilingInput{value=SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}}' started
+2    [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}
+2    [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - Resulting searchProfileEnd: 'SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}'
+0    [pool-1-thread-1] INFO  com.collective.profiler.line.DefaultProfilingLine  - Profiling input: 'ProfilingInput{value=SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}}' started
+18   [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}
+18   [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - Resulting searchProfileEnd: 'SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}'
+0    [pool-1-thread-1] INFO  com.collective.profiler.line.DefaultProfilingLine  - Profiling input: 'ProfilingInput{value=SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}}' started
+1    [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}
+2    [pool-1-thread-1] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - Resulting searchProfileEnd: 'SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}'
+0    [main] INFO  com.collective.profiler.line.DefaultProfilingLine  - Profiling input: 'ProfilingInput{value=SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}}' started
+23   [main] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}
+23   [main] INFO  com.collective.profilingline.search.SearchDefaultProfilingLineTestCase  - Resulting searchProfileEnd: 'SearchProfile{id=5, title='test search', concepts=[http://firstUri.com]}'

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+        <!-- right now it is NOT USED, refactor the LoaderIntstanceManager to use this -->
+<profiler-configuration>
+    <rec-storage>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <db>recommender</db>
+        <username>rec</username>
+        <password>recpass</password>
+    </rec-storage>
+    <search-storage>
+        <!-- permanent searches storage configuration -->
+
+    </search-storage>
+     <profile-store>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+         <namespaces>
+             <namespace>
+                <name>search</name>
+                <default-graph>http://collective.com/profile/search/</default-graph>
+             </namespace>
+         </namespaces>
+    </profile-store>
+    <recommender>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+        <graph>http://www.cybion.it/proconsult/url</graph>
+        <limit>10</limit>
+    </recommender>
+
+</profiler-configuration>

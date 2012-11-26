@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<profiler-configuration>
+    <data-manager>
+        <keys>
+            <key name="project" class="com.collective.profiler.data.datasources.ProjectDataSource">
+                <lines>
+                    <line>fake-test-profilingline</line>
+                </lines>
+            </key>
+        </keys>
+        <database>
+            <host>cibionte.dyndns.org</host>
+            <port>3306</port>
+            <db>collective</db>
+            <username>collective</username>
+            <password>collective</password>
+        </database>
+    </data-manager>
+    <profile-store>
+        <keys>
+            <key name="project">http://cybion.com/profiles/project/</key>
+        </keys>
+        <triple-store>
+            <host>cibionte.dyndns.org</host>
+            <port>1111</port>
+            <username>dba</username>
+            <password>cybiondba</password>
+        </triple-store>
+    </profile-store>
+    <profiling-lines>
+        <profiling-line>
+            <name>fake-test-profilingline</name>
+            <description>just a simple test profiling line</description>
+            <class>com.collective.profiler.configuration.FakeProfilingLine</class>
+            <profiling-line-items>
+                <profiling-line-item>
+                    <name>first</name>
+                    <description>just the first profiling line item</description>
+                    <class>com.collective.profiler.configuration.FirstSimpleProfilingLineItem</class>
+                </profiling-line-item>
+                <profiling-line-item>
+                    <name>second</name>
+                    <description>just the second profiling line item</description>
+                    <class>com.collective.profiler.configuration.SecondSimpleProfilingLineItem</class>
+                </profiling-line-item>
+            </profiling-line-items>
+        </profiling-line>
+    </profiling-lines>
+</profiler-configuration>

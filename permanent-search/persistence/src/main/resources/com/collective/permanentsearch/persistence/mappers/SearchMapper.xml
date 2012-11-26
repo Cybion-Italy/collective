@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collective.permanentsearch.persistence.mappers.SearchMapper">
+
+    <resultMap id="SearchResultMap" type="search">
+        <id column="id" property="id"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="common_uris" property="commonUris" jdbcType="VARCHAR"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.LabelledURIArrayListTypeHandler"/>
+        <result column="custom_uris" property="customUris" jdbcType="VARCHAR"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.LabelledURIArrayListTypeHandler"/>
+        <result column="last_profilation_date" property="lastProfilationDate"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.JodaTimeTypeHandler"/>
+    </resultMap>
+
+    <resultMap id="SearchResultMapJoin" type="search">
+        <id column="ss_id" property="id"/>
+        <result column="ss_title" property="title" jdbcType="VARCHAR"/>
+        <result column="ss_common_uris" property="commonUris" jdbcType="VARCHAR"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.LabelledURIArrayListTypeHandler"/>
+        <result column="ss_custom_uris" property="customUris" jdbcType="VARCHAR"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.LabelledURIArrayListTypeHandler"/>
+        <result column="ss_last_profilation_date" property="lastProfilationDate"
+                typeHandler="com.collective.permanentsearch.persistence.typehandlers.JodaTimeTypeHandler"/>
+    </resultMap>
+
+    <select id="select" parameterType="int" resultMap="SearchResultMap">
+        SELECT * FROM semantic_search WHERE id = #{id}
+    </select>
+
+    <select id="selectAllSearches" resultMap="SearchResultMap">
+        SELECT * FROM semantic_search
+    </select>
+
+    <select id="selectOldest" parameterType="int" resultMap="SearchResultMap">
+        SELECT * FROM semantic_search
+        ORDER BY `last_profilation_date` ASC
+        LIMIT 0, #{maxAmount}
+    </select>
+
+    <select id="selectOldestProjectSearches" parameterType="int" resultMap="SearchResultMapJoin">
+        SELECT ss.id AS ss_id, ss.title AS ss_title,
+        ss.common_uris AS ss_common_uris,
+        ss.custom_uris AS ss_custom_uris,
+        ss.last_profilation_date AS ss_last_profilation_date
+        FROM  `semantic_search` AS  `ss`
+        JOIN  `project_semantic_search` AS  `pss` ON ss.id = pss.semantic_search_id
+        ORDER BY ss.last_profilation_date ASC
+        LIMIT 0, #{maxAmount}
+    </select>
+
+    <select id="selectOldestUserSearches" parameterType="int" resultMap="SearchResultMapJoin">
+        SELECT ss.id AS ss_id,
+        ss.title AS ss_title,
+        ss.common_uris AS ss_common_uris,
+        ss.custom_uris AS ss_custom_uris,
+        ss.last_profilation_date AS ss_last_profilation_date
+        FROM  `semantic_search` AS  `ss`
+        JOIN  `user_semantic_search` AS  `uss` ON ss.id = uss.semantic_search_id
+        ORDER BY ss.last_profilation_date ASC
+        LIMIT 0, #{maxAmount}
+    </select>
+
+    <insert id="insert" parameterType="search" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO semantic_search (title, common_uris, custom_uris, last_profilation_date)
+        VALUES (#{title},
+                #{commonUris, javaType=labelledUrisList, jdbcType=VARCHAR},
+                #{customUris, javaType=labelledUrisList, jdbcType=VARCHAR},
+                #{lastProfilationDate, javaType=datetime, jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertUserSearch" parameterType="map">
+        INSERT INTO user_semantic_search (user_id, semantic_search_id)
+        VALUES (#{userId}, #{searchId})
+    </insert>
+
+    <insert id="insertProjectSearch" parameterType="map">
+        INSERT INTO project_semantic_search (project_id, semantic_search_id)
+        VALUES (#{projectId}, #{searchId})
+    </insert>
+
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM semantic_search WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteUserSearch" parameterType="map">
+        DELETE FROM user_semantic_search
+        WHERE user_id = #{userId} AND semantic_search_id = #{searchId}
+    </delete>
+
+    <delete id="deleteProjectSearch" parameterType="map">
+        DELETE FROM project_semantic_search
+        WHERE project_id = #{projectId} AND semantic_search_id = #{searchId}
+    </delete>
+
+    <select id="selectByUserId" parameterType="map" resultMap="SearchResultMapJoin">
+        SELECT ss.id AS ss_id,
+        ss.title AS ss_title,
+        ss.common_uris AS ss_common_uris,
+        ss.custom_uris AS ss_custom_uris,
+        ss.last_profilation_date AS ss_last_profilation_date
+        FROM  `semantic_search` AS  `ss`
+        JOIN  `user_semantic_search` AS  `uss` ON ss.id = uss.semantic_search_id
+        WHERE uss.user_id = #{userId}
+    </select>
+
+    <select id="selectByProjectId" parameterType="map" resultMap="SearchResultMapJoin">
+        SELECT ss.id AS ss_id,
+        ss.title AS ss_title,
+        ss.common_uris AS ss_common_uris,
+        ss.custom_uris AS ss_custom_uris,
+        ss.last_profilation_date AS ss_last_profilation_date
+        FROM  `semantic_search` AS  `ss`
+        JOIN  `project_semantic_search` AS  `pss` ON ss.id = pss.semantic_search_id
+        WHERE pss.project_id = #{projectId}
+    </select>
+
+    <update id="update" parameterType="search">
+        UPDATE semantic_search
+          <set>
+            <if test="title != null">title=#{title},</if>
+            <if test="commonUris != null">common_uris = #{commonUris, javaType=labelledUrisList, jdbcType=VARCHAR},</if>
+            <if test="customUris != null">custom_uris = #{customUris, javaType=labelledUrisList, jdbcType=VARCHAR},</if>
+            <if test="lastProfilationDate != null">last_profilation_date = #{lastProfilationDate, javaType=datetime, jdbcType=BIGINT}</if>
+          </set>
+        where id = #{id}
+      </update>
+
+</mapper>

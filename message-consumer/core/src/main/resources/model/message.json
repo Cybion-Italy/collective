@@ -1,0 +1,43 @@
+{
+	"action":"update",
+	"type":"user",
+	"object":{
+		"id":"1",
+		"skills":"skills1, skills2",
+		"interests":"interest1, interest2",
+		"education":[
+			{
+				"school":"NTUA",
+				"country":"Greece",
+				"degree":"Master",
+				"fields":"Fields",
+				"activities":"activities",
+				"notes":"notes",
+				"period":{
+					"start":{
+						"year":"1937"
+					},
+					"end":{
+						"year":"1994"
+					}
+				}
+			}],
+		"experience":[
+			{
+				"company":"Company name",
+				"is_current":"0",
+				"title":"Software Engineer",
+				"description":"description",
+				"period":{
+					"start":{
+						"month":"11",
+						"year":"1932"
+					},
+					"end":{
+						"month":"0",
+						"year":"0"
+					}
+				}
+			}]
+		}
+}

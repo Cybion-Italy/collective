@@ -1,0 +1,4 @@
+- should be able to serialize enums
+- vocabularies used for ids should be customizable, not tied to classes
+- add RDFNamespace annotation to declare the mainspace
+- add support for multiple RDF serializations (JSON, NQUADS, TURTLE)

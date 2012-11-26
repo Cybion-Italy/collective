@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<profiler-configuration>
+    <data-manager>
+        <keys>
+            <key name="user" class="com.collective.profiler.data.datasources.UserDataSource">
+                <lines>
+                    <line>first-profiling-line</line>
+                </lines>
+            </key>
+            <key name="project" class="com.collective.profiler.data.datasources.ProjectDataSource">
+                <lines>
+                    <line>project-profiling-line</line>
+                </lines>
+            </key>
+        </keys>
+        <!-- database where messages are stored -->
+        <database>
+            <host>cibionte.cybion.eu</host>
+            <port>3306</port>
+            <db>collective-messages</db>
+            <username>collective</username>
+            <password>collective</password>
+        </database>
+    </data-manager>
+    <profile-store>
+        <keys>
+            <key name="user">http://collective.com/profile/user/</key>
+            <key name="project">http://collective.com/profile/project/</key>
+        </keys>
+        <triple-store>
+            <host>cibionte.cybion.eu</host>
+            <port>1111</port>
+            <username>dba</username>
+            <password>cybiondba</password>
+        </triple-store>
+    </profile-store>
+    <profiling-lines>
+        <profiling-line>
+            <name>first-profiling-line</name>
+            <description>just the default profiling line</description>
+            <class>com.collective.profiler.line.DefaultProfilingLine</class>
+            <profiling-line-items>
+                <profiling-line-item>
+                    <name>extraction-item</name>
+                    <description>it extracts main concepts from a list of words separated by commas</description>
+                    <class>com.collective.profilingline.knowledge.KeywordsProfilingLineItem</class>
+                </profiling-line-item>
+                <profiling-line-item>
+                    <name>builder-item</name>
+                    <description>it assemblies the profile</description>
+                    <class>com.collective.profilingline.builder.BuilderProfileLineItem</class>
+                </profiling-line-item>
+            </profiling-line-items>
+        </profiling-line>
+        <profiling-line>
+            <name>project-profiling-line</name>
+            <description>just the default profiling line for projects</description>
+            <class>com.collective.profiler.line.DefaultProfilingLine</class>
+            <profiling-line-items>
+                <profiling-line-item>
+                    <name>extraction-item</name>
+                    <description>it extracts main concepts from a list of words separated by commas</description>
+                    <class>com.collective.projectprofilingline.knowledge.ProjectManifestoKeywordsProfilingLineItem</class>
+                </profiling-line-item>
+                <profiling-line-item>
+                    <name>builder-item</name>
+                    <description>it assemblies the projects profile</description>
+                    <class>com.collective.projectprofilingline.builder.ProjectProfileBuilderLineItem</class>
+                </profiling-line-item>
+            </profiling-line-items>
+        </profiling-line>
+    </profiling-lines>
+</profiler-configuration>

@@ -1,0 +1,69 @@
+document.write('<script src=\"http://s0.2mdn.net/879366/DartRichMedia_1_03.js\"><\/script>');document.write('\n');
+var HdTtag = "targetTag";
+var HdSwfVer = "9";
+var HdFxW = "300";
+var HdFxH = "250";
+var HdFxSwf = "http://difflhttp.hvsdigital.com/havasdigital/2011/1770019/5153756/Areva_PAN_300x250_video_clic_2011011810541318.swf";
+var HdFxVid = "2011/1770019/5153756/Areva_PAN_300x250_video_clic_2011011810541318.flv"; if(HdFxVid.substr(HdFxVid.lastIndexOf(".")+1) != "flv"){HdSwfVer = "9"};
+var HdFxGif = "http://difflhttp.hvsdigital.com/havasdigital/2011/1770019/5153756/Areva_PAN_300x250_video_clic_2011011810541318.gif";
+var HdFxWmod = "opaque";
+var HdFxBgc = "#FFFFFF";
+var HdFxSwfClk0 = "http://ad.doubleclick.net/click%3Bh%3Dv8/3a9b/3/0/%2a/p%3B235126073%3B0-0%3B0%3B58773341%3B4307-300/250%3B40310126/40327913/1%3B%3B%7Efdr%3D234586235%3B0-0%3B0%3B41240801%3B4307-300/250%3B40324863/40342650/1%3B%3B%7Esscs%3D%3fhttp://www.areva.com/EN/group-2612/mediashare-1085/anim/advertising-campaign-energy-one-powerful-story-pursuing-the-adventure-of-carbonfree-energies.html?xtor=AD-73";
+var HdFxGifClk0 = "http://ad.doubleclick.net/click%3Bh%3Dv8/3a9b/3/0/%2a/p%3B235126073%3B0-0%3B0%3B58773341%3B4307-300/250%3B40310126/40327913/1%3B%3B%7Efdr%3D234586235%3B0-0%3B0%3B41240801%3B4307-300/250%3B40324863/40342650/1%3B%3B%7Esscs%3D%3fhttp://www.areva.com/EN/group-2612/mediashare-1085/anim/advertising-campaign-energy-one-powerful-story-pursuing-the-adventure-of-carbonfree-energies.html?xtor=AD-73";
+var HdFxSwfClkStr = "clickTag="+escape(HdFxSwfClk0);
+var HdFxSwfVars = "videoFile="+HdFxVid;
+HdFxSwfVars += "&sound=off"; /*mouseover|off|on*/
+HdFxSwfVars += "&videoLoop=0"; /*0=lecture 1x/ >0=lecture n+1x/ -1=illimite (stop animation)*/
+HdFxSwfVars += "&animationLoop=-1"; /*0=lecture 1x/ >0=lecture n+1x/  -1=illimite*/
+HdFxSwfVars += "&autostartVideo=true";
+HdFxSwfVars += "&forceHTTPVideo=true";
+HdFxSwfVars += "&advertiserid=1770019&campaignid=5153756&placementid=58773341&adid=235126073&creativeid=40310126&siteid=1036713&custom1=2461975485987487852&custom2=4412123848647997?";
+
+//Custom escape (no)
+var HdClkEsc = ""; if(HdClkEsc == "no"){HdFxSwfClkStr = "clickTag="+HdFxSwfClk0;}
+
+//Custom zindex (any)
+var HdFxZx = "";
+
+//Custom wmode (transparent,opaque,window)
+var HdFxCusWmod = ""; if(HdFxCusWmod=="transparent"||HdFxCusWmod=="window"||HdFxCusWmod=="opaque"){HdFxWmod = HdFxCusWmod;}
+
+if(HdTtag != "no"){HdFxSwfClkStr +="&"+HdTtag+"=_blank";}
+
+var ShockMode = 0;
+var MCplugin=(navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) ? navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin : 0;
+if ( MCplugin ) {
+ ShockMode=parseInt(MCplugin.description.replace(/([a-zA-Z]|\s)+/,"").replace(/(\s+r|\s+b[0-9]+)/,".").split(".")[0]) >= HdSwfVer;
+}
+else if (navigator.userAgent && navigator.userAgent.indexOf("MSIE")>=0) {
+ if (navigator.userAgent.indexOf("Win")>=0) {
+ document.write('<SCR'+'IPT LANGUAGE=VBScript\> \n');
+ document.write('on error resume next \n');
+ document.write('ShockMode=(IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.'+ HdSwfVer +'")))\n');
+ document.write('</SCR'+'IPT\> \n');
+ }
+ else {
+ ShockMode=(navigator.userAgent.indexOf("Mac")>=0);
+ }
+}
+
+if (ShockMode){
+	dclk_4412123crea1 = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="base" width="'+HdFxW+'" height="'+HdFxH+'">';
+	dclk_4412123crea1 += '<param name="movie" value="'+HdFxSwf+'?target=_blank&'+HdFxSwfClkStr+'">';
+	dclk_4412123crea1 += '<param name="wmode" value="'+HdFxWmod+'">';
+	dclk_4412123crea1 += '<param name="bgcolor" value="'+HdFxBgc+'">';
+	dclk_4412123crea1 += '<param name="Autostart" value="true">';
+	dclk_4412123crea1 += '<param name="Quality" value="high">';
+	dclk_4412123crea1 += '<param name="allowScriptAccess" value="always">';
+	dclk_4412123crea1 += '<param name="FlashVars" value="'+HdFxSwfVars+'">';
+	dclk_4412123crea1 += '<embed wmode="'+HdFxWmod+'" src="'+HdFxSwf+'?target=_blank&'+HdFxSwfClkStr+'" swLiveConnect="true" ';
+	dclk_4412123crea1 += 'width="'+HdFxW+'" height="'+HdFxH+'" type="application/x-shockwave-flash" bgcolor="'+HdFxBgc+'" quality="high" ';
+	dclk_4412123crea1 += 'allowScriptAccess="always" FlashVars="'+HdFxSwfVars+'"><\/embed><\/object>';
+} else {
+	dclk_4412123crea1 = '<a href="'+HdFxGifClk0+'" target="_blank"><img src="'+HdFxGif+'" border="0" width="'+HdFxW+'" height="'+HdFxH+'"><\/a>';
+}
+if(HdFxZx!=""){document.write('<div id="dclk_Fixe_4412123" style="width:'+HdFxW+'px; height:'+HdFxH+'px; visibility:visible; z-index:'+HdFxZx+';">');}
+	document.write(dclk_4412123crea1);
+if(HdFxZx!=""){document.write('<\/div>');}
+//-->
+document.write('\n<noscript><a href=\"http://ad.doubleclick.net/click%3Bh%3Dv8/3a9b/3/0/%2a/p%3B235126073%3B0-0%3B0%3B58773341%3B4307-300/250%3B40310126/40327913/1%3B%3B%7Efdr%3D234586235%3B0-0%3B0%3B41240801%3B4307-300/250%3B40324863/40342650/1%3B%3B%7Esscs%3D%3fhttp://www.areva.com/EN/group-2612/mediashare-1085/anim/advertising-campaign-energy-one-powerful-story-pursuing-the-adventure-of-carbonfree-energies.html?xtor=AD-73\" target=\"_blank\"><img src=\"http://difflhttp.hvsdigital.com/havasdigital/2011/1770019/5153756/Areva_PAN_300x250_video_clic_2011011810541318.gif\" border=\"0\" width=\"300\" height=\"250\"></a></noscript>');

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collective.messages.persistence.mappers.MessageMapper">
+
+    <resultMap id="MessageResultMap" type="message">
+        <id column="id" property="id"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="action" property="action" jdbcType="VARCHAR"/>
+        <result column="object" property="object" jdbcType="VARCHAR"/>
+        <result column="time" property="time"
+                typeHandler="com.collective.messages.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+        <result column="is_analyzed" property="analyzed" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <select id="selectMessage" parameterType="int" resultMap="MessageResultMap">
+        SELECT *
+        FROM messages
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertMessage" parameterType="message" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO messages (type, action, object, time, is_analyzed)
+        VALUES (#{type}, #{action}, #{object},#{time, javaType=datetime, jdbcType=BIGINT}, #{analyzed})
+    </insert>
+
+    <delete id="deleteMessage" parameterType="long">
+        DELETE FROM messages where id = #{id}
+    </delete>
+
+    <select id="selectLastMessagesByExample" parameterType="map" resultMap="MessageResultMap">
+        SELECT
+            *
+        FROM
+            messages
+        <where>
+           <if test="message.action != null">
+               action = #{message.action}
+           </if>
+           <if test="message.type != null">
+              AND type = #{message.type}
+           </if>
+            <if test="message.analyzed != null">
+              AND is_analyzed = #{message.analyzed}
+            </if>
+        </where>
+        ORDER BY time ASC
+        LIMIT #{maxItems}
+    </select>
+    <update id="updateMessage" parameterType="message">
+        UPDATE messages
+          <set>
+            <if test="action != null">action = #{action},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="object != null">object = #{object},</if>
+            <if test="time != null">time = #{time, javaType=datetime, jdbcType=BIGINT},</if>
+            <if test="analyzed != null">is_analyzed = #{analyzed}</if>
+          </set>
+        WHERE id=#{id}
+      </update>
+
+
+</mapper>

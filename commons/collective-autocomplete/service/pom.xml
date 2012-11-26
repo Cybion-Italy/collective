@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.collective.autocomplete</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>service</artifactId>
+    <packaging>war</packaging>
+
+    <name>Collective Dbpedia service</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.collective.autocomplete</groupId>
+            <artifactId>importer</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <configuration>
+                    <container>
+                        <containerId>tomcat6x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type>
+                        <!-- TODO change deploy stuff -->
+                        <properties>
+                            <cargo.tomcat.manager.url>http://gaia.cybion.eu:8080/manager
+                            </cargo.tomcat.manager.url>
+                            <cargo.remote.username>tomcat</cargo.remote.username>
+                            <cargo.remote.password>cybion012011</cargo.remote.password>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

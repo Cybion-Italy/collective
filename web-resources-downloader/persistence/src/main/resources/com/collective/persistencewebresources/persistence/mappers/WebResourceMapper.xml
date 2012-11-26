@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collective.persistencewebresources.persistence.mappers.WebResourceMapper">
+
+    <resultMap id="UrlResultMap" type="webResource" >
+        <id     column="id" property="id"/>
+		<result column="titolo" property="titolo" jdbcType="VARCHAR" />
+		<result column="descrizione" property="descrizione" jdbcType="VARCHAR" />
+		<result column="data_estrazione" property="dataEstrazione" 
+				typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+		<result column="data" property="dataPubblicazione" 
+				typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+		<result column="url" property="url" jdbcType="VARCHAR"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"/>
+		<result column="contenuto_html" property="contenutoHtml" jdbcType="VARCHAR" />
+		<result column="contenuto_testo" property="contenutoTesto" jdbcType="VARCHAR" />
+		<result column="is_analyzed" property="isAnalyzed" jdbcType="TINYINT"/>
+        <association property="sourceRss" column="id_fonte_rss" javaType="sourcerss"
+            select="selectFonteRssFromUrl"/>
+    </resultMap>
+    
+    <!-- to get FonteRss from the one found inside webResource -->
+    <select id="selectFonteRssFromUrl" parameterType="int" resultMap="fonte_rss_map">
+        SELECT
+            *
+        FROM
+            source_rss
+        WHERE
+            id = #{id_fonte_rss}
+    </select>
+
+	<resultMap id="fonte_rss_map" type="sourcerss">
+		<id property="id" column="id" />
+		<result property="lingua" column="lingua" jdbcType="VARCHAR"/>
+		<result property="parola" column="parola" jdbcType="VARCHAR"/>
+		<result property="url" column="url_rss" jdbcType="VARCHAR"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"/>
+		<result property="dataUltimaEstrazione" column="data_ultima_estrazione" 
+			typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+	</resultMap>
+
+	<select id="selectUrl" parameterType="int" resultMap="UrlResultMap" >
+		SELECT 
+			*
+		FROM 
+			web_resource
+		WHERE 
+			id = #{id}
+    </select>
+
+    <!--
+	<select id="selectUrlByUrl" parameterType="string" resultMap="UrlResultMap" >
+		SELECT * 
+		FROM web_resource
+		WHERE url = #{url}
+	</select>
+	-->
+    
+    <insert id="insertUrl" parameterType="webResource" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO web_resource (titolo, descrizione,
+      data_estrazione, data,
+      id_fonte_rss, url, contenuto_html, contenuto_testo, is_analyzed
+      <!--  tipo_contenuto  -->
+      )
+      VALUES (#{titolo}, #{descrizione},
+      #{dataEstrazione, javaType=datetime, jdbcType=BIGINT},
+      #{dataPubblicazione, javaType=datetime, jdbcType=BIGINT},
+      #{sourceRss.id}, #{url, javaType=url, jdbcType=VARCHAR}, #{contenutoHtml}, #{contenutoTesto}, #{isAnalyzed})
+    </insert>
+
+	<delete id="deleteUrl" parameterType="int">
+		DELETE FROM web_resource where id = #{id}
+	</delete>
+	
+	<!-- TODO: update -->
+	
+	<select id="selectAllUrls" resultMap="UrlResultMap">
+		SELECT * FROM web_resource
+	</select>
+	
+	
+	<select id="selectNullContentUrlsLike" parameterType="webResource" resultMap="UrlResultMap">
+		SELECT * FROM web_resource
+        <where>
+            <if test="contenutoHtml == null">
+                contenuto_html IS NULL
+            </if>
+            <if test="contenutoTesto == null">
+                AND contenuto_testo IS NULL
+            </if>
+        </where>
+    </select>
+
+	<select id="selectLastExtractedUrls" parameterType="sourcerss" resultMap="JoinedUrlResultMap">
+        SELECT 
+        	*, 
+        	u.id AS url_id, 
+        	u.titolo AS url_titolo,
+        	u.descrizione AS url_descrizione,
+        	u.data_estrazione AS url_data_estrazione, 
+        	u.data AS url_data, 
+        	u.url AS url_url,
+            u.contenuto_html AS url_contenuto_html,
+            u.contenuto_testo AS url_contenuto_testo,
+            u.id_fonte_rss AS url_id_fonte_rss,
+            u.is_analyzed AS url_is_analyzed
+		FROM 
+			source_rss AS frss
+		JOIN
+			web_resource AS u
+		ON 
+			frss.id = u.id_fonte_rss
+		WHERE
+			frss.id = #{id}
+		ORDER BY
+       		u.data_estrazione DESC
+       	LIMIT
+       		0, 1
+    </select>
+
+    <resultMap id="JoinedUrlResultMap" type="webResource" >
+        <id     column="url_id" property="id"/>
+        <result column="url_titolo" property="titolo" jdbcType="VARCHAR" />
+        <result column="url_descrizione" property="descrizione" jdbcType="VARCHAR" />
+        <result column="url_data_estrazione" property="dataEstrazione"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+        <result column="url_data" property="dataPubblicazione"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+        <result column="url_url" property="url" jdbcType="VARCHAR"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"/>
+        <result column="url_contenuto_html" property="contenutoHtml" jdbcType="VARCHAR" />
+        <result column="url_contenuto_testo" property="contenutoTesto" jdbcType="VARCHAR" />
+        <result column="url_is_analyzed" property="isAnalyzed" jdbcType="TINYINT"/>
+        <association column="url_id_fonte_rss" property="sourceRss" javaType="sourcerss"
+                     select="selectFonteRssFromUrl"/>
+    </resultMap>
+
+    <!--
+    <select id="selectAllUrlsByExample" parameterType="webResource" resultMap="UrlResultMap">
+        SELECT
+            *
+        FROM
+            web_resource
+        <where>
+	        <if test="isAnalyzed != null">is_analyzed = #{isAnalyzed}</if> 
+      </where>
+    </select>
+    -->
+
+    <!-- TODO: should evaluate the use of rowbounds with 1 to 1 relations and joins
+    do a unit test
+    http://code.google.com/p/mybatis/issues/detail?id=129
+    -->
+    <select id="selectSomeUrlsByExample" parameterType="map" resultMap="UrlResultMap">
+        SELECT
+            *
+        FROM
+            web_resource
+        <where>
+	        is_analyzed = #{webResource.isAnalyzed}
+        </where>
+        ORDER BY data_estrazione DESC
+        LIMIT 0, #{limit}
+    </select>
+    
+    <update id="updateUrl" parameterType="webResource">
+    	UPDATE web_resource
+    	<set> 
+	        <if test="titolo != null">titolo = #{titolo},</if> 
+	        <if test="descrizione != null">descrizione = #{descrizione},</if> 
+	        <if test="dataEstrazione != null">data_estrazione = #{dataEstrazione, javaType=datetime, jdbcType=BIGINT},</if> 
+	        <if test="dataPubblicazione != null">data = #{dataPubblicazione, javaType=datetime, jdbcType=BIGINT},</if> 
+	        <if test="url != null">url = #{url, javaType=url, jdbcType=VARCHAR, },</if>
+	        <if test="contenutoHtml != null">contenuto_html = #{contenutoHtml},</if>
+	        <if test="contenutoTesto != null">contenuto_testo = #{contenutoTesto},</if>
+	        <if test="isAnalyzed != null">is_analyzed=#{isAnalyzed}</if>
+      	</set> 
+    	WHERE id=#{id} 
+    </update>
+
+</mapper> 

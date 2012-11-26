@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message-consumer-configuration>
+    <message-queue>
+        <host>94.75.243.141</host>
+        <port>61616</port>
+        <queue-name>collective</queue-name>
+    </message-queue>
+    <storage>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <database>collective-messages</database>
+        <username>collective</username>
+        <password>collective</password>
+    </storage>
+</message-consumer-configuration>

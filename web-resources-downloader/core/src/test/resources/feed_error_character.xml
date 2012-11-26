@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+   <channel>
+      <title>ReadWriteWeb</title>
+      <link>http://www.readwriteweb.com/</link>
+      <description></description>
+      <language>en</language>
+      <copyright>Copyright 2011 Richard MacManus</copyright>
+      <managingEditor>readwriteweb@gmail.com</managingEditor>
+      <lastBuildDate>Tue, 04 Jan 2011 22:45:37 -0800</lastBuildDate>
+      <generator>http://www.sixapart.com/movabletype/?v=4.34-en</generator>
+      <docs>http://blogs.law.harvard.edu/tech/rss</docs> 
+      <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://rww.superfeedr.com" />
+      
+      <item>
+         <title>DARPA and Raytheon Building New Ad-Hoc Mobile Network for the Military</title>
+		<description><![CDATA[<p><img alt="DARPA logo 150x150" src="http://www.readwriteweb.com/enterprise/images/DARPA_logo_0111.jpg" width="150" height="150" /> Coalition forces in Afghanistan and Iraq have a major communications issue: military, security contractor and non-government organizations frequently need to communicate with each other during combat and other operations. But communications technology compatibility issues often prohibit them from doing so effectively.</p>
+
+<p>DARPA contracted Ratheon in 2009 to build the "Mobile to Ad-Hoc Interoperable Network GATEway" (MAINGATE), a mobile network that both military and civilian organizations can use to communicate using any radio or wireless device. The agency <a href="http://www.darpa.mil/news/2010/MAINGATEUpdateFinal.pdf">announced</a> last month that the system has now been tested for video, voice and data by both high bandwidth and low bandwidth users.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23984&amp;cb=23984' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23984&amp;n=23984' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>A key component of MAINGATE is Network Centric Radio System (NCRS).  According to <a href="http://www.defenseindustrydaily.com/Raytheon-to-Develop-Network-Centric-Radio-Systems-for-DARPA-05563/">Defense Industry Daily</a>, NCRS provides: "1) a backbone radio architecture that enables IP versatile networks and 2) a radio gateway that enable legacy analog and digital communications systems to be linked together." NCRS provides a self-healing ad-hoc mobile network that enables seamless communication between nearly any radio.</p>
+
+<p>Defense Industry Daily reports that MAINGATE also features disruption-tolerant networking to cope with disruptions caused by line-of-sight issues, spectrum access, congested radio frequencies and noisy environments.</p>
+
+<p>No civilian applications of the technology have been discussed, but one can imagine that similar technology could be useful for service or health care workers in remote areas, especially when teams from separate organizations need to communicate in the field.</p>
+
+<p>We previously <a href="http://www.readwriteweb.com/archives/5_ways_networking_is_being_reinvented.php">covered</a> the U.S. Army Research Laboratory's work on applying social network theory to mobile ad-hoc networks. It isn't clear if there's any collaboration between the Research Laboratory and Raytheon on these projects.</p>
+
+<p>The U.S. military is taking mobile communications very seriously. In addition to improving field communications, the military is investing in conventional mobile technology. The U.S. Army recently <a href="http://www.armytimes.com/news/2010/12/army-smart-phones-for-soldiers-121210w/">announced</a> that it will provide smart phones such as iPhones or Android devices to all personnel, and is considering making other mobile devices such as tablets and e-readers available as well.  And in early 2010, the Army sponsored the <a href="http://www.army.mil/-news/2010/03/01/35148-g-6-launches-apps-for-the-army-challenge/">Apps for the Army</a> contest. The <a href="http://www.army.mil/-news/2010/08/27/44347-signal-officers-win-apps-for-the-army-contest/">winning entry</a> was an app that provided pictures and videos of the new exercises included in the Army's new Physical Readiness Training program.</p>
+
+<p>The military's use of mobile technology is an interesting case of the consumeriztion of IT. Technology once started in defense research, then trickled down to business and then eventually to consumers. In the late 1960s DARPA (then known as ARPA) funded the creation of <a href="http://en.wikipedia.org/wiki/ARPANET">ARPANET</a>, the first wide-area packet switching network and the predecessor to the Internet.</p>
+
+<p>The consumerization process has mostly reversed itself, with technology starting in the consumer sector and then working its way into business and the military. However, new technology like MAINGATE could have civilian uses, so it's worth paying attention to innovations in defense technology. The consumerization process could always reverse itself once again.</p>
+
+<p>What uses for MAINGATE can you see for enterprise IT? What other defense technologies should IT be paying attention to?</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/enterprise/2011/01/darpa-and-raytheon-building-ne.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/enterprise/2011/01/darpa-and-raytheon-building-ne.php</link>
+         <guid>http://www.readwriteweb.com/enterprise/2011/01/darpa-and-raytheon-building-ne.php</guid>
+         <category>Networking</category>
+         <pubDate>Tue, 04 Jan 2011 22:45:37 -0800</pubDate>
+<author>Klint Finley</author>
+      </item>
+      
+      <item>
+         <title>Hacker Poll: Should Google Have Disclosed the the Latest Internet Explorer Flaw Before Microsoft Had a Patch?</title>
+		<description><![CDATA[<p><img alt="Internet Explorer logo 150x150" src="http://www.readwriteweb.com/hack/images/internet-explorer_logo_0110.jpg" width="150" height="150" /> <a href="http://google.com">Google</a> employee Michael Zalewski <a href="http://lcamtuf.blogspot.com/2011/01/announcing-crossfuzz-potential-0-day-in.html">disclosed</a> a CSS security issue in Internet Explorer today before <a href="http://microsoft.com">Microsoft</a> had issued a fix. This is the second time a Google employee has disclosed an IE security flaw to the public before a patch had been issued. Chris Evans posted a cross-site scripting issue to <a href="http://seclists.org/fulldisclosure/2010/Sep/64">Seclists</a> in September, according to <a href="http://arstechnica.com/microsoft/news/2010/09/microsoft-investigates-public-ie-css-xss-flaw-twitter-hotmail-vulnerable.ars">Ars Technica</a>.</p>
+
+<p>The new flaw may also have been reported by two Chinese researchers at a security conference in South Korea according to <a href="http://krebsonsecurity.com/2011/01/microsoft-warns-of-image-problem/">KrebsonSecurity</a>. Microsoft does not know of any exploits in the wild actually taking advantage of this vulnerability.</p>
+
+<p>Should Google have disclosed these bugs to the public, or waited for Microsoft to issue a fix first?</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23982&amp;cb=23982' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23982&amp;n=23982' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p><script type="text/javascript" charset="utf-8" src="http://static.polldaddy.com/p/4338926.js"></script><br />
+<noscript><br />
+	<a href="http://polldaddy.com/poll/4338926/">Should Google's Researchers Have Disclosed These IE Vulnerabilities Instead of Waiting for Microsoft?</a><span style="font-size:9px;"><a href="http://polldaddy.com/features-surveys/">Market Research</a></span><br />
+</noscript></p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/hack/2011/01/hacker-poll-ie-disclosure.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/hack/2011/01/hacker-poll-ie-disclosure.php</link>
+         <guid>http://www.readwriteweb.com/hack/2011/01/hacker-poll-ie-disclosure.php</guid>
+         <category>Tools</category>
+         <pubDate>Tue, 04 Jan 2011 19:00:00 -0800</pubDate>
+<author>Klint Finley</author>
+      </item>
+      
+      <item>
+         <title>CES 2011: Mobile DTV Coming to an iPhone, iPad Near You</title>
+		<description><![CDATA[<p><img src="http://rww.readwriteweb.netdna-cdn.com/mobile//ces2011_150x150.png">When Sarah Perez summed up the <a href="http://www.readwriteweb.com/mobile/2011/01/ces-2011-preview-three-mobile-trends-to-expect.php">top three mobile trends</a> to expect at this year's <a href="http://www.cesweb.org">Consumer Electronics Show</a>, a trend that both of us occassionally-mobile television connoisseurs were excited about was mobile TV. </p>
+
+<p>The <a href="www.openmobilevideo.com/">Open Mobile Video Coalition</a> is presenting this year and they had a handful of mobile TV devices to show off that will be exciting for the TV-viewer on the go - especially one that retrofits all your mobile Apple devices for Mobile DTV.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23983&amp;cb=23983' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23983&amp;n=23983' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>First off, there was indeed an <a href="http://nexus404.com/Blog/2010/12/28/lg-plans-to-show-line-of-mobile-tv-models-at-2011-ces-ces-will-get-a-new-look-at-mobile-television-at-the-2011-show/">LG 3D mobile TV unit</a> that operates without glasses, though we're still a bit passed-by by the 3D hooplah. For our money, we'll stick with the standard fare, as the 3D looked a bit like regular TV that wasn't coming in quite right. We're sure plenty of other people will go gaga for it, however, so for you 3D lovers, it's going mobile.</p>
+
+<p>While a slew of new Mobile DTV devices are likely to be released, one little gadget we saw today was even more exciting. It allows users to retrofit their existing Apple devices with a digital TV antenna. </p>
+
+<p><img alt="mobile-DTV-tivizen.JPG" src="http://www.readwriteweb.com/images/mobile-DTV-tivizen.JPG" width="379" height="622" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" />While the big focus has been on providing TV, video-on-demand and other content via your WiFi or 3G connections, this device, called the <a href="http://m.paidcontent.org/article/419-a-dozen-national-broadcasters-align-to-create-one-mobile-tv-network/">Tivizen</a>, which brings local broadcast television to your iPad, iPhone and iPod Touch. The device plugs directly into the 30-pin socket (where you normally put the power cord connector) and offers up to 2.5 hours of Mobile DTV video. For those of you who aren't grandfathered in on the unlimited data plant, a DTV antenna could bring mobile video without costing you an arm and a leg in bandwidth charges. The Tivizen will be available in June for $99 and works with a free app. A WiFi version of the same device is also expected later this year. </p>
+
+<p>Of course, the Tivizen is just the first of a number of mobile devices expected this year. According to the Open Mobile Video Coalition, "more than two dozen new Mobile DTV devices are expected to be introduced at CES, including a wide assortment of tablets, iPad and iPhone accessories, portable televisions, DVD players, and USB receivers." The coalition represents more than 900 broadcast TV stations throughout the U.S. and says that nearly 70 stations across the country are currently broadcasting a Mobile DTV signal. </p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/ces_2011_mobile_dtv_coming_to_an_iphone_ipad_near.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/ces_2011_mobile_dtv_coming_to_an_iphone_ipad_near.php</link>
+         <guid>http://www.readwriteweb.com/archives/ces_2011_mobile_dtv_coming_to_an_iphone_ipad_near.php</guid>
+         <category>CES 2011</category>
+         <pubDate>Tue, 04 Jan 2011 18:46:51 -0800</pubDate>
+<author>Mike Melanson</author>
+      </item>
+      
+      <item>
+         <title>10 Tech Companies That Announced Funding Today; Which is Most Likely to Change the World?</title>
+		<description><![CDATA[<p>While reading RSS feeds today, I was struck by the number of consumer and enterprise web technology startups announced that they have raised money from investors - all in one day!  Fundings aren't usually the kind of news that ReadWriteWeb covers, but <em>these are some very interesting companies</em> - and they all just got a big infusion of cash to continue and expand their work.</p>
+
+<p>Which of the following ten companies that announced funds raised today do you think are most likely to make it?  To really make an impact on the web and the world?  We've embedded a poll below and I'm very curious to see who gets the most votes.  Below that poll I've also embedded another poll asking ReadWriteWeb readers whether a feature like this would be of interest if we ran it regularly.  Let us know what you think!  </p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23981&amp;cb=23981' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23981&amp;n=23981' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<center><script type="text/javascript" charset="utf-8" src="http://static.polldaddy.com/p/4338182.js"></script>
+<noscript>
+	<a href="http://polldaddy.com/poll/4338182/">Which of these companies is most likely to change the world?</a><span style="font-size:9px;"><a href="http://polldaddy.com/features-surveys/">online survey</a></span>
+</noscript></center>
+
+<center><script type="text/javascript" charset="utf-8" src="http://static.polldaddy.com/p/4338350.js"></script>
+<noscript>
+	<a href="http://polldaddy.com/poll/4338350/">Would you like RWW to run polls like this about startup funding regularly?</a><span style="font-size:9px;"><a href="http://polldaddy.com/features-surveys/">Market Research</a></span>
+</noscript></center>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/10_tech_companies_that_raised_money_today_which_is.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/10_tech_companies_that_raised_money_today_which_is.php</link>
+         <guid>http://www.readwriteweb.com/archives/10_tech_companies_that_raised_money_today_which_is.php</guid>
+         <category>Polls</category>
+         <pubDate>Tue, 04 Jan 2011 15:37:16 -0800</pubDate>
+<author>Marshall Kirkpatrick</author>
+      </item>
+      
+      <item>
+         <title>6 Ways to be a Better IT Manager</title>
+		<description><![CDATA[<p><img src="http://rww.readwriteweb.netdna-cdn.com/enterprise/images/IT_work_0810.jpg"> Curtis Franklin Jr. has written a post for <a href="http://www.enterpriseefficiency.com/author.asp?section_id=1129&doc_id=202422">Enterprise Efficiency</a> on becoming a better IT manager. Specifically, Franklin's advice is on how to manage IT teams - not contracts or technologies. He notes that although some elements are important for all managers, there are some distinct skills necessary for managing the sorts of people that gravitate towards careers in IT. Some of Franklin's points are obvious ("hire well"), but all bear repeating.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23978&amp;cb=23978' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23978&amp;n=23978' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>Franklin's six points are:</p>
+
+<ul>
+	<li>Hire Well</li>
+	<li>Get Out of Their Way</li>
+	<li>Run Interference</li>
+	<li>Hold Them Responsible</li>
+	<li>Listen</li>
+	<li>Ask Stupid Questions</li>
+</ul>
+
+<p>He elaborates on each a bit in the <a href="http://www.enterpriseefficiency.com/author.asp?section_id=1129&doc_id=202422">original post</a>.</p>
+
+<p>What would you add?</p>
+
+<p>Photo by <a href="http://www.flickr.com/photos/thetrial/517840593/">The Trial</a></p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/enterprise/2011/01/6-ways-to-be-a-better-it-manager.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/enterprise/2011/01/6-ways-to-be-a-better-it-manager.php</link>
+         <guid>http://www.readwriteweb.com/enterprise/2011/01/6-ways-to-be-a-better-it-manager.php</guid>
+         <category>Analysis</category>
+         <pubDate>Tue, 04 Jan 2011 14:30:24 -0800</pubDate>
+<author>Klint Finley</author>
+      </item>
+      
+      <item>
+         <title>Amazon Thinks Non-iPads Will Sell, Announces Kindle App for Tablets</title>
+		<description><![CDATA[<p><img src="http://rww.readwriteweb.netdna-cdn.com/archives/amazonkindle150.jpg" alt="" />Do any of the new, non-iPad tablets being introduced at this week's Consumer Electronics Show in Las Vegas have a shot at achieving significant market share? Well, Amazon must think they do. The online retailer has just <a href="http://www.businesswire.com/news/home/20110104005624/en/Amazon-Introduce-Free-Kindle-Apps-Tailored-Android">announced</a> it will develop a Kindle application specifically for Android and Windows tablet computers, which, like its other mobile apps, will provide access to the Kindle e-bookstore.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23980&amp;cb=23980' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23980&amp;n=23980' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<h2>Kindle for Tablets</h2>
+<p><img style="float: right;" title="amazon_android_tablet.jpg" src="http://www.readwriteweb.com/mobile//amazon_android_tablet.jpg" border="0" alt="amazon_android_tablet.jpg" width="225" height="168" /></p>
+<p>There is nothing remarkable about the newly announced app itself. Like all other Kindle apps, including those already available for desktop computers (Mac, PC), iOS devices (iPad, iPhone, iPod Touch), Android smartphones, BlackBerry, Windows Phone 7 and Amazon's own Kindle line-up (Kindle, Kindle 3G, Kindle DX), Amazon's tablet app will include the company's WhisperSync technology, which syncs your bookmarks, last page read, notes and other such items between devices as well as provide access to its online bookstore.</p>
+<h2>Analysts Say: Kindles and Tablets to Co-Exist</h2>
+<p>If the app is nothing you haven't seen before, then why does this ﻿news matter? Because, according to Amazon's Kindle Director, Dorothy Nicholls, "Many people are buying both a Kindle and an LCD tablet computer."</p>
+<p>That notion didn't just get plucked out of thin air, either - it's based on recent analyst research. For example, Forrester's tablet computer report (<a href="http://www.readwriteweb.com/archives/forrester_predicts_one-third_of_us_consumers_will.php">our coverage</a>) predicts increased sales for both tablets and e-readers alike.  In fact, Forrester expects <strong>e-reader sales to increase by 50% in 2011 to 15.5 million devices</strong> while tablet computer sales jump 130% from 10.3 million in 2010 to 24 million in 2011.</p>
+<p><em><strong>In other words, tablets and Kindles can - and will - live in harmony. </strong></em></p>
+<p>Forrester is not alone in this belief; recent research from J.P. Morgan discovered that <strong>40% of iPad owners also have a Kindle. </strong></p>
+<h2>iPad to Dominate Market, but Plenty of Room for Others</h2>
+<p>Although the majority of tablets sold are expected to be iPads, Forrester analyst <a href="http://blogs.forrester.com/sarah_rotman_epps/11-01-04-us_tablet_sales_will_more_than_double_this_year">Sarah Rotman Epps noted</a> that other tablets including Android and Windows-based devices will take a backseat to Apple, but that "in a market this big, there's room for more than one player," she said.</p>
+<p>So how big is that market? <strong>By 2015, 82 million U.S. consumers - one-third of those online, will use a tablet.</strong> And, says Epps,<strong> "not all of them will be iPads." </strong></p>
+<p>Amazon clearly agrees. Even though the retailer may have the development resources to build apps for every platform under the sun, it does not. (See, for example, <a href="http://www.intomobile.com/2010/12/16/symbian-kindle-app-petition/">its lack of a Nokia Symbian app</a>, WebOS app, Linux app, etc.)  Instead, it bets on those platforms where there may be enough market share and consumer interest and releases accordingly.</p>
+<p>If you want to know what the next big platform in mobile computing is, taking Amazon's pulse by tracking its mobile apps' release schedule is not a bad idea.</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/mobile/2011/01/amazon-thinks-android-tablets-will-sell-annonces-kindle-for-tablet.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/mobile/2011/01/amazon-thinks-android-tablets-will-sell-annonces-kindle-for-tablet.php</link>
+         <guid>http://www.readwriteweb.com/mobile/2011/01/amazon-thinks-android-tablets-will-sell-annonces-kindle-for-tablet.php</guid>
+         <category></category>
+         <pubDate>Tue, 04 Jan 2011 14:22:58 -0800</pubDate>
+<author>Sarah Perez</author>
+      </item>
+      
+      <item>
+         <title>How Will Technology Disrupt the Enterprise in 2011?</title>
+		<description><![CDATA[<p><img alt="Constellation Research logo 150x150" src="http://www.readwriteweb.com/enterprise/images/constellation_logo_0111.jpg" width="150" height="150" /> We just looked at some potentially <a href="http://www.readwriteweb.com/enterprise/2011/01/post-2.php">disruptive technologies</a> that fall outside the usual domain of the enterprise.</p>
+
+<p>In this post, we'll look at some of the more near-term challenges facing the enterprise as seen by <a href="">Constellation Research Group</a>. In the first report from this <a href="http://www.readwriteweb.com/cloud/2010/11/we-get-a-bit-surprised.php">newly formed </a>consulting organization,  Co-Founder R "Ray" Wang lists a set of five core disruptive technologies: social, mobile, cloud, analytics, and unified communications. Together, these technologies could form a working definition of "enterprise 2.0." I'd add next-generation network and storage technology to that list and perhaps swap analytics with "big data," of which analytics is a subset, but these five serve as a good starting point.</p>
+
+<p>In <a href="http://www.constellationrg.com/1239/trends-constellation-researchs-2011-predictions/"> Constellation's Research Outlook For 2011</a>, the consulting group's analyst team identifies generating business value as the core issue for enterprises taking advantage of its five listed core enterprise 2.0 technologies. To this end, the report identifies three main challenges for decision makers.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23976&amp;cb=23976' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23976&amp;n=23976' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<ul>
+	<li>Assessing which disruptive technologies show promise for their organizations.</li>
+	<li>Identifying how these technologies can be applied to generate business value.</li>
+	<li>Finding ways to fund investments and cut the costs of legacy investments.</li>
+</ul>
+
+<p>Constellation's analysts go on to make several predictions for 2011. We've broken most of them down by category.</p>
+
+<p><strong>Social</strong><br />
+<ul><br />
+	<li>Social and collaborative technology will be noisy and confusing in 2011. Social technology will come from 4 camps: pure play enterprise social software vendors; ERP and CRM providers adding a social layer to existing products; networking and UC providers adding social networking to VOIP and Online Meeting offerings, and specialist HR and LMS vendors extending offerings to include collaboration.</li><br />
+	<li>The social media landscape will undergo an interesting transformation as it ushers in a genre of information commerce and the "3C's" of social content:  creation, curation, and consumption.</li><br />
+	<li>Tools, networks and services that cater to the role of the curator will emerge. Examples in the consumer space include Storify, Curated.by, Pearltrees, and Paper.li.</li><br />
+	<li>Organizations will realize that for social media to feel sexy there is a lot of work that needs to happen behind the scenes.</li><br />
+</ul></p>
+
+<p><strong>Mobile</strong><br />
+<ul><br />
+	<li>IT will support at least two or three mobile devices per person: smart phones, laptops and maybe tablets or other specific use devices.</li><br />
+	<li>Organizations will get serious about mobilizing apps and embrace the platforms to support mobility.</li><br />
+	<li>Android will become more enterprise friendly by fixing major manageability issues.</li><br />
+</ul></p>
+
+<p><strong>Cloud</strong><br />
+<ul><br />
+	<li>2011 will be the year when SaaS providers find the issue of security turning from a perceived weakness of their offerings to a perceived strength.</li><br />
+	<li>Despite this, private clouds will prevail in 2011.</li><br />
+</ul></p>
+
+<p>See also: <a href="http://www.readwriteweb.com/cloud/2010/12/predictions-for-the-cloud-in-2.php">14 Cloud Computing Predictions for 2011 from Chirag Mehta and R "Ray" Wang</a>.</p>
+
+<p><strong>Analytics</strong><br />
+<ul><br />
+	<li>Social analytics will evolve from ad hoc experiments into refined information services.</li><br />
+</ul></p>
+
+<p><strong>Unified Communications</strong><br />
+<ul><br />
+	<li>Large enterprises will stall on adoption of cloud for voice communications.</li><br />
+</ul></p>
+
+<p><strong>Budgets</strong><br />
+<ul><br />
+	<li>Corporate IT spending will barely keep up with dollar inflation.</li><br />
+	<li>Technology refresh cycles will accelerate through 2011.</li><br />
+	<li>Organizations will cautiously recommit to BPO and the distinction between BPO and ITO will blur.</li><br />
+	<li>Organizations that reevaluate their IT strategies and contracts hand in hand will save the most money.</li><br />
+	<li>Organizations held hostage by high and useless software maintenance contracts will lead a massive backlash.</li><br />
+</ul></p>
+
+<p>We've seen a lot of predictions for 2011 by this point. What do you think of these?</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/enterprise/2011/01/enterprise-distruption-2011.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/enterprise/2011/01/enterprise-distruption-2011.php</link>
+         <guid>http://www.readwriteweb.com/enterprise/2011/01/enterprise-distruption-2011.php</guid>
+         <category>Analysis</category>
+         <pubDate>Tue, 04 Jan 2011 13:32:42 -0800</pubDate>
+<author>Klint Finley</author>
+      </item>
+      
+      <item>
+         <title>Facebook to Live Stream US Congress Opening Tomorrow</title>
+		<description><![CDATA[<p><img src="http://rww.readwriteweb.netdna-cdn.com/images/facebook_jan_09.jpg">The 112th US Congress, which will run for the next two years, will kick-off with swearing in tomorrow at noon EST.  For the first time in history, the first day at least will be live broadcast on giant social network <a href="http://facebook.com">Facebook</a>, according to an announcement <a href="http://politicalticker.blogs.cnn.com/2011/01/04/boehner-to-livestream-opening-day-of-new-congress-on-facebook/">CNN</a> says Republican leadership will make today.  It's big news, but it also raises interesting questions about media and politics in the current era.</p>
+
+<p>Specifically, the live streaming will be done on the Republicans' page for <a href="http://www.facebook.com/PledgeToAmerica">PledgeToAmerica</a>.  When <a href="http://www.readwriteweb.com/archives/facebook_and_cnn_the_power_of_the_social_web_revealed.php">the Obama inauguration was live broadcast in 2009</a>, the video appeared on CNN.com but was powered by Facebook Connect, which allowed viewers to see comments posted exclusively by their Facebook friends, if they so chose.  CNN said at the time that 5.3 million video streams of that event were delivered.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23979&amp;cb=23979' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23979&amp;n=23979' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>Will the Facebook live stream be available for embedding around the web tomorrow?  That's unclear.  Will critics and gloaters be able to have separate but visitable conversations about the now Republican-controlled Congress, or will it just be one giant shouting match?</p>
+
+<p>Will viewers of the Pledge to America page be required to declare to all their Facebook friends that they Like the Republican Party in order to gain viewing or commenting access to the stream, as was so widely grimaced about <a href="http://www.readwriteweb.com/archives/george_w_bush_has_joined_facebook.php">when George W. Bush started a Facebook page</a>?</p>
+
+<p><strong>Will any other online media outlets be allowed to live stream the proceedings, or will it just be Facebook?</strong>  Twitter? Current.tv? UStream?  Who will the new Hellen Thomas of live online social politics be - sitting in the front row and asking difficult questions for decades?</p>
+
+<p>Actually, it's unclear whether Facebook itself will be providing the live stream or whether it will simply be Republicans embedding a live stream on their own Facebook page.  I've emailed Facebook for clarification and to answer some of the more specific questions.  Will Facebook staff be on camera hosting the coverage as they have in other instances?  The company recently live-streamed an on-site visit by George W. Bush and it was quite charming (I say that as a non-Republican, too).  </p>
+
+<p><strong>Update:</strong>  Andrew Noyes, Facebook's Manager of Public Policy Communications, got back to us by email and had this to say. "Hundreds of members of Congress use Facebook to communicate and connect with their constituents in an official capacity and we're excited to see Facebook being used prominently as the 112th Congress gavels into session this week."  It turns out that Rep. Boehner, the new Republican Speaker of the House, is leading the effort with his new media team.  Facebook is, however, one of very few 3rd party services that Congress has approved for official use, something that was a subject of controversy when the US government started using YouTube prominently.</p>
+
+<p>Many questions philosophical and practical about the implementation will be answered tomorrow morning, but no matter how it goes down, it's hard to argue that things haven't changed in the worlds of media and politics.</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/facebook_to_live_stream_us_congress_opening_tomorr.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/facebook_to_live_stream_us_congress_opening_tomorr.php</link>
+         <guid>http://www.readwriteweb.com/archives/facebook_to_live_stream_us_congress_opening_tomorr.php</guid>
+         <category>News</category>
+         <pubDate>Tue, 04 Jan 2011 12:52:51 -0800</pubDate>
+<author>Marshall Kirkpatrick</author>
+      </item>
+      
+      <item>
+         <title>Discover New Music Blogs With Extension.FM&apos;s New Recommender</title>
+		<description><![CDATA[<p><img src="http://img.skitch.com/20100520-fc7hw2p3iag6wrfcj555m6k8td.jpg">Nothing beats a good recommendation for a new band to listen to, but a recommendation for a new music blog to read can be a gift that keeps on giving.  <a href="http://extension.fm">Extension.fm</a>, a New York startup that provides a browser plug-in that captures all the MP3 files you come across and turns them into a playlist, has just announced the creation of a new experimental Labs department.</p>
+
+<p>First entry into Extension's Labs is something the company calls <a href="http://ex.fm/labs/blogfinder">The Super Awesome Music Blog Finder Thingy ™</a>.  Enter your<a href="http://last.fm"> Last.fm</a> username and it will recommend new music blogs that have posted music from artists you've listened to the most over the last 30 days.  It's not great, yet, but it could make a pretty great feature once more fully baked.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23977&amp;cb=23977' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23977&amp;n=23977' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>If you haven't <em>scrobbled</em> (ouch) anything with your Last.fm account in the last 30 days, this won't do much for you.  I've been fortunate enough to be testing <a href="http://spotify.com">Spotify</a> for the past few months, and just started using the <a href="http://spotibot.com">Spotibot</a> recommendation service, so few other music services have moved me.  But three cheers for innovation in music recommendation!  In this case, Extension is using the <a href="http://the.echonest.com/">EchoNest</a> API, which is hot.</p>
+
+<p>Unfortunately, the recommendations include too many low-quality spammy blogs, blogs that link to torrents (a little less easy to listen to) and generally need some refinement.  </p>
+
+<p>Extension.fm was founded by Dan Kantor, the creator of AOL-acquired Streampad and the feature in Yahoo's Delicious that renders links to MP3 files playable, and invested in this Spring by Spark Capital, Betaworks, Founder Collective (Caterina Fake, Chris Dixon and others) and Dave Morgan (founder of Tacoda and Real Media).  </p>
+
+<p>In other words, chances are good that something interesting is going to happen over there.  If that includes recommendations based on data acquired from services all around the web and stored in a central repository, that's cool.</p>
+
+<p><img alt="extensionthing.jpg" src="http://www.readwriteweb.com/images/extensionthing.jpg" width="610" height="567" class="mt-image-none" style="" /></p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/discover_new_music_blogs_with_extensionfms_new_rec.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/discover_new_music_blogs_with_extensionfms_new_rec.php</link>
+         <guid>http://www.readwriteweb.com/archives/discover_new_music_blogs_with_extensionfms_new_rec.php</guid>
+         <category>Music</category>
+         <pubDate>Tue, 04 Jan 2011 12:30:54 -0800</pubDate>
+<author>Marshall Kirkpatrick</author>
+      </item>
+      
+      <item>
+         <title>Anonymous Allegedly Targets Tunisia, Zimbabwe</title>
+		<description><![CDATA[<p><img alt="operation-tunisia.jpg" src="http://www.readwriteweb.com/operation-tunisia.jpg" width="150" height="220"  />The <a href="http://www.4chan.org/">4Chan</a>-allied, <a href="http://www.wikileaks.org">Wikileaks</a>-defending hacker group Anonymous has apparently launched a distributed denial of service attack against government sites in Tunisia and Zimbabwe. The <a href="http://www.tunisia.gov.tn">official Tunisian government site</a> and that of president <a href="http://www.carthage.tn/en/index.php">Zine El Abidine Ben Ali</a> were both targeted in the North African country. In Zimbabwe, the first lady's website and the <a href="http://www.gta.gov.zw/">official Zimbabwean government site</a> and <a href="http://www.zimtreasury.gov.zw/">ministry of finance site</a> were targeted. </p>
+
+<p>Both attacks seem tangentially related to Wikileaks, on whose behalf <a href="http://www.readwriteweb.com/archives/ddos_attacks_take_down_mastercard_and_visa_website.php">the group has previously targeted</a> Visa, PayPal and others. In the case of Zimbabwe, Grace Mugabe is suing the Zimbabwean newspaper The Standard for $15 for publishing a cable asserting she is benefiting from illegal diamond sales. Tunisia has blocked access to the primary Wikileaks cable site. </p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23969&amp;cb=23969' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23969&amp;n=23969' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p><img alt="mugabe.jpg" src="http://www.readwriteweb.com/mugabe.jpg" width="300" height="200" class="alignright" /><a href="http://nakedsecurity.sophos.com/2011/01/03/pro-wikileaks-hackers-tunisian-government-websites">Sophos</a> security firm quoted a statement found on a number of sites associated with Anonymous. </p>
+
+<blockquote>"The Tunisian government wants to control the present with falsehoods and misinformation in order to impose the future by keeping the truth hidden from its citizens. We will not remain silent while this happens. Anonymous has heard the claim for freedom of the Tunisian people. Anonymous is willing to help the Tunisian people in this fight against oppression. It will be done. It will be done.
+
+<p>"This is a warning to the Tunisian government: attacks at the freedom of speech and information of its citizens will not be tolerated. Any organization involved in censorship will be targeted and will not be released until the Tunisian government hears the claim for freedom to its people."</blockquote></p>
+
+<p>Neither country is well-known for its embrace of the web, though there are certainly more Tunisians online than Zimbabweans. Given the relative lack of importance the web has in these countries, the strategy in attacking them is opaque. A dry run on a more web-centric country? The efficacy of the Anonymous DDoS attacks overall is uncertain, especially when the goals are far from clear. </p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/anonymous_allegedly_targets_tunisia.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/anonymous_allegedly_targets_tunisia.php</link>
+         <guid>http://www.readwriteweb.com/archives/anonymous_allegedly_targets_tunisia.php</guid>
+         <category>Government</category>
+         <pubDate>Tue, 04 Jan 2011 12:30:00 -0800</pubDate>
+<author>Curt Hopkins</author>
+      </item>
+      
+      <item>
+         <title>Mellow Out or You Will Pay: Satire Now a Crime in California</title>
+		<description><![CDATA[<p><img alt="cal_sign.png" src="http://www.readwriteweb.com/cal_sign.png" width="150" height="100" class="mt-image-none" style="" />California's <a href="http://www.leginfo.ca.gov/pub/09-10/bill/sen/sb_1401-1450/sb_1411_bill_20100927_chaptered.html">Senate Bill 1411</a> took effect a couple of days ago. Now it's illegal to make fun of people. Well, maybe that's an exaggeration. But so far exaggeration has yet to be made illegal in the Golden State. Impersonation has been, though. If you sign up for Facebook or Twitter as Arnold or Sarah Palin or Zooey Deschanel, you could serve jail time. </p>
+
+<p>The bill makes such impersonation actionable if it is "for purposes of harming, intimidating, threatening, or defrauding another person." If there's one thing that's easy to quantify, it's motive, so no need to worry about this law being abused. (See what I did there? Sarcasm. Also legal. For now.)</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23971&amp;cb=23971' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23971&amp;n=23971' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>California is now destined to take its place among such stalwarts of free speech, such titans of comedy, as <a href="http://www.cnn.com/2008/WORLD/africa/02/07/morocco.identiity/index.html?eref=rss_latest">Morocco</a> and <a href="http://news4u.co.in/?p=60472">India</a>, both of whom arrested its citizens for making Facebook pages for others. </p>
+
+<p>The so-called "epersonation" <a href="http://www.leginfo.ca.gov/pub/09-10/bill/sen/sb_1401-1450/sb_1411_bill_20100927_chaptered.html">law states</a>: </p>
+
+<blockquote>"(A)ny person who knowingly and without consent credibly impersonates another actual person through or on an Internet Web site or by other electronic means for purposes of harming, intimidating, threatening, or defrauding another person is guilty of a public offense punishable...by a fine not exceeding one thousand dollars ($1,000), or by imprisonment in a county jail not exceeding one year, or by both that fine and imprisonment."</blockquote>
+
+<p>Yes. In California - a state within the United States - you can now be stuck in jail for a year with a guy who knifed a hooker because you signed up for a Facebook account as Joe Biden and updated his status with "Man do I love whipping ball-bearings at Malaysian sun bears." </p>
+
+<p>It's happened. The suede-denim secret police have <em>actually come</em> for your uncool niece. <br />
+</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/satire_now_a_crime_in_california.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/satire_now_a_crime_in_california.php</link>
+         <guid>http://www.readwriteweb.com/archives/satire_now_a_crime_in_california.php</guid>
+         <category>Government</category>
+         <pubDate>Tue, 04 Jan 2011 12:00:00 -0800</pubDate>
+<author>Curt Hopkins</author>
+      </item>
+      
+      <item>
+         <title>10 Data Security Trends for SMBs in 2011</title>
+		<description><![CDATA[<p><img alt="security_150_rwbiz.jpg" src="http://www.readwriteweb.com/biz/security_150_rwbiz.jpg" width="150" height="150" class="mt-image-none" style="" />2010 brought with it a number of security issues - new regulations, technological changes - for small businesses, and there are many indications that security will continue to be an important issue in <a href="http://www.readwriteweb.com/biz/2010/12/smbs-engage-in-insecure-comput.php">the new year</a>.  Alongside increased threats will come increased scrutiny to data privacy and security issues.  Indeed, we've posited that tackling security issues may be a <a href="http://www.readwriteweb.com/biz/2010/12/2011-resolutions-for-small-businesses-get.php">good resolution</a>.</p>
+
+<p>Risk consulting firm <a href="http://www.kroll.com">Kroll</a> has released its forecast for data security trends in 2011.  The report highlights key areas in which businesses are likely to see significant changes in security laws, vulnerabilities, and protective measures.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23974&amp;cb=23974' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23974&amp;n=23974' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<h2>10 Data Security Trends</h2>
+
+<ol><li><b>More small scale breaches.</b>  Heathcare entities are required to report breaches affecting 500 or more people, so Kroll says there will be an increase in reports of small scale breaches.  As more companies implement data security measures, audits will likely bring to light older, overlooked breaches from the past.</li><li><b>"Low-tech," non-electronic data theft.</b>  Pen and paper strike back.</li><li><b>Lost devices lead to data theft.</b>  As people rely more and more on mobile devices, the chances for loss and theft of data from these devices increases.  According to the U.S. Department of Health and Human Services, 24% of reported data breaches were due to laptop theft - more than any other cause.</li><li><b>Data minimization.</b>  Kroll suggests that companies will reverse course, having spent years amassing consumer information to now starting to see this data as a liability.  </li><li><b>Openness and collaboration increases organizational vulnerability.</b>  "By nature, data in transit is data at risk," and sharing data, says Kroll, increases vulnerabilities.</li><li><b>More social networking policies</b> Kroll says employers will need to develop policies for social networking use as they relate to data security.</li><li><b>Thinking encryption is the silver bullet</b>.  Kroll says that "encryption is often incorrectly positioned as a complete solution to data security."</li><li><b>More notifications required for third-party breaches</b>.  As companies rely on more third-party data collection, they may be start obligating those companies to protect company data.</li><li><b>Privacy awareness training</b>.  Rather than relying solely on technology fixes for security issues, Kroll says companies should also train employees on how to recognize issues and obligations.</li><li><b>Possibility of a federal breach notificiation law</b></li></ol>
+
+<p>What do you think of these predictions?  I'm not sure I agree that we'll be minimizing data collection, although certainly storing it securely it will be important.</p>
+
+<p>And (resolution or not) what plans are you making to address security issues in 2011?</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/biz/2011/01/10-data-security-trends-for-sm.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/biz/2011/01/10-data-security-trends-for-sm.php</link>
+         <guid>http://www.readwriteweb.com/biz/2011/01/10-data-security-trends-for-sm.php</guid>
+         <category>Analysis</category>
+         <pubDate>Tue, 04 Jan 2011 11:30:10 -0800</pubDate>
+<author>Audrey Watters</author>
+      </item>
+      
+      <item>
+         <title>Uh Oh, Internet: Basic Mobile Video Will be YouTube-Only With MetroPCS Plans</title>
+		<description><![CDATA[<p><img alt="MetroPCSlogo.jpg" src="http://www.readwriteweb.com/images/MetroPCSlogo.jpg" width="150" height="54" class="mt-image-none" style="" /><a href="http://metropcs.com">MetroPCS</a>, the 5th largest wireless carrier in the United States, has announced a new pricing structure that requires customers to pay extra to access video services other than YouTube, audio including Pandora or any VOIP service, over their mobile devices.  <a href="http://gigaom.com/2011/01/04/metropcs-lte-plans-charge-more-for-skype-and-streaming/">GigaOm's Ryan Kim</a> says the move raises "the specter of consumers paying more for certain kinds of content and the potential for a fractured Internet experience, where users may not be free to jump easily from one site to another."</p>
+
+<p>This could be a key move in the struggle over network neutrality or tiered pricing by content type.<br />
+</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23975&amp;cb=23975' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23975&amp;n=23975' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>MetroPCS's estimated 6.6 million customers will be given a range of discounted data options, from $40 through $60 per month.  Though the $40 per month plan allows unlimited web page browsing and YouTube viewing, and admittedly comes with no contract required, you'll need to pay more to access other types of media.  As <a href="http://www.metropcs.com/presscenter/newsreleasedetails.aspx?id=1">the company explains</a>, "With the $50 and $60 service plans, consumers have more data access service choices to better fit their actual usage of certain streaming audio and video content, real-time Internet gaming, music and video downloads and other media applications."</p>
+
+<div class="pullquote">The prospect of paying $40 per month for mobile data access and only being allowed to view online video or listen to online audio from a selected list of sources is just repugnant though, isn't it?</div>"What this all means," Kim writes at GigaOm, 
+<blockquote>"is that users can browse Facebook all day long and could click on any YouTube links to see the video. But if they click on a link to another video service, users can visit the site but won't be able to view the video. Facebook videos are also likely blocked as are streaming music services such as Pandora. [MetroPCS spokesperson Drew Crowell] said YouTube doesn't have a special relationship with MetroPCS. It was just one of the most popular multimedia sites among MetroPCS consumers so the carrier decided to allow unlimited access to it."</blockquote>
+
+<p><strong>Does that sound fair to you?</strong>  I must confess, when Google and Verizon made a joint announcement this Summer about Net Neutrality and excluded wireless from their support of it, <a href="http://www.readwriteweb.com/archives/google_verizon_propose_enforceable_net_neutrality.php">I didn't think it unreasonable</a>.  (I was nearly alone in this, too, I think.)</p>
+
+<p>I think I may have been wrong.  Seeing a wireless network put tiered pricing into play makes me feel pretty ill.  For some silly reason, I didn't think they would really do it.  The prospect of paying $40 per month for mobile data access and only being allowed to view online video or listen to online audio from a selected list of sources is just repugnant though, isn't it?</p>
+
+<p>Here's how GigaOm's Ryan Kim puts it:<br />
+<blockquote>These new plans, if they're allowed to stand, show us what the future of mobile broadband will look like if operators have their way. It could be a frustrating experience for users, recreating a walled garden. It's not surprising that MetroPCS is trying to push this agenda. Most operators would stand to gain a lot if they can get this type of plan to fly. Eventually, I expect MetroPCS won't be the only operator looking to lay down new toll layers atop the mobile Internet.</blockquote></p>
+
+<p>Related: British Telecom is working on something very similar, called<a href="http://www.wired.com/epicenter/2011/01/bt-rejects-accusations-of-net-neutrality-breach-sort-of/"> Content Connect</a>.  </p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/uh_oh_internet_basic_mobile_video_will_be_youtube-.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/uh_oh_internet_basic_mobile_video_will_be_youtube-.php</link>
+         <guid>http://www.readwriteweb.com/archives/uh_oh_internet_basic_mobile_video_will_be_youtube-.php</guid>
+         <category>News</category>
+         <pubDate>Tue, 04 Jan 2011 11:21:25 -0800</pubDate>
+<author>Marshall Kirkpatrick</author>
+      </item>
+      
+      <item>
+         <title>Trendspotting: A Top 100 List of Things to Watch in 2011</title>
+		<description><![CDATA[<p><img alt="top100.jpg" src="http://www.readwriteweb.com/enterprise/assets_c/2011/01/top100-thumb-150x136-26172.jpg" width="150" height="136"> We sometimes get too caught up in the specifics of the enterprise and fail to look beyond the data center for reflection about the work we do.</p>
+
+<p>Ann Mack is director of trendspotting for <a href="http://www.jwt.com/">JWT Worldwide</a> . She has detailed <a href="http://www.jwtintelligence.com/2010/12/100-watch-2011/">100 things to watch in 2011</a>. It's a study in emerging movements and a refreshing guide for any organization that is thinking about how trends can have a direct impact on an organization and the future of its enterprise.</p>
+
+<p>In several instances, the presentation portrays how technology intersects with cultural shifts, innovations and disruption in long established practices. It documents examples that show the importance of mobile technologies and the ways that media is transforming across multiple platforms. The presentation explores pop culture, sports, architecture and other sectors. But also in it are a number of examples that remind us how quickly the enterprise needs to adapt to trends that appear faster than ever in our connected society.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23962&amp;cb=23962' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23962&amp;n=23962' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<div style="width:425px" id="__ss_6306251"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/jwtintelligence/2f-100-things-to-watch-in-2011-6306251" title="JWT: 100 Things to Watch in 2011">JWT: 100 Things to Watch in 2011</a></strong><object id="__sse6306251" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=2f100thingstowatchin2011-101222142649-phpapp02&stripped_title=2f-100-things-to-watch-in-2011-6306251&userName=jwtintelligence" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6306251" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=2f100thingstowatchin2011-101222142649-phpapp02&stripped_title=2f-100-things-to-watch-in-2011-6306251&userName=jwtintelligence" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object></div>
+
+<p>The examples may not seem that relevant when thinking about technology and how it functions for an organization. But they do show how technology often intersects with the world for some amazing results.</p>
+
+<p>In many ways, the discovery of that intersection can be transforming for an organization. It adds importance to the enterprise. With this thematic framework, emphasis can be put on developing an enterprise that adapts quickly to market conditions and fits with the organization's overall goals.</p>
+
+<p>For example, 3D printing is first on the JWT list. Mack says 3D printers will come into mainstream use, allowing people to create everything from jewelry to lamps to homes. </p>
+
+<p><img alt="Thumbnail image for 3dprinting.jpg" src="http://www.readwriteweb.com/enterprise/assets_c/2011/01/3dprinting-thumb-610x377-26150.jpg" width="610" height="377" /></p>
+
+<p>In a blog post, <a href="http://www.avc.com/a_vc/2011/01/predictions-and-prognostications.html">Union Square Venture's Fred Wilson</a> writes that the best success comes when you see the intersection with technology, the Internet, money, politics and other aspects of life. It's not purely about one thing. </p>
+
+<p>3D printing is representative of services that use technology to change the means of production without the need to invest in expensive manufacturing equipment.  The organizations banking on the advent of 3D printers include <a href="http://www.shapeways.com/">Shapeways</a>, Hewlett-Packard and Google. All these companies made strategic decisions about how they structured its enterprise environments to provide 3D printing capabilities.</p>
+
+<p>Google may be the best example of all. Its enterprise is designed to provide this type of innovation. Hewlett-Packard has leveraged its printing and networking strengths. And Shapeways, which has a Union Square investment, is a startup that is using the cloud to provide its 3D printing services.</p>
+
+<p>The challenge for the enterprise is how it becomes a catalyst to act on opportunities before they becomes big trends. That may mean faster adoption of mobile technologies for its own workforce or shifting the way it thinks about developing products. </p>
+
+<h2>Mobile as the Everything Hub</h2>
+
+<p>Mack says mobile is the everything hub. Mobile is critical in our lives. The list is full of examples that demonstrate how organizations will be affected by this mega trend. For example, tap-to-pay is number 88 on the list. </p>
+
+<p><img alt="taptopay.jpg" src="http://www.readwriteweb.com/enterprise/assets_c/2011/01/taptopay-thumb-610x305-26176.jpg" width="610" height="305"></p>
+
+<p>Making the six spot on the list is <a href="http://www.geoloqi.com">Geoloqi</a>, a startup based here in Portland, OR. The company is a study in how mobile technologies are changing how we view a world that is becoming more fluid than hard-wired. Geoloqi allows people to use their smart phones to do automatic check-ins. It allows people to set set automatic reminders and notifications--sent to themselves or friends-- for specific locations. People can leave "geonotes," at specific locations that someone in the future may view. It allows you to automatically notify people of your proximity.</p>
+
+<p>Geoloqi demonstrates how smartphones help people adjust to a world where geospatial environments have any number of data layers. You can access these data layers with services that require nothing but the ability to send or receive a notification. You don't need to push a button to let someone know you'll be at a location soon. A service like Geoloqi will notify your colleague automatically. This is not being lost on the enterprise. There are a number of companies now offering <a href="http://www.readwriteweb.com/enterprise/2010/10/enterprise-location-based-serv.php">geolocation services</a> for enterprise environments.</p>
+
+<p>Amber Case and Aaron Parecki are the company founders. Case is also an anthropoligist. In an interview with us, she touched on the dynamics that are in play now with the advent of touch technologies and how transforming it will be for the way we work and live:</p>
+
+<blockquote>In the past, an interface was an interface in the same way that a book is a book - it doesn't change - the words don't change. A computer had hardware buttons. If you wanted to change the buttons, you'd have to rewire the machine. Then interfaces became liquid. And if you wanted buttons to appear and go away, or to have different functions you'd just change the code. With touch screen phones, we're dealing with liquid interfaces. They absorb the functionality of the world around them. So most things that existed in real life -  most functions - can now be done on a phone.
+</blockquote>
+
+<p>The examples Mack gives reflect on the way organizations are adapting to shifts in the way we live and work. </p>
+
+<p>How we adapt is the big question. It's not just the cloud or virtualization. It's more rooted in how these kinds of technologies intersect with any number of different aspects in the market and society.</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/enterprise/2011/01/post-2.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/enterprise/2011/01/post-2.php</link>
+         <guid>http://www.readwriteweb.com/enterprise/2011/01/post-2.php</guid>
+         <category>Trends</category>
+         <pubDate>Tue, 04 Jan 2011 11:05:00 -0800</pubDate>
+<author>Alex Williams</author>
+      </item>
+      
+      <item>
+         <title>U.S. State Department Looks to Support &quot;Internet Freedom&quot; Projects</title>
+		<description><![CDATA[<p><img alt="state-department-logo150.jpg" src="http://www.readwriteweb.com/archives/state-department-logo150.jpg" width="150" height="150" class="mt-image-none" style="" />File this under I for Internet Freedom.  Or I for Irony.  (You decide.)  </p>
+
+<p>The U.S. State Department's Bureau of Democracy, Human Rights and Labor and Bureau of Near Eastern Affairs have announced a <a href="http://www.state.gov/g/drl/p/127829.htm">Joint Request</a> for Statements of Interest (SOI) from organizations interested in submitting proposals for projects that support Internet freedom under the "Governing Justly and Democratically" Foreign Assistance program objective.  </p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23970&amp;cb=23970' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23970&amp;n=23970' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>This isn't a formal Request for Proposals, as the bureaus will invite select organizations that submit SOIs to expand on their ideas, submitting full proposals at a later date.</p>
+
+<p>The State Department says it's interested in projects that "foster freedom of expression and the free flow of information on the Internet and other connection technologies in East Asia, including China and Burma; the Near East, including Iran; Southeast Asia; the South Caucasus; Eurasia, including Russia; Central Asia; Latin America, including Cuba and Venezuela; and Africa. Programming may support activities in Farsi, Chinese, Russian, Burmese, Spanish, Vietnamese, Arabic, French, and other languages spoken in acutely hostile Internet environments. Concepts may be global in nature, regional or country-specific."</p>
+
+<p>The projects should support digital activists, according to the announcement, and should include at least one of the following activities:<br />
+<ul><li>Counter-censorship technology</li><li>Secure mobile communications</li><li>Digital safety training</li><li>Building the technology capacity of digital activists and civil society in hostile Internet environments in the Near East</li><li>Virtual open Internet centers</li><li>Emergency funding</li><li>Internet public policy</li></ul></p>
+
+<p>The State Department's interest in these sorts of projects points to its recognition in the importance of Internet technologies in fostering freedoms and expanding democracy - both on and offline.  </p>
+
+<p>But the timing of the announcement rings a little hollow as the Obama Administration weighs charging <a href="http://www.wikileaks.ch">WikiLeaks</a> co-founder Julian Assange for violation of the Espionage Act for his work, particularly as many elements of WikiLeaks appear on this list of digital activism.</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/us_state_department_looks_to_support_internet_free.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/us_state_department_looks_to_support_internet_free.php</link>
+         <guid>http://www.readwriteweb.com/archives/us_state_department_looks_to_support_internet_free.php</guid>
+         <category>Government</category>
+         <pubDate>Tue, 04 Jan 2011 10:30:56 -0800</pubDate>
+<author>Audrey Watters</author>
+      </item>
+      
+      <item>
+         <title>Mobile Marketing Association to Address Smartphone Privacy Issue</title>
+		<description><![CDATA[<p><img title="apps_150x150.png" src="http://www.readwriteweb.com/mobile//apps_150x150.png" border="0" alt="apps_150x150.png" width="150" height="150" />As <a href="http://www.readwriteweb.com/archives/class_action_lawsuit_accuses_apple_and_app_makers.php">Apple faces a class action lawsuit</a> where it's being accused of sharing users' personal information with advertising networks without their consent, the Mobile Marketing Association (MMA) is <a href="http://www.fiercemobilecontent.com/press-releases/mobile-marketing-association-build-mobile-privacy-guidelines-thriving-marke">now stepping in</a> with plans to develop a set of mobile privacy guidelines for the industry.</p>
+<p>The new guidelines will complement the group's existing Global Code of Conduct, and will attempt to address the growing need for marketers and consumers to have a "transparent, accepted understanding," in its words, as to how information on a mobile device is collected and what's being done with it.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23972&amp;cb=23972' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23972&amp;n=23972' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<h2>MMA to Create Mobile Privacy Guidelines</h2>
+<p>Greg Stuart, Global CEO of the MMA, said the group recognizes the importance of consumer privacy. "In order for marketers and publishers to responsibly and sustainably engage consumers through and with the mobile channel, we need to continuously update how we address the collection, management and use of personal data or related consumer information," <a href="http://www.fiercemobilecontent.com/press-releases/mobile-marketing-association-build-mobile-privacy-guidelines-thriving-marke">he explained</a> earlier this month.</p>
+<p>To create the new guidelines, the MMA is asking members of the mobile community, including carriers, marketers, agencies, media companies and media technologies, to join its Privacy Committee. The issue will also be addressed at its upcoming Consumer Best Practices Meeting, January 25-26 in Boca Raton, Florida.</p>
+<p>Compared with the $25 billion online ad industry, the mobile marketing industry is still in its infancy. It won't reach $1 billion until 2012, <a href="http://www.adweek.com/aw/content_display/news/digital/e3i39fdd694c2f59dc0add5ecab29c44d32">reported AdWeek</a>, citing data from eMarketer. "If we'd seen how fast mobile Internet and apps were going to grow, maybe we would have stepped in sooner," Stuart told AdWeek.</p>
+<p><em>[Author's Note: if they had seen how fast it would grow? Were they not watching?]</em></p>
+<p>﻿There's no timeline for the completion of the new policy, Stuart said. "It's more important that we get it done right. This release was a call to arms."</p>
+<h2>A Need to Address Mobile Privacy Concerns</h2>
+<p><img src="http://rww.readwriteweb.netdna-cdn.com/images/iphone_apps_logo_aug09.jpg" alt="" align="right" />This issue was recently in the forefront of people's minds, thanks to a Wall St. Journal series called "<a href="http://blogs.wsj.com/wtk/">What They Know</a>," that highlighted the growing lack of privacy in today's digital world. One piece in particular ("<a href="http://online.wsj.com/article/SB10001424052748704368004576027751867039730.html?mod=googlenews_wsj">Your Apps are Watching You</a>") dealt with mobile privacy.</p>
+<p>The Journal found that, after <a href="http://blogs.wsj.com/wtk-mobile/">an examination of 101 popular smartphone applications</a> on iPhone and Android devices, 56 transmitted the phone's unique device ID to other companies without the user's awareness or consent. 47 also transmitted location and 5 sent age, gender and other personal details.</p>
+<h2>Counterpoint: Tracking is GOOD</h2>
+<p>The somewhat overly paranoid reporting from The WSJ was met with some backlash online, especially from the tech blogging community. In a post entitled "<a href="http://www.bgr.com/2010/12/29/hello-my-name-is-9649e796e8b23900dc9629a18f2d47306430e62f/">Hello, My Name is: 9649e796e8b23900dc9629a18f2d47306430e62f,</a>" BGR blogger Andrew Munchbach made a convincing argument that mobile tracking isn't really all that bad. (<em>The headline referred to his UDID, the unique device identifier that's used to build an online profile of a device, and therefore, the user). </em></p>
+<p>"I’m not all that concerned with third parties, even advertisers, knowing the age, gender, UDID, and/or the general (or even specific) location of my device’s end-user (that’s me)," <a href="http://www.bgr.com/2010/12/29/hello-my-name-is-9649e796e8b23900dc9629a18f2d47306430e62f/">Munchbach wrote</a>. "So Rovio, the maker of Angry Birds, knows that the dude using my mobile device is, um, a dude, was stuck on level 5-13 for six straight hours, and was in Newport, RI when this all occurred. So the game looked through my address book to see if there were contacts that were also playing Angry Birds with whom I could connect. I kind of like these features," he said.</p>
+<p>He also said that even when that data is passed to an analytics company, it's used - anonymously - to provide useful usage statistics and intelligence. "Rovio can use this information to improve its product, which would seem like a benefit to me, the player. Heck, Flurry may even go one step further and use this information in its own reporting and assessment of the mobile industry or publish a report about it...still doesn’t trouble me all that much. Why should it? It’s an age, gender, and ever-changing location that is linked to a number that represents a mobile device."</p>
+<h2>...But Some Want to Opt-Out &amp; Today You Can't</h2>
+<p>While in Munchbach's case, the tracking is seen in a positive light, there are some who would prefer the option to <em>opt-out</em>, as you can in most of today's modern desktop-based Web browsers, through the use of built-in tools like privacy/"incognito" modes, browser add-ons and extensions and even <a href="https://duckduckgo.com/">alternative search portals</a> that promise no tracking.</p>
+<p>WSJ <a href="http://online.wsj.com/community/groups/privacy-law-280/topics/do-you-think-apps-should?dj_vote=14014">polled</a> its readers on the matter, and a majority (67.7%), said they want apps to tell them every time they collect and send info about their mobile device. Clearly, these voters were worked about about the idea, having just read the article. Apps that constantly nagged you if and when they could share information would be worse than Windows Vista's User Account Control security feature which seemed to ask you every single time you tried to make the simplest change on your PC.</p>
+<p>Still, the mobile world, as of yet, does not have any such opt-out options. It's all or nothing - use the app, or don't. But if you do, you're agreeing to certain conditions. The MMA's influence may help to create new scenarios here that will better serve mobile users, not just with regard to apps, but for all sorts of mobile ads, including SMS text messages, in-app banner advertising and ads on the mobile Web itself.</p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/mobile/2011/01/MMA-addressing-smartphone-privacy-with-new-guidelines.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/mobile/2011/01/MMA-addressing-smartphone-privacy-with-new-guidelines.php</link>
+         <guid>http://www.readwriteweb.com/mobile/2011/01/MMA-addressing-smartphone-privacy-with-new-guidelines.php</guid>
+         <category></category>
+         <pubDate>Tue, 04 Jan 2011 10:24:20 -0800</pubDate>
+<author>Sarah Perez</author>
+      </item>
+      
+      <item>
+         <title>Hands-On with Google Docs for iPad and iPhone</title>
+		<description><![CDATA[<p><img alt="google-docs-icon.png" src="http://www.readwriteweb.com/biz/google-docs-icon.png" width="107" height="113"  /> Isn't living in the future awesome? Right now, I'm writing this blog post on my phone while using an elliptical machine at my local gym. When I get back to my desk, this draft will be waiting for me in Google Docs, where I can edit it, add links and get it ready to publish.  If I want to grab coffee later, I could bring my iPad with me and make some last minute fixes from the cafe.  Everything will be saved automatically in the cloud.</p>
+
+<p>As we <a href="http://www.readwriteweb.com/cloud/2010/11/google-speeds-up-google-docs-m.php">reported in November</a>, the ability edit, save and delete Google Docs was recently made available to iPhone, iPad and iPod Touch users.  While third parties have already developed mobile apps for managing Google Docs, this marks the first time Google itself has enabled mobile editing in the Web app for its popular cloud-based office suite.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23960&amp;cb=23960' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23960&amp;n=23960' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>So how does it stack up?  In a nutshell, the experience of editing and managing Google Docs from iOS devices is pretty good. But like many brand new features, it could go further, and hopefully we'll see improvements over time.</p>
+
+<h2>What It Does Well</h2>
+
+<p><img alt="google-docs-iphone.png" src="http://www.readwriteweb.com/biz/google-docs-iphone.png" width="250" align="right"/>Since late November, the mobile-optimized Web version of Google Docs has enabled users to create, edit and delete documents on the go, which can really come in handy for business users, especially those who might travel or work remotely.   Being able to edit documents from a variety of devices without worrying about keeping track of the latest version is priceless.</p>
+
+<p>For some users, it may take some getting used to the fact that there's no "save" button.  Instead, the document auto-saves every few seconds as you type.  Well, technically there is a "save" button, but it only displays when the document hasn't been auto-saved but it saves so frequently that you almost never see the option to save manually.</p>
+
+<p>Typing on the iPad is pretty effective in general, but it can get clumsy if you type fast.  If you're a professional writer or prefer to type very quickly, your best bet would be to use an external keyboard and turning off auto-correct so as to avoid introducing any unnecessary changes that you might not notice when reviewing the document later.  Apple's wireless keyboard for desktops works great with the iPad, or there are a number of iPad-specific keyboards.</p>
+
+<p>iPhone users already know how tedious typing on the device can be and using Google Docs on it is no different.  That said, it's no worse than typing an email or a long text message. You just have to take your time and keep an eye out for unintentionally hilarious auto-corrections.</p>
+
+<p>What if you lose your data or WiFi connection?  Do you lose all of your precious work? Nope. Thankfully, the Google Docs mobile Web app makes smart use of <a href="http://www.readwriteweb.com/archives/goodbye_gears_google_docs_boots_plugin_for_html5_on_may_3rd.php">HTML5's offline storage feature</a>.  If you're without a signal, the application still works; it just can't save your work.  Thus you can continue to type away and make changes, and the app will sync and save your document the next time the device is online.  Just be careful about trying to load any other new pages or data in Safari in the meantime, as there's a chance doing so could cause you to lose your changes.</p>
+
+<h2>Some Room For Improvement</h2>
+
+<p>The user interface is extremely simple, and that's typically a good thing.  However, in this case, it feels like there are missing features. And there are.  You can't format text, add links or align paragraphs.  There are no document-sharing options enabled.  You can literally just type and edit text.   </p>
+
+<p><img alt="google-docs-ipad.png" src="http://www.readwriteweb.com/biz/google-docs-ipad.png" width="300" align="right">Users who rely on a real-time spellchecker to keep their spelling ability in check might be disappointed by the fact that there are no red, squiggly lines under the words they most ruthlessly butcher.   The native iOS spellchecker and auto-correction will have to suffice, at least until one can get back to the desktop version of Google Docs, where these stripped-out features are available.  Or if you just can't wait, you can <a href="http://www.readwriteweb.com/archives/google_docs_desktop_site_works_on_ipad.php">access the desktop version of a document</a> from the iPad by clicking the "Desktop" link at the bottom of the page.  </p>
+
+<p>There does appear to be at least one bug on the iPad version.  In my testing, anytime a suggested spelling popped up, I was unable to tap it to X it out as one normally can.  Instead, the Web app interprets the tap as if it's intended to select a line in the document itself.  </p>
+
+<p>For now, the mobile version of Google Docs only supports the creation of text documents and spreadsheets, whereas the desktop version allows for PowerPoint-style presentations, Web forms and drawings.</p>
+
+<p>Despite these limitations, Google Docs for mobile is overall an effective and easy-to-use experience. We'll be excited to see it improved moving forward, especially on the iPad, which offers greater opportunities for a more robust, feature-rich interface.  </p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/biz/2011/01/google-docs-for-ipad-iphone-ipod-touch.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/biz/2011/01/google-docs-for-ipad-iphone-ipod-touch.php</link>
+         <guid>http://www.readwriteweb.com/biz/2011/01/google-docs-for-ipad-iphone-ipod-touch.php</guid>
+         <category>Software Guides</category>
+         <pubDate>Tue, 04 Jan 2011 10:00:00 -0800</pubDate>
+<author>John Paul Titlow</author>
+      </item>
+      
+      <item>
+         <title>D-Link/Snapstick Agreement Could Bring Internet TV onto Any TV Screen</title>
+		<description><![CDATA[<p><img src="http://www.readwriteweb.com/images/snapstick-logo.JPG"><p><a href="http://www.snapstick.com">Snapstick</a>, the startup that's looking to take on the likes of Google and Apple in the Internet TV sphere, is announcing today that it has cleared one of the major hurdles it faced - inking a deal for hardware integration. Snapstick is a software solution that allows users to stream content from any device - iPhone, iPad, netbook or desktop computer - straight to the television screen. </p></p>
+
+<p>That software solution just found a potential hardware home with D-Link, the company behind the hardware for <a href="http://www.boxee.com">Boxee</a>, another favorite in the Internet TV space.</p>]]>
+<![CDATA[<p align="right"><em>Sponsor</em><br /><a href='http://d.ads.readwriteweb.com/ck.php?n=23954&amp;cb=23954' target='_blank'><img src='http://d.ads.readwriteweb.com/avw.php?zoneid=14&amp;cb=23954&amp;n=23954' border='0' alt='' /></a></p>]]>
+
+<![CDATA[<p>The exciting thing about Snapstick is that it provides a way for users to navigate content how they normally would, whether on their phone, tablet, netbook or desktop, and then view it on the big screen. The solution also used what it calls "SplitMedia" technology: </p>
+
+<blockquote>
+  <p>Snapstick's SplitMedia technology allows consumers to discover, view and control content using the same easy-to-use interfaces they already employ to control their mobile devices and computers. Simply browse the web on a mobile device or laptop and snap the content to the TV with a flick of the wrist. Hardware at the TV then takes over the processing burden via Wi-Fi. Once the content appears on the TV, you can use the mobile device or laptop as a visual remote to control the content, or, use it for any other task, thus removing the need for cumbersome keyboards and complicated remote controls in the living room. </p>
+</blockquote>
+
+<p>Right now, the two companies are simply "in talks" and describes this as a "trial". A company like D-Link, which already has its hands in both the Internet TV and networking hardware realms, seems like a perfect match for Snapstick. The step is an important one, as we noted in our <a href="http://www.readwriteweb.com/archives/3_things_we_expect_to_see_at_ces_2011.php">preview of CES 2011</a> yesterday, in the battle for our online viewership. Now that Snapstick has a potential hardware partner, how do you see Internet TV shaping up in 2011?</p>
+
+<p><object width="610" height="367"><param name="movie" value="http://www.youtube.com/v/nR3FlIQX5hM&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.youtube.com/v/nR3FlIQX5hM&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="610" height="367"></embed></object></p>]]>
+<![CDATA[<strong><a href="http://www.readwriteweb.com/archives/d-linksnapstick_agreement_could_bring_internet_tv.php#comments-open">Discuss</a></strong>]]>
+
+</description>
+         <link>http://www.readwriteweb.com/archives/d-linksnapstick_agreement_could_bring_internet_tv.php</link>
+         <guid>http://www.readwriteweb.com/archives/d-linksnapstick_agreement_could_bring_internet_tv.php</guid>
+         <category>News</category>
+         <pubDate>Tue, 04 Jan 2011 09:00:00 -0800</pubDate>
+<author>Mike Melanson</author>
+      </item>
+      
+   </channel>
+</rss>

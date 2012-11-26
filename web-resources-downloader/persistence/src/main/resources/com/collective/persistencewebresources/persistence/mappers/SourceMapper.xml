@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd"> -->
+
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.collective.persistencewebresources.persistence.mappers.SourceMapper">
+    
+    <!-- to get FonteRss from the one found inside webResource -->
+    <select id="selectAllFonte" resultType="source">
+        SELECT
+            *
+        FROM
+            source
+    </select>
+    
+    <select id="selectFonte" resultType="source">
+        SELECT
+            *
+        FROM
+            source
+        WHERE
+        	id = #{id}
+    </select>
+
+	<resultMap id="fonteResult" type="source">
+		<id property="id" column="fonte_id" />
+		<result property="nome" column="fonte_nome" />
+		<result property="url" column="fonte_url"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"/>
+		<collection property="sourcesRss" ofType="sourcerss" resultMap="fonteRssResult" />
+	</resultMap>
+	
+	<resultMap id="fonteRssResult" type="sourcerss">
+	    <id property="id" column="fonte_rss_id"/>
+	    <result property="lingua" column="fonte_rss_lingua"/>
+	    <result property="parola" column="fonte_rss_parola"/>
+	    <result property="url" column="fonte_rss_url_rss"
+                typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"
+                jdbcType="VARCHAR" />
+	    <result property="dataUltimaEstrazione" column="fonte_rss_data_ultima_estrazione" 
+	    		typeHandler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"/>
+        <result property="valid" column="is_valid"/>
+	</resultMap> 
+
+	<select id="selectFonteAndFontiRss" parameterType="int" resultMap="fonteResult">
+	SELECT 
+		f.id AS fonte_id, 
+		f.nome AS fonte_nome, 
+		f.url AS fonte_url,
+		frss.id AS fonte_rss_id, 
+		frss.lingua AS fonte_rss_lingua, 
+		frss.parola AS fonte_rss_parola, 
+		frss.url_rss AS fonte_rss_url_rss,
+		frss.data_ultima_estrazione AS fonte_rss_data_ultima_estrazione
+	FROM
+		source f
+		LEFT OUTER JOIN 
+		source_rss frss
+		ON f.id = frss.id_fonte
+	WHERE
+		f.id = #{id}
+	</select>
+
+    <select id="selectAllFonteAndValidFontiRss" resultMap="fonteResult">
+	SELECT
+        *,
+		f.id AS fonte_id,
+		f.nome AS fonte_nome,
+		f.url AS fonte_url,
+		frss.id AS fonte_rss_id,
+		frss.lingua AS fonte_rss_lingua,
+		frss.parola AS fonte_rss_parola,
+		frss.url_rss AS fonte_rss_url_rss,
+		frss.data_ultima_estrazione AS fonte_rss_data_ultima_estrazione
+	FROM
+		source f
+		LEFT OUTER JOIN
+		source_rss frss
+		ON f.id = frss.id_fonte
+    WHERE
+        frss.is_valid = 1
+	</select>
+    <!-- TODO: refine this query -->
+	
+	<!-- same as the previous, but with inner join -->
+	<select id="selectAllFonteAndFontiRss" parameterType="int" resultMap="fonteResult">
+	SELECT 
+		f.id AS fonte_id, 
+		f.nome AS fonte_nome, 
+		f.url AS fonte_url,
+		frss.id AS fonte_rss_id, 
+		frss.lingua AS fonte_rss_lingua, 
+		frss.parola AS fonte_rss_parola, 
+		frss.url_rss AS fonte_rss_url_rss,
+		frss.data_ultima_estrazione AS fonte_rss_data_ultima_estrazione
+	FROM
+		source f
+		INNER JOIN
+		source_rss frss
+		ON f.id = frss.id_fonte
+	</select>
+
+</mapper> 
+    
+

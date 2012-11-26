@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.collective.importer.indexer.persistence.mapper.LineMapper">
+
+    <resultMap id="LineResultMap" type="line">
+        <id column="url" property="url" typeHandler="com.collective.importer.indexer.persistence.typehandler.URLTypeHandler"/>
+        <result column="label" property="label"/>
+        <result column="owner" property="owner"/>
+    </resultMap>
+
+    <select id="selectLine" parameterType="java.lang.String" resultMap="LineResultMap">
+        SELECT *
+        FROM dbpedia
+        WHERE url =
+        #{url, typeHandler=com.collective.importer.indexer.persistence.typehandler.URLTypeHandler, javaType=java.net.URL, jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertLine" parameterType="line">
+        INSERT INTO dbpedia (url, label, owner)
+        VALUES
+        (#{url, typeHandler=com.collective.importer.indexer.persistence.typehandler.URLTypeHandler, javaType=java.net.URL, jdbcType=VARCHAR},
+        #{label}, #{owner})
+    </insert>
+
+    <delete id="deleteLine" parameterType="java.lang.String">
+        DELETE FROM dbpedia where url = #{url}
+    </delete>
+
+
+    <select id="selectLineBySubstring"
+            parameterType="java.lang.String"
+            resultMap="LineResultMap">
+        SELECT *
+        FROM dbpedia
+        WHERE label LIKE #{substring} AND (owner = #{owner} OR owner = 0)
+        ORDER BY  LENGTH(label)
+        LIMIT 10
+    </select>
+
+        <select id="selectLineBySubstringFiltered"
+            parameterType="java.lang.String"
+            resultMap="LineResultMap">
+        SELECT *
+        FROM dbpedia
+        WHERE label LIKE #{substring} AND owner = #{owner}
+        ORDER BY  LENGTH(label)
+        LIMIT 10
+    </select>
+
+</mapper>

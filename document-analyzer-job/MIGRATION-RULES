@@ -1,0 +1,34 @@
+GRAPH MIGRATION RULES
+from proconsult to collective graph
+change the containing graph name
+FROM http://www.cybion.it/proconsult/url
+TO http://collective.com/resources/web
+
+STATUS ON VIRTUOSO: 
+
+
+
+
+Url Model
+id will be a Long?
+or everything will be modeled as the url?
+WebResource
+
+Fonte_Rss Model
+SourceRss
+
+Fonte Model
+Source
+
+document-analyzer-refactoring
+
+use rdfizer to write on db
+
+WebResource Model
+id should be changed to long
+add DateTime dataEstrazione dataPubblicazione
+
+SourceRss Model
+
+
+Source Model

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<profiler-configuration>
+    <storage>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <db>kvs</db>
+        <username>kvs</username>
+        <password>kvs</password>
+    </storage>
+    <permanent-search>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <db>collective-permanent-search</db>
+        <username>collective</username>
+        <password>collective</password>
+    </permanent-search>
+    <recommender>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+        <graph>http://collective.com/resources/web/alternative</graph>
+        <limit>10</limit>
+        <indexes>
+            <index>
+                <name>user</name>
+                <graph>http://collective.com/profile/user/</graph>
+            </index>
+            <index>
+                <name>project</name>
+                <graph>http://collective.com/profile/project/</graph>
+            </index>
+			<index>
+                <name>search</name>
+                <graph>http://collective.com/profile/search/</graph>
+            </index>
+            <!-- should match SesameVirtuosoDocumentStorage
+            prefix of graphs that contains annotations -->
+            <index>
+                <name>custom-annotations</name>
+                <graph>http://collective.com/annotation/user/</graph>
+            </index>
+        </indexes>
+    </recommender>
+    <profile-store>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+    </profile-store>
+    <logger>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <db>collective-alog</db>
+        <username>collective</username>
+        <password>collective</password>
+    </logger>
+</profiler-configuration>

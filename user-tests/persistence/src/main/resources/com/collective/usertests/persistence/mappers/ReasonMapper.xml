@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.collective.usertests.persistence.mappers.ReasonMapper">
+
+    <resultMap id="ReasonResultMap" type="reason" >
+        <id column="id" property="id"/>
+		<result column="description" property="description" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="insertReason" parameterType="reason" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO reason (description)
+      VALUES (#{description})
+    </insert>
+
+	<select id="getReason" parameterType="int" resultMap="ReasonResultMap" >
+		SELECT
+			*
+		FROM
+			reason
+		WHERE
+			id = #{id}
+    </select>
+
+    <update id="updateReason" parameterType="reason">
+    	UPDATE reason
+    	<set>
+	        <if test="description != null">description = #{description}</if>
+      	</set>
+    	WHERE id = #{id}
+    </update>
+
+
+	<delete id="deleteReason" parameterType="int">
+		DELETE FROM reason where id = #{id}
+	</delete>
+
+	<select id="getAllReasons" resultMap="ReasonResultMap">
+		SELECT * FROM reason
+	</select>
+
+</mapper>

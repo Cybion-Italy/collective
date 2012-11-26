@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<profiler-configuration>
+    <storage>
+        <host>cibionte.cybion.eu</host>
+        <port>3306</port>
+        <db>recommender</db>
+        <username>rec</username>
+        <password>recpass</password>
+    </storage>
+    <recommender>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+        <graph>http://collective.com/resources/web/alternative</graph>
+        <limit>10</limit>
+        <indexes>
+            <index>
+                <name>search</name>
+                <graph>http://collective.com/profile/search/</graph>
+            </index>
+        </indexes>
+    </recommender>
+    <profile-store>
+        <host>cibionte.cybion.eu</host>
+        <port>1111</port>
+        <username>dba</username>
+        <password>cybiondba</password>
+    </profile-store>
+</profiler-configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.collective.usertests.persistence.mappers.UserFeedbackMapper">
+
+    <resultMap id="UserFeedbackResultMap" type="userfeedback" >
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="project_id" property="projectId" jdbcType="BIGINT"/>
+        <result column="url_resource" property="urlResource" jdbcType="VARCHAR" />
+        <result column="is_useful" property="like" jdbcType="TINYINT"/>
+        <result column="reason_id" property="reasonId" jdbcType="INTEGER"/>
+        <result column="date" property="date"
+				typeHandler="com.collective.usertests.persistence.typehandlers.JodaTimeTypeHandler"/>
+    </resultMap>
+
+    <insert id="insertUserFeedback" parameterType="userfeedback" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO user_feedback (
+        user_id, project_id,
+        url_resource, is_useful,
+        reason_id, date) VALUES (#{userId}, #{projectId},
+        #{urlResource}, #{like},
+        #{reasonId}, #{date, javaType=datetime, jdbcType=BIGINT})
+    </insert>
+
+    <select id="getUserFeedback" parameterType="long" resultMap="UserFeedbackResultMap" >
+		SELECT
+			*
+		FROM
+			user_feedback
+		WHERE
+			id = #{id}
+    </select>
+
+    <select id="getAllUserFeedbackByUserId" parameterType="long" resultMap="UserFeedbackResultMap">
+        SELECT
+			*
+		FROM
+			user_feedback
+		WHERE
+			user_id = #{userId}
+    </select>
+
+	<delete id="deleteUserFeedback" parameterType="long">
+		DELETE FROM user_feedback where id = #{id}
+	</delete>
+
+</mapper>

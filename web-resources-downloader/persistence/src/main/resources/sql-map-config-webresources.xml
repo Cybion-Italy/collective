@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="database.properties"/>
+	<typeAliases>
+		<typeAlias alias="webResource" type="com.collective.model.persistence.WebResource" />
+		<typeAlias alias="sourcerss" type="com.collective.model.persistence.SourceRss" />
+		<typeAlias alias="source" type="com.collective.model.persistence.Source" />
+		<typeAlias alias="datetime" type="org.joda.time.DateTime" />
+        <typeAlias alias="url" type="java.net.URL"/>
+	</typeAliases>
+	<typeHandlers>
+		<typeHandler handler="com.collective.persistencewebresources.persistence.utils.typehandlers.JodaTimeTypeHandler"
+		javaType="org.joda.time.DateTime" jdbcType="BIGINT"/>
+        <typeHandler handler="com.collective.persistencewebresources.persistence.utils.typehandlers.URLTypeHandler"
+		javaType="java.net.URL" jdbcType="VARCHAR"/>
+	</typeHandlers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/collective/persistencewebresources/sql/WebResource.xml" />
+		<mapper resource="com/collective/persistencewebresources/sql/SourceRss.xml" />
+		<mapper resource="com/collective/persistencewebresources/sql/Source.xml" />
+	</mappers>
+</configuration>

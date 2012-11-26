@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collective.recommender.storage.mappers.RecommendationsMapper">
+
+    <select id="selectResourceRecommendations" parameterType="java.lang.String" resultMap="bytesRM">
+        SELECT last_rec FROM resourcerecs WHERE user = #{userId}
+    </select>
+
+    <insert id="insertResourceRecommendations" parameterType="map">
+        INSERT INTO resourcerecs (user, last_rec)
+        VALUES (#{userId},
+        #{object, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler})
+    </insert>
+
+    <delete id="deleteResourceRecommendations" parameterType="java.lang.String">
+        DELETE FROM resourcerecs WHERE user = #{userId}
+    </delete>
+
+    <!-- TODO: make sure it works -->        
+    <delete id="deleteExpertsRecommendations" parameterType="java.lang.String">
+        DELETE FROM expertsrecs WHERE project = #{projectId}
+    </delete>
+
+    <insert id="insertExpertsRecommendations" parameterType="map">
+        INSERT INTO expertsrecs (project, last_rec)
+        VALUES (#{projectId},
+        #{object, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler})
+    </insert>
+
+    <select id="selectExpertsRecommendations" parameterType="java.lang.String" resultMap="bytesRM">
+        SELECT last_rec FROM expertsrecs WHERE project = #{projectId}
+    </select>
+
+    <insert id="insertProjectRecommendations" parameterType="map">
+        INSERT INTO projectrecs (user, last_rec)
+        VALUES (#{userId},
+        #{object, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler})
+    </insert>
+
+     <select id="selectProjectRecommendations" parameterType="java.lang.String" resultMap="bytesRM">
+        SELECT last_rec FROM projectrecs WHERE user = #{userId}
+    </select>
+
+    <delete id="deleteProjectRecommendations" parameterType="java.lang.String">
+        DELETE FROM projectrecs WHERE user = #{userId}
+    </delete>
+
+    <resultMap id="bytesRM" type="com.collective.recommender.storage.Bytes">
+        <result property="bytes" column="last_rec" jdbcType="BLOB"
+                typeHandler="org.apache.ibatis.type.ByteArrayTypeHandler"/>
+    </resultMap>
+
+
+</mapper>

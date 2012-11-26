@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite hostname="moxbook.local" name="com.collective.profilingline.SimpleProfilingLineTest" tests="1" failures="0" timestamp="15 Feb 2011 15:56:47 GMT" time="0.047" errors="0">
+  <testcase name="runProfilingLine" time="0.019" classname="com.collective.profilingline.SimpleProfilingLineTest"/>
+</testsuite>
