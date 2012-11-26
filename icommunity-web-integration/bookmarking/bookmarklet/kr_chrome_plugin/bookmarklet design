@@ -1,0 +1,12 @@
+client :send username + pwd
+server: send list of categories OR error message
+client: shows new window : input that contains title (captured from current page)
+			   input that contains URL (captured from current page)
+			   Checkbox representing each of user-defined categories (sent by server)
+client: send (title, url, category) to server
+server: captures sent file and:
+	1- add resource to database if it doesn't already exists (and gives it an ID)
+	2- add mapping to database (CategoryId, ResourceId)
+server: send Success message OR error message(mapping already exists, or error in adding the mapping)
+client: captures the message from server and shows it.
+
