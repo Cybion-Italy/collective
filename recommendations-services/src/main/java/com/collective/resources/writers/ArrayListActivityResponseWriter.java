@@ -33,7 +33,7 @@ public class ArrayListActivityResponseWriter implements MessageBodyWriter<ArrayL
 
     public boolean isWriteable(Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType)
     {
-        return ArrayList.class.isAssignableFrom(aClass);
+        return ArrayListActivityResponse.class.isAssignableFrom(aClass);
     }
 
     public long getSize(ArrayListActivityResponse arrayListActivityResponse, Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType)

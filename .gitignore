@@ -32,6 +32,7 @@
 ######################
 target/**
 bin/**
+target/
 
 # TODO: move next sections to global .gitignore #
 

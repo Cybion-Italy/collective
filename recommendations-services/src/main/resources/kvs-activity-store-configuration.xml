@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <kvs>
     <relational>
-        <host>cibionte.cybion.eu</host>
+        <host>localhost</host>
+        <!--<host>cibionte.cybion.eu</host>-->
         <!--<host>gaia.cybion.eu</host>-->
         <port>3306</port>
         <db>kvs</db>
