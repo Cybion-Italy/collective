@@ -200,7 +200,7 @@ public class DefaultActivityStoreImplTestCase {
         insertionTimes.add(afterInsert - beforeInsert);
     }
 
-    @Test
+    @Test (enabled = false)
     public void shouldSaveMultipleActivitiesAtOnce() throws ActivityStoreException {
 
         //used as load test: until 10000 it works

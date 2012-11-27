@@ -535,6 +535,7 @@
         <module>message-consumer</module>
         <module>models</module>
         <module>permanent-search</module>
+        <module>user-tests</module>
         <module>profile-manager</module>
         <module>project-profiling-line</module>
         <module>recommendations-services</module>
