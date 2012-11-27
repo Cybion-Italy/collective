@@ -173,6 +173,7 @@
                     </filesets>
                 </configuration>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -184,7 +185,6 @@
                     <configuration>
                         <type>runtime</type>
                         <properties>
-                            <!-- TODO remove and get from a profile -->
                             <cargo.tomcat.manager.url>http://cibionte.cybion.eu:8080/manager
                             </cargo.tomcat.manager.url>
                             <cargo.remote.username>tomcat</cargo.remote.username>
@@ -193,6 +193,7 @@
                     </configuration>
                 </configuration>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
