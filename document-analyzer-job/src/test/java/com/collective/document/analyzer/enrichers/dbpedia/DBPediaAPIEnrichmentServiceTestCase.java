@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 import java.net.URI;
 import java.util.List;
 
+import static org.testng.Assert.assertTrue;
+
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
@@ -83,6 +85,6 @@ public class DBPediaAPIEnrichmentServiceTestCase
 
         //TODO the asserts are not fulfilled: why the concepts size always change? investigate
 
-//        Assert.assertEquals(concepts.size(), 4);
+        assertTrue(concepts.size() > 0);
     }
 }

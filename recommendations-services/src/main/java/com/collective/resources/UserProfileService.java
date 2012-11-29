@@ -47,8 +47,7 @@ public class UserProfileService
                                                                                   start, end,
                                                                                   lastUpdatedAt, 2);
         } catch (URISyntaxException e) {
-            //should never happen
-            e.printStackTrace();
+            throw new RuntimeException("error with uri syntax", e);
         }
 
         return shortTermUserProfile;

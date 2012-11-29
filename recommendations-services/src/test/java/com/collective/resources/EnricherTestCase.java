@@ -14,6 +14,8 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.util.List;
 
+import static org.testng.Assert.assertTrue;
+
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
@@ -59,10 +61,11 @@ public class EnricherTestCase extends AbstractJerseyRESTTestCase
 
         logger.debug(responseBody);
 
-        //no asserts since it depends on dbpedia
+        //just one assert since it depends on dbpedia
         for (URI concept : concepts) {
             logger.debug("found concept: " + concept.toString());
         }
+        assertTrue(concepts.size() > 0);
     }
 
     @Test
@@ -102,9 +105,10 @@ public class EnricherTestCase extends AbstractJerseyRESTTestCase
 
         logger.debug(responseBody);
 
-        //no asserts since it depends on dbpedia
+        //just one assert since it depends on dbpedia
         for (URI concept : concepts) {
             logger.debug("found concept: " + concept.toString());
         }
+        assertTrue(concepts.size() > 0);
     }
 }
