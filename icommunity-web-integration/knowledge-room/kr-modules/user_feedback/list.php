@@ -25,12 +25,16 @@ $amount = "10";
 $configuration = new KrEndpointConfiguration();
 $recommendations_rest_client = new KrPermanentSearchWSClient($configuration);
 
+//TODO print them in a different section
 $recommendations_list = $recommendations_rest_client
                 ->get_all_recommendations($user_id, $amount);
 
+$short_term_recommendations_list = $recommendations_rest_client
+                ->get_short_term_recommendations($user_id, $amount);
+
 
 //TODO REMOVE AFTER TESTING
-$user_id = 21;
+//$user_id = 21;
 //get user short term profile
 echo "getting profile - short term for " . $user_id;
 $short_profile = $recommendations_rest_client->get_short_profile($user_id);

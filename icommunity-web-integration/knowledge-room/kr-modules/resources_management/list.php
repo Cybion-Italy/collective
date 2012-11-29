@@ -21,8 +21,8 @@ title{font-family: verdana,arial,sans-serif;
 <br/>
 <br/>
     <div>
-        <a href="http://cibionte.cybion.eu/collective/backend/kr_chrome_plugin.crx">Click here to download the iCommunity Chrome Extension!</a>
-<!--        <a href="http://gaia.cybion.eu/collective/backend/kr_chrome_plugin.crx">Click here to download the iCommunity Chrome Extension!</a>-->
+        <!--<a href="http://cibionte.cybion.eu/collective/backend/kr_chrome_plugin.crx">Click here to download the iCommunity Chrome Extension!</a>-->
+        <a href="http://gaia.cybion.eu/collective/backend/kr_chrome_plugin.crx">Click here to download the iCommunity Chrome Extension!</a>
     </div>
 </br>
 <div class="kr-section-name">

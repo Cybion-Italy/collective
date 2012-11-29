@@ -2,8 +2,8 @@
 
 class KrEndpointConfiguration {
 
-        const host = 'cibionte.cybion.eu';
-//	const host = 'gaia.cybion.eu';
+//        const host = 'cibionte.cybion.eu';
+	const host = 'gaia.cybion.eu';
 	const port = '8080';
 
 	function get_host() {

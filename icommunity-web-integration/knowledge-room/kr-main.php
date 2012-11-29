@@ -16,9 +16,9 @@ $moduleNames = new KrModuleNames();
 
 /* used to set the default page, to prevent having to click and change to the
  * development section we are coding */
-//$defaultModule = $moduleNames->get_user_feedback();
+$defaultModule = $moduleNames->get_user_feedback();
 //$defaultModule = $moduleNames->get_permanent_search();
-$defaultModule = $moduleNames->get_resources_management();
+//$defaultModule = $moduleNames->get_resources_management();
 $defaultAction = 'list';
 
 //TODO refactor to const

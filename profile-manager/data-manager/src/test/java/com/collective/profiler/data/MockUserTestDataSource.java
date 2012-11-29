@@ -10,7 +10,7 @@ import java.util.Properties;
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  * used for tests
  */
-public class UserTestDataSource implements DataSource {
+public class MockUserTestDataSource implements DataSource {
 
     private User user;
 

@@ -25,6 +25,7 @@ class KrPermanentSearchWSClient {
     const USER_PERMANENT_SEARCH_CREATE = 'user/search';
     const PERMANENT_SEARCH_RESULTS     = 'searchrecommendation/webmagazines';
     const USER_RECOMMENDATION          = 'userrecommendation/webmagazines';
+    const SHORT_TERM_RECOMMENDATIONS   = 'userrecommendation/short-term';    
     const SEARCH ='search';
     const CONCEPTS = 'concepts';
     const USER_FEEDBACK      = 'user-feedback-test/userfeedback/list';
@@ -68,6 +69,40 @@ class KrPermanentSearchWSClient {
         }        
         
         return $deserialized_resources;
+    }
+    
+    function get_short_term_recommendations($user_id, $amount) {
+        //TODO test functioning 
+        $short_term_recs_path = 
+            self::BASE_DIR.self::SHORT_TERM_RECOMMENDATIONS."/$user_id/$amount";
+        
+        //var_dump($short_term_recs_path);
+        //get short term recs for the user
+        $headers = array('Accept: application/json');
+        $get_result = '';
+        try {
+            $get_result = KrRestClientExtended::connect(
+                                           $this->endpointConfiguration->get_host(), 
+                                           $this->endpointConfiguration->get_port())
+                                                ->silentMode(false)
+                                                ->setHeaders($headers)
+                                                ->get($get_recs_for_user_path)
+                                                ->run();
+        } catch (Http_Exception $e) {
+            echo 'http exception: '. $e;
+                throw new KrPermanentSearchWSClientException($e->getMessage());
+        }
+        
+        $deserialized_resources = array();
+         if ($get_result[0] instanceof Http_Multiple_Error) {	
+                echo "<p>Http error</p>" . $get_result[0]->getStatus();                
+        } else {    
+                $intermediate_result = json_decode($get_result[0], true);                        
+                if ($intermediate_result['status'] !== 'FAIL') {                      
+                    $deserialized_resources = json_decode($get_result[0], true);
+                }                
+        }                
+        return $deserialized_resources;        
     }
     
     function get_user_feedbacks($user_id) {
