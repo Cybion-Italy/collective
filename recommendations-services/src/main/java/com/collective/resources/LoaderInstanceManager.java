@@ -10,15 +10,15 @@ import com.collective.permanentsearch.persistence.dao.SearchDao;
 import com.collective.profiler.storage.ProfileStore;
 import com.collective.profiler.storage.ProfileStoreConfiguration;
 import com.collective.profiler.storage.SesameVirtuosoProfileStore;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.resources.recommendations.RecommendationsStore;
 import com.collective.resources.utilities.LimitChecker;
 import com.collective.usertests.persistence.dao.ReasonDao;
 import com.collective.usertests.persistence.dao.UserFeedbackDao;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.vocabulary.XMLSchema;
 import tv.notube.commons.storage.kvs.KVStore;
 import tv.notube.commons.storage.kvs.configuration.ConfigurationManager;
@@ -257,7 +257,7 @@ public class LoaderInstanceManager
                 new ProfileStoreConfiguration(hostVirtuoso, portVirtuoso, usernameVirtuoso,
                                               passwordVirtuoso,
                                               nameSpacesConfiguration);
-        RDFizer rdFizer;
+        Be3 rdFizer;
         try {
             rdFizer = getRDFizer();
         } catch (TypeHandlerRegistryException e) {
@@ -266,7 +266,7 @@ public class LoaderInstanceManager
         profileStore = new SesameVirtuosoProfileStore(profileStoreConfiguration, rdFizer);
     }
 
-    private RDFizer getRDFizer() throws TypeHandlerRegistryException
+    private Be3 getRDFizer() throws TypeHandlerRegistryException
     {
         TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
         URIResourceTypeHandler uriResourceTypeHandler = new URIResourceTypeHandler();
@@ -287,7 +287,7 @@ public class LoaderInstanceManager
                                                 XMLSchema.ANYURI);
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
-        return new TypedRDFizer(null, typeHandlerRegistry);
+        return new DefaultTypedBe3Impl(null, typeHandlerRegistry);
     }
 
     RecommendationsStore getRecommendationsStore()

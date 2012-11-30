@@ -25,12 +25,15 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
 
     private static final String EXPERTS = "experts-recs";
 
+    private static final String SHORT_TERM_RESOURCES = "short-term-resources-recs";
+
     private KVStore kvs;
 
     public KVSRecommendationsStorage(Properties properties) {
         kvs = new MyBatisKVStore(properties, new SerializationManager());
     }
 
+    @Override
     public List<WebResourceEnhanced> getResourceRecommendations(URI userId)
             throws RecommendationsStorageException {
         try {
@@ -42,6 +45,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void deleteResourceRecommendations(URI userId)
             throws RecommendationsStorageException {
         try {
@@ -52,6 +56,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void storeResourceRecommendations(
             URI userId,
             List<WebResourceEnhanced> resourceRecommendations
@@ -64,6 +69,22 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
+    public List<WebResourceEnhanced> getShortTermResourceRecommendations(URI userId) throws RecommendationsStorageException {
+        throw new UnsupportedOperationException("NIY");
+    }
+
+    @Override
+    public void deleteShortTermResourceRecommendations(URI userId) throws RecommendationsStorageException {
+        throw new UnsupportedOperationException("NIY");
+    }
+
+    @Override
+    public void storeShortTermResourceRecommendations(URI userId, List<WebResourceEnhanced> resourceRecommendations) throws RecommendationsStorageException {
+        throw new UnsupportedOperationException("NIY");
+    }
+
+    @Override
     public List<ProjectProfile> getProjectRecommendations(URI userId)
             throws RecommendationsStorageException {
         try {
@@ -75,6 +96,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void storeProjectProfileRecommendations(
             URI userId,
             List<ProjectProfile> projectProfileRecommendations
@@ -87,6 +109,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void deleteProjectProfileRecommendations(URI userId)
             throws RecommendationsStorageException {
         try {
@@ -97,6 +120,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void deleteExpertsRecommandationsForProject(URI projectId)
             throws RecommendationsStorageException {
         try {
@@ -107,6 +131,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public void storeExpertsRecommendations(URI projectId, List<UserProfile> userProfiles)
             throws RecommendationsStorageException {
         try {
@@ -121,6 +146,7 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
         }
     }
 
+    @Override
     public List<UserProfile> getExpertsRecommendations(URI projectId)
             throws RecommendationsStorageException {
         try {

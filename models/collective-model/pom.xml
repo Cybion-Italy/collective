@@ -67,8 +67,8 @@
             <artifactId>joda-time</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.collective.rdfizer</groupId>
-            <artifactId>annotations</artifactId>
+            <groupId>org.99soft.be3</groupId>
+            <artifactId>be3-annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>

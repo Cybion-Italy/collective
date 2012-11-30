@@ -1,6 +1,5 @@
 package com.collective.recommender.proxy;
 
-import com.collective.rdfizer.RDFizer;
 import com.collective.recommender.*;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.filtering.Filter;
@@ -8,6 +7,7 @@ import com.collective.recommender.proxy.filtering.FilterException;
 import com.collective.recommender.proxy.ranking.Ranker;
 import com.collective.recommender.proxy.ranking.RankerException;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
 import org.openrdf.model.Statement;
 import org.openrdf.query.*;
 import org.openrdf.repository.Repository;
@@ -31,7 +31,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
 
     protected Repository repository;
 
-    protected RDFizer rdfizer;
+    protected Be3 rdfizer;
 
     protected RecommenderConfiguration recommenderConfiguration;
 
@@ -42,7 +42,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
     public SesameVirtuosoSparqlProxy() {}
 
     public SesameVirtuosoSparqlProxy(RecommenderConfiguration recommenderConfiguration,
-                                     RDFizer rdFizer) {
+                                     Be3 rdFizer) {
         this.recommenderConfiguration = recommenderConfiguration;
         this.usersCustomAnnotationsTemplate = this.recommenderConfiguration
                                         .getIndexes().get("custom-annotations");

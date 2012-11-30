@@ -40,6 +40,8 @@ public class ConfigurationManager {
 
     private Properties activityLogConfiguration;
 
+    private CategoriesMappingStorageConfiguration categoriesMappingStorageStorageConfiguration;
+
     private static Logger logger = Logger.getLogger(ConfigurationManager.class);
 
     private ConfigurationManager(String configurationFilePath) {
@@ -67,6 +69,22 @@ public class ConfigurationManager {
         initProfileStore();
         initPermanentSearchStorageConfiguration();
         initActivityLoggerConfiguration();
+        initCategoriesMappingStorageConfiguration();
+    }
+
+    private void initCategoriesMappingStorageConfiguration() {
+        //TODO
+        HierarchicalConfiguration permanentSearchConfiguration =
+                xmlConfiguration.configurationAt("categories-mapping");
+        String host = permanentSearchConfiguration.getString("host");
+        int port = permanentSearchConfiguration.getInt("port");
+        String db = permanentSearchConfiguration.getString("db");
+        String username = permanentSearchConfiguration.getString("username");
+        String password = permanentSearchConfiguration.getString("password");
+        CategoriesMappingStorageConfiguration categoriesMappingStorageStorageConfiguration =
+                new CategoriesMappingStorageConfiguration(host, port, db, username, password);
+
+        this.categoriesMappingStorageStorageConfiguration = categoriesMappingStorageStorageConfiguration;
     }
 
     private void initPermanentSearchStorageConfiguration() {
@@ -155,5 +173,9 @@ public class ConfigurationManager {
 
     public Properties getActivityLogConfiguration() {
         return activityLogConfiguration;
+    }
+
+    public CategoriesMappingStorageConfiguration getCategoriesMappingStorageStorageConfiguration() {
+        return categoriesMappingStorageStorageConfiguration;
     }
 }

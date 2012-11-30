@@ -27,7 +27,7 @@ public class DataManagerConfigurationTest {
         dataManagerConfiguration.registerKey(
                 "user",
                 "test-profiling-line",
-                "com.collective.profiler.data.UserTestDataSource"
+                "com.collective.profiler.data.MockUserTestDataSource"
         );
         dataManagerConfiguration.setMessagesPersistenceConfiguration(
                 new MessagesPersistenceConfiguration(

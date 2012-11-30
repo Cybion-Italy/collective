@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static org.testng.Assert.assertTrue;
+
 /**
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
  */
@@ -105,5 +107,10 @@ public class UserRecommendationTestCase extends AbstractJerseyRESTTestCase {
         logger.info( String.format("Response body for [%s]: \n%s", base_uri + query, responseBody) );
         logger.info("result code: " + result);
         assert result == HttpStatus.SC_BAD_REQUEST : "Unexpected result: \n" + result;
+    }
+
+    @Test
+    public void shouldGetShortTermProfileRecommendations() {
+        assertTrue(true);
     }
 }

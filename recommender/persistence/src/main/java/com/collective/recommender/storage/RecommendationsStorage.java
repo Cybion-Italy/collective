@@ -22,6 +22,15 @@ public interface RecommendationsStorage {
     void storeResourceRecommendations(URI userId, List<WebResourceEnhanced> resourceRecommendations)
             throws RecommendationsStorageException;
 
+    public List<WebResourceEnhanced> getShortTermResourceRecommendations(URI userId)
+            throws RecommendationsStorageException;
+
+    void deleteShortTermResourceRecommendations(URI userId)
+            throws RecommendationsStorageException;
+
+    void storeShortTermResourceRecommendations(URI userId, List<WebResourceEnhanced> resourceRecommendations)
+            throws RecommendationsStorageException;
+
     public List<ProjectProfile> getProjectRecommendations(URI userId)
             throws RecommendationsStorageException;
 
@@ -39,6 +48,6 @@ public interface RecommendationsStorage {
     void storeExpertsRecommendations(URI projectId, List<UserProfile> userProfiles)
             throws RecommendationsStorageException;
 
-     public List<UserProfile> getExpertsRecommendations(URI projectId)
+    public List<UserProfile> getExpertsRecommendations(URI projectId)
             throws RecommendationsStorageException;
 }

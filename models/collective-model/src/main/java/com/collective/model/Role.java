@@ -1,6 +1,7 @@
 package com.collective.model;
 
-import com.collective.rdfizer.annotations.RDFClassType;
+
+import org.nnsoft.be3.annotations.RDFClassType;
 
 /**
  * A set of roles a {@link com.collective.model.User} could play

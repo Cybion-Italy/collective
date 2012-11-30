@@ -1,11 +1,11 @@
 package com.collective.analyzer.storage;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.RDFizerException;
 import com.collective.analyzer.configuration.DocumentStorageConfiguration;
-import com.collective.rdfizer.annotations.RDFClassType;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.RDFizerException;
+import org.nnsoft.be3.annotations.RDFClassType;
 import org.openrdf.model.Statement;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.repository.Repository;
@@ -23,7 +23,7 @@ public class SesameVirtuosoDocumentStorage implements DocumentStorage {
 
     private static  Logger logger = Logger.getLogger(SesameVirtuosoDocumentStorage.class);
 
-    protected RDFizer rdfizer;
+    protected Be3 rdfizer;
 
     public URI defaultGraph;
 
@@ -32,7 +32,7 @@ public class SesameVirtuosoDocumentStorage implements DocumentStorage {
     protected Repository repository;
 
     /* used for tests */
-    public SesameVirtuosoDocumentStorage(RDFizer rdfizer,
+    public SesameVirtuosoDocumentStorage(Be3 rdfizer,
                                          URI defaultGraph,
                                          URI usersAnnotationsTemplate) {
         this.rdfizer = rdfizer;
@@ -42,7 +42,7 @@ public class SesameVirtuosoDocumentStorage implements DocumentStorage {
 
     public SesameVirtuosoDocumentStorage(
             DocumentStorageConfiguration documentStorageConfiguration,
-            RDFizer rdfizer,
+            Be3 rdfizer,
             URI defaultGraph,
             URI usersAnnotationsTemplate
     ) {

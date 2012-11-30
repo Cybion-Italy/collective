@@ -5,7 +5,7 @@ import java.util.Properties;
 /**
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
  */
-public class PermanentSearchStorageConfiguration {
+public class PermanentSearchStorageConfiguration extends PropertiesProvider {
 
     private String host;
 
@@ -26,6 +26,7 @@ public class PermanentSearchStorageConfiguration {
         this.password = password;
     }
 
+    @Override
     public Properties getProperties() {
         Properties properties = new Properties();
         properties.setProperty("driver", "com.mysql.jdbc.Driver");

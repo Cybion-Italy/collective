@@ -1,9 +1,9 @@
 package com.collective.recommender.proxy;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.RDFizerException;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.RDFizerException;
 import org.openrdf.model.Statement;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.GraphQueryResult;
@@ -29,7 +29,7 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
 
     private static final Logger logger = Logger.getLogger(SesameInMemorySparqlProxy.class);
 
-    public SesameInMemorySparqlProxy(RDFizer rdFizer) {
+    public SesameInMemorySparqlProxy(Be3 rdFizer) {
 
         //init in memory repository
         this.repository = new SailRepository(new MemoryStore());

@@ -5,9 +5,9 @@ import com.collective.concepts.core.UserDefinedConceptStoreException;
 import com.collective.document.analyzer.storage.memory.InMemoryDocumentStorage;
 import com.collective.document.analyzer.storage.memory.InMemoryUserDefinedConceptStore;
 import com.collective.document.analyzer.storage.memory.InMemoryWebResourceRepository;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.typehandler.TypeHandlerRegistryException;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.typehandler.TypeHandlerRegistryException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -51,7 +51,7 @@ public abstract class InMemoryRepositoriesProviderTestCase {
         logger.info("Loading configuration from: '" + confFilePath + "'");
         ConfigurationManager configurationManager =
                 ConfigurationManager.getInstance(confFilePath);
-        RDFizer rdfizer = configurationManager.getRDFizer();
+        Be3 rdfizer = configurationManager.getRDFizer();
 
         URI customAnnotationsTemplateUri = new URI(customAnnotationsTemplate);
         documentStore = new InMemoryDocumentStorage(rdfizer, defaultGraph,

@@ -49,9 +49,17 @@
             <groupId>com.collective.downloader</groupId>
             <artifactId>downloader-persistence</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.collective.rdfizer</groupId>-->
+            <!--<artifactId>rdfizer-core</artifactId>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.collective.rdfizer</groupId>
-            <artifactId>rdfizer-core</artifactId>
+            <groupId>org.99soft.be3</groupId>
+            <artifactId>be3-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.99soft.be3</groupId>
+            <artifactId>be3-annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

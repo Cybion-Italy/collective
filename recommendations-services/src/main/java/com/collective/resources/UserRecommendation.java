@@ -25,7 +25,6 @@ public class UserRecommendation implements AbstractRecommendation {
 
     public UserRecommendation() {}
 
-    //TODO: check tomcat behaviour with static loggers
     private static Logger logger = Logger.getLogger(UserRecommendation.class);
 
     // TODO: this should be plugged via configuration, being the same as the profiler-runner configuration
@@ -49,7 +48,6 @@ public class UserRecommendation implements AbstractRecommendation {
             @PathParam("userId") String userId,
             @PathParam("maxItems") int maxItems
     ) {
-        /* should return serializations of URLArticleResource */
         logger.debug("got userId: " + userId);
 
         instanceManager.getLimitChecker().checkRequestedItemsAmount(maxItems);
@@ -182,5 +180,15 @@ public class UserRecommendation implements AbstractRecommendation {
             logger.debug(projectProfile);
         }
         return projects;
+    }
+
+    @GET
+    @Path("short-term/{userId}/{maxItems}")
+    public List<WebResourceEnhanced> getShortTermProfileRecommendations(
+            @PathParam("userId") String userId,
+            @PathParam("maxItems") int maxItems
+    ) {
+        //TODO
+        throw new UnsupportedOperationException("NIY");
     }
 }

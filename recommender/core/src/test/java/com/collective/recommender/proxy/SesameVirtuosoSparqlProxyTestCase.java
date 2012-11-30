@@ -1,14 +1,14 @@
 package com.collective.recommender.proxy;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.recommender.SesameVirtuosoRecommenderTestCase;
 import com.collective.recommender.configuration.ConfigurationManager;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.filtering.WebResourceEnhancedFilter;
 import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.vocabulary.XMLSchema;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryException;
@@ -64,7 +64,7 @@ public class SesameVirtuosoSparqlProxyTestCase {
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
 
-        TypedRDFizer typedRdfizer = new TypedRDFizer(repository, typeHandlerRegistry);
+        DefaultTypedBe3Impl typedRdfizer = new DefaultTypedBe3Impl(repository, typeHandlerRegistry);
         sparqlProxy = new SesameVirtuosoSparqlProxy(recommenderConfiguration, typedRdfizer);
     }
 

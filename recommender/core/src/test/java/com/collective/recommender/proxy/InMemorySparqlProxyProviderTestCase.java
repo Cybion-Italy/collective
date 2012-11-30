@@ -1,10 +1,10 @@
 package com.collective.recommender.proxy;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.recommender.utils.DomainFixtures;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.vocabulary.XMLSchema;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryException;
@@ -61,7 +61,7 @@ public abstract class InMemorySparqlProxyProviderTestCase {
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
 
-        TypedRDFizer typedRdfizer = new TypedRDFizer(repository, typeHandlerRegistry);
+        DefaultTypedBe3Impl typedRdfizer = new DefaultTypedBe3Impl(repository, typeHandlerRegistry);
         this.sparqlProxy = new SesameInMemorySparqlProxy(typedRdfizer);
         //prepare data for tests
         setUpCustomConceptsData();

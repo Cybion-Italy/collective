@@ -24,9 +24,13 @@
             <groupId>com.collective</groupId>
             <artifactId>model</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.collective.rdfizer</groupId>-->
+            <!--<artifactId>rdfizer-core</artifactId>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.collective.rdfizer</groupId>
-            <artifactId>rdfizer-core</artifactId>
+            <groupId>org.99soft.be3</groupId>
+            <artifactId>be3-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>

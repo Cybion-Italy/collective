@@ -4,7 +4,6 @@ import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.UserProfile;
 import com.collective.permanentsearch.model.LabelledURI;
-import com.collective.rdfizer.RDFizer;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.*;
 import com.collective.recommender.proxy.filtering.ProjectProfileFilter;
@@ -14,7 +13,7 @@ import com.collective.recommender.proxy.ranking.ProjectProfileRanker;
 import com.collective.recommender.proxy.ranking.UserProfileRanker;
 import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
-import org.joda.time.Weeks;
+import org.nnsoft.be3.Be3;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -80,7 +79,7 @@ public class SesameVirtuosoRecommender implements Recommender {
 
     public SesameVirtuosoRecommender(
             RecommenderConfiguration recommenderConfiguration,
-            RDFizer rdfizer
+            Be3 rdfizer
     ) {
         this.recommenderConfiguration = recommenderConfiguration;
         // TODO: take the query patterns from the configuration
@@ -153,6 +152,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return recommenderConfiguration;
     }
 
+    @Override
     public Set getResourceRecommendations(UserProfile profile)
             throws RecommenderException {
         if( profile == null )
@@ -176,6 +176,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public Set getProjectRecommendations(UserProfile profile)
             throws RecommenderException {
         if( profile == null )
@@ -197,6 +198,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public Set getResourceRecommendations(ProjectProfile profile)
             throws RecommenderException {
         if (profile == null)
@@ -218,6 +220,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public Set<WebResourceEnhanced> getResourceRecommendations(
             List<LabelledURI> commonConcepts)
             throws RecommenderException {
@@ -240,6 +243,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public Set<WebResourceEnhanced>
                        getCustomConceptsResourceRecommendations(
                                                List<LabelledURI> customConcepts,
@@ -266,6 +270,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public Set<UserProfile> getExpertUsersForProject(ProjectProfile projectProfile)
             throws RecommenderException {
         if (projectProfile == null)
@@ -288,6 +293,7 @@ public class SesameVirtuosoRecommender implements Recommender {
         return heap;
     }
 
+    @Override
     public List<UserProfile> getSimilarUsers(UserProfile profile)
             throws RecommenderException {
         throw new UnsupportedOperationException("niy");

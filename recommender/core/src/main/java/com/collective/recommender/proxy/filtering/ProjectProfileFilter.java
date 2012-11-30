@@ -1,10 +1,10 @@
 package com.collective.recommender.proxy.filtering;
 
 import com.collective.model.profile.ProjectProfile;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.RDFizerException;
-import com.collective.rdfizer.annotations.RDFClassType;
 import com.collective.recommender.proxy.SparqlProxy;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.RDFizerException;
+import org.nnsoft.be3.annotations.RDFClassType;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -61,7 +61,7 @@ public class ProjectProfileFilter implements Filter<ProjectProfile> {
         throw new IllegalArgumentException("Did you provide a correct Query Type?");
     }
 
-    public List<ProjectProfile> getObjects(List<Statement> statements, RDFizer rdfizer)
+    public List<ProjectProfile> getObjects(List<Statement> statements, Be3 rdfizer)
             throws FilterException {
         List<ProjectProfile> resources = new ArrayList<ProjectProfile>();
         Set<URI> uniqueSubjects = new HashSet<URI>();

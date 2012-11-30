@@ -5,15 +5,14 @@ import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.UserProfile;
 import com.collective.permanentsearch.model.LabelledURI;
 import com.collective.permanentsearch.model.Search;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.recommender.configuration.ConfigurationManager;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.ranking.Ranker;
 import com.collective.recommender.proxy.ranking.RankerException;
 import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.vocabulary.XMLSchema;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryException;
@@ -24,13 +23,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tv.notube.commons.storage.alog.DefaultActivityLogImpl;
-import tv.notube.commons.storage.model.Activity;
-import tv.notube.commons.storage.model.ActivityLog;
-import tv.notube.commons.storage.model.ActivityLogException;
-import tv.notube.commons.storage.model.fields.Field;
-import tv.notube.commons.storage.model.fields.IntegerField;
-import tv.notube.commons.storage.model.fields.StringField;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -72,7 +64,7 @@ public class SesameVirtuosoRecommenderTestCase {
         typeHandlerRegistry.registerTypeHandler(urlResourceTypeHandler, URL.class, XMLSchema.ANYURI);
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
-        TypedRDFizer typedRdfizer = new TypedRDFizer(repository, typeHandlerRegistry);
+        DefaultTypedBe3Impl typedRdfizer = new DefaultTypedBe3Impl(repository, typeHandlerRegistry);
 
         recommender = new SesameVirtuosoRecommender(recommenderConfiguration, typedRdfizer);
     }

@@ -1,15 +1,15 @@
 package com.collective.analyzer.configuration;
 
 import com.collective.persistencewebresources.persistence.configuration.WebResourcesPersistenceConfiguration;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.analyzer.storage.DocumentStorage;
 import com.collective.analyzer.storage.SesameVirtuosoDocumentStorage;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.vocabulary.XMLSchema;
 
 import java.io.File;
@@ -113,7 +113,7 @@ public class ConfigurationManager {
         DocumentStorageConfiguration documentStoreConfiguration =
                 new DocumentStorageConfiguration(host, port, username, password);
 
-        RDFizer rdFizer;
+        Be3 rdFizer;
         try {
             rdFizer = getRDFizer();
         } catch (TypeHandlerRegistryException e) {
@@ -174,7 +174,7 @@ public class ConfigurationManager {
         return webResourcePersistenceConfiguration;
     }
 
-    public RDFizer getRDFizer() throws TypeHandlerRegistryException {
+    public Be3 getRDFizer() throws TypeHandlerRegistryException {
         TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
         URIResourceTypeHandler uriResourceTypeHandler = new URIResourceTypeHandler();
         StringValueTypeHandler stringValueTypeHandler = new StringValueTypeHandler();
@@ -189,7 +189,8 @@ public class ConfigurationManager {
         typeHandlerRegistry.registerTypeHandler(urlResourceTypeHandler, URL.class, XMLSchema.ANYURI);
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
-        return new TypedRDFizer(null, typeHandlerRegistry);
+        return new DefaultTypedBe3Impl(null, typeHandlerRegistry);
+//        return new TypedRDFizer(null, typeHandlerRegistry);
     }
 
     public Properties getActivityLogConfiguration() {

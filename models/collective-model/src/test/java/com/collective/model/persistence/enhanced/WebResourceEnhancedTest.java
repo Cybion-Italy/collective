@@ -1,7 +1,6 @@
 package com.collective.model.persistence.enhanced;
 
 import com.collective.model.persistence.Source;
-import com.collective.model.persistence.WebResource;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.log4j.Logger;
@@ -11,8 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Matteo Moci ( matteo.moci (at) gmail.com )

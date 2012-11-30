@@ -1,9 +1,6 @@
 package com.collective.model;
 
 import com.collective.model.profile.ProjectProfile;
-import com.collective.rdfizer.annotations.RDFClassType;
-import com.collective.rdfizer.annotations.RDFIdentifier;
-import com.collective.rdfizer.annotations.RDFProperty;
 import com.google.gson.annotations.SerializedName;
 import org.joda.time.DateTime;
 

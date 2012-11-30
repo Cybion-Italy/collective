@@ -4,9 +4,9 @@ import com.collective.model.profile.Profile;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.SearchProfile;
 import com.collective.model.profile.UserProfile;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
 import org.openrdf.model.Resource;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.XMLSchema;
@@ -105,7 +105,7 @@ public class SesameVirtuosoProfileStoreTestCase {
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
 
-        TypedRDFizer typedRdfizer = new TypedRDFizer(repository, typeHandlerRegistry);
+        DefaultTypedBe3Impl typedRdfizer = new DefaultTypedBe3Impl(repository, typeHandlerRegistry);
 
         profileStore = new SesameVirtuosoProfileStore(
                 profileStoreConfiguration,

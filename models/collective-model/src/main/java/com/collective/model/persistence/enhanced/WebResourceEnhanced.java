@@ -1,10 +1,10 @@
 package com.collective.model.persistence.enhanced;
 
 import com.collective.model.persistence.WebResource;
-import com.collective.rdfizer.annotations.RDFClassType;
-import com.collective.rdfizer.annotations.RDFIdentifier;
-import com.collective.rdfizer.annotations.RDFProperty;
 import com.google.gson.annotations.Expose;
+import org.nnsoft.be3.annotations.RDFClassType;
+import org.nnsoft.be3.annotations.RDFIdentifier;
+import org.nnsoft.be3.annotations.RDFProperty;
 
 import java.net.URI;
 import java.net.URL;
@@ -23,6 +23,7 @@ public class WebResourceEnhanced extends WebResource {
 
     @Expose
     private List<URI> topics = new ArrayList<URI>();
+    private int id;
 
     public WebResourceEnhanced() {}
 
@@ -100,5 +101,9 @@ public class WebResourceEnhanced extends WebResource {
                 "sourceRssEnhanced=" + sourceRssEnhanced +
                 ", topics=" + topics +
                 '}';
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

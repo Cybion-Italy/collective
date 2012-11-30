@@ -21,12 +21,14 @@
         <any23-core.version>0.6.0-M2</any23-core.version>
         <asm.version>3.1</asm.version>
         <boilerpipe.version>1.2.0</boilerpipe.version>
+        <be3.version>1.0-SNAPSHOT</be3.version>
         <cargo-maven2-plugin.version>1.0.5</cargo-maven2-plugin.version>
         <commons-cli.version>1.2</commons-cli.version>
         <commons-configuration.version>1.6</commons-configuration.version>
         <commons-httpclient.version>3.1</commons-httpclient.version>
         <grizzly-servlet-webserver.version>1.9.8</grizzly-servlet-webserver.version>
         <gson.version>2.2.2</gson.version>
+        <guava.version>13.0.1</guava.version>
         <httpclient.version>4.1.1</httpclient.version>
         <java.version>1.6</java.version>
         <jersey-bundle.version>1.5</jersey-bundle.version>
@@ -153,11 +155,6 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.collective.permanentsearch</groupId>
-                <artifactId>model</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.collective.profiler</groupId>
                 <artifactId>data-manager</artifactId>
                 <version>${project.version}</version>
@@ -182,11 +179,11 @@
                 <artifactId>dbpedia-text-search</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.collective.rdfizer</groupId>
-                <artifactId>annotations</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.collective.rdfizer</groupId>-->
+                <!--<artifactId>annotations</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>com.collective.profiler</groupId>
                 <artifactId>profiling-line-api</artifactId>
@@ -207,9 +204,24 @@
                 <artifactId>custom-concepts-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.collective.rdfizer</groupId>-->
+                <!--<artifactId>rdfizer-core</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
             <dependency>
-                <groupId>com.collective.rdfizer</groupId>
-                <artifactId>rdfizer-core</artifactId>
+                <groupId>org.99soft.be3</groupId>
+                <artifactId>be3-core</artifactId>
+                <version>${be3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.99soft.be3</groupId>
+                <artifactId>be3-annotations</artifactId>
+                <version>${be3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.collective.permanentsearch</groupId>
+                <artifactId>model</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -228,8 +240,8 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.collective.permanentsearch</groupId>
-                <artifactId>model</artifactId>
+                <groupId>com.collective.recommender</groupId>
+                <artifactId>recommender-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -301,6 +313,11 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.collective.autocomplete</groupId>

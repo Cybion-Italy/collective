@@ -14,12 +14,14 @@ public class MockUserTestDataSource implements DataSource {
 
     private User user;
 
+    @Override
     public void init(Properties properties) throws DataSourceException {
         user = new User();
         user.setInterests("google");
         user.setSkills("music");
     }
 
+    @Override
     public void dispose() throws DataSourceException {
         user = null;
     }
@@ -28,6 +30,7 @@ public class MockUserTestDataSource implements DataSource {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public RawDataSet getRawData() throws DataSourceException {
         List<User> users = new ArrayList<User>();
         users.add(user);

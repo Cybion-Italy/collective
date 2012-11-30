@@ -1,9 +1,9 @@
 package com.collective.model;
 
-import com.collective.rdfizer.annotations.RDFClassType;
-import com.collective.rdfizer.annotations.RDFIdentifier;
-import com.collective.rdfizer.annotations.RDFProperty;
 import org.joda.time.DateTime;
+import org.nnsoft.be3.annotations.RDFClassType;
+import org.nnsoft.be3.annotations.RDFIdentifier;
+import org.nnsoft.be3.annotations.RDFProperty;
 
 import java.io.Serializable;
 import java.net.URI;

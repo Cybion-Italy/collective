@@ -1,9 +1,9 @@
 package com.collective.model.profile;
 
-import com.collective.rdfizer.annotations.RDFClassType;
-import com.collective.rdfizer.annotations.RDFIdentifier;
-import com.collective.rdfizer.annotations.RDFProperty;
 import com.google.gson.annotations.Expose;
+import org.nnsoft.be3.annotations.RDFClassType;
+import org.nnsoft.be3.annotations.RDFIdentifier;
+import org.nnsoft.be3.annotations.RDFProperty;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -28,6 +28,7 @@ public class UserProfile implements Profile {
     private List<URI> interests = new ArrayList<URI>();
 
     @RDFIdentifier
+    @Override
     public Long getId() {
         return id;
     }

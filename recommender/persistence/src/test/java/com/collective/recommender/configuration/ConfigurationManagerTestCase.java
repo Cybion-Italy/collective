@@ -9,6 +9,9 @@ import org.testng.annotations.Test;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
@@ -40,17 +43,21 @@ public class ConfigurationManagerTestCase {
                 configurationManager.getRecommendationsStorageConfiguration();
         PermanentSearchStorageConfiguration permanentSearchStorageConfiguration =
                 configurationManager.getPermanentSearchStorageConfiguration();
-        Assert.assertNotNull(profileStoreConfiguration);
-        Assert.assertNotNull(recommenderConfiguration);
+        CategoriesMappingStorageConfiguration categoriesMappingStorageStorageConfiguration =
+                configurationManager.getCategoriesMappingStorageStorageConfiguration();
+
+        assertNotNull(profileStoreConfiguration);
+        assertNotNull(recommenderConfiguration);
+        assertNotNull(categoriesMappingStorageStorageConfiguration);
 
 
         URI customAnnotationsTemplate = new URI("http://collective.com/annotation/user/");
         Assert.assertEquals(recommenderConfiguration.getIndexes().get("custom-annotations"),
                             customAnnotationsTemplate);
 
-        Assert.assertNotNull(recommendationsStorageConfiguration);
-        Assert.assertNotNull(permanentSearchStorageConfiguration);
-        Assert.assertTrue(permanentSearchStorageConfiguration.getProperties()
+        assertNotNull(recommendationsStorageConfiguration);
+        assertNotNull(permanentSearchStorageConfiguration);
+        assertTrue(permanentSearchStorageConfiguration.getProperties()
                 .getProperty("url")
                 .endsWith("collective-permanent-search"));
     }

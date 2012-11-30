@@ -3,21 +3,22 @@ package com.collective.recommender.runner;
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.UserProfile;
+
 import com.collective.permanentsearch.model.Search;
 import com.collective.profiler.storage.ProfileStore;
 import com.collective.profiler.storage.ProfileStoreConfiguration;
 import com.collective.profiler.storage.ProfileStoreException;
 import com.collective.profiler.storage.SesameVirtuosoProfileStore;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.TypedRDFizer;
-import com.collective.rdfizer.typehandler.*;
 import com.collective.recommender.Recommender;
 import com.collective.recommender.RecommenderException;
 import com.collective.recommender.SesameVirtuosoRecommender;
-import com.collective.recommender.configuration.ConfigurationManager;
-import com.collective.recommender.configuration.PermanentSearchStorageConfiguration;
-import com.collective.recommender.configuration.RecommendationsStorageConfiguration;
-import com.collective.recommender.configuration.RecommenderConfiguration;
+import com.collective.recommender.categories.persistence.CategoriesMappingStorage;
+import com.collective.recommender.categories.model.MappedResource;
+import com.collective.recommender.categories.persistence.MybatisCategoriesMappingStorage;
+import com.collective.recommender.categories.exceptions.CategoriesMappingStorageException;
+import com.collective.recommender.configuration.*;
+import com.collective.recommender.dynamicprofiler.ShortTermUserProfile;
+import com.collective.recommender.dynamicprofiler.ShortTermUserProfileCalculator;
 import com.collective.recommender.proxy.ranking.Ranker;
 import com.collective.recommender.proxy.ranking.RankerException;
 import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
@@ -26,8 +27,14 @@ import com.collective.recommender.storage.RecommendationsStorage;
 import com.collective.recommender.storage.RecommendationsStorageException;
 import com.collective.recommender.utils.UserIdParser;
 import com.collective.recommender.utils.UserIdParserException;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.DefaultTypedBe3Impl;
+import org.nnsoft.be3.typehandler.*;
+import org.openrdf.model.Resource;
 import org.openrdf.model.vocabulary.XMLSchema;
 import tv.notube.commons.storage.alog.DefaultActivityLogImpl;
 import tv.notube.commons.storage.model.ActivityLog;
@@ -67,6 +74,10 @@ public class Runner {
 
     private static HashMap<String, String> exceptions = new HashMap<String, String>();
 
+    private static CategoriesMappingStorage categoriesMappingStorage;
+
+    private static ShortTermUserProfileCalculator shortTermUserProfileCalculator;
+
     public static void main(String[] args) {
         final String CONFIGURATION = "configuration";
 
@@ -104,8 +115,10 @@ public class Runner {
                 = configurationManager.getRecommendationsStorageConfiguration();
         PermanentSearchStorageConfiguration permanentSearchStorageConfiguration
                 = configurationManager.getPermanentSearchStorageConfiguration();
+        CategoriesMappingStorageConfiguration categoriesMappingStorageStorageConfiguration
+                = configurationManager.getCategoriesMappingStorageStorageConfiguration();
 
-        RDFizer rdFizer;
+        Be3 rdFizer;
         try {
             rdFizer = getRDFizer();
         } catch (TypeHandlerRegistryException e) {
@@ -123,6 +136,11 @@ public class Runner {
         activityLog = new DefaultActivityLogImpl(configurationManager.getActivityLogConfiguration());
 
         logger.info("ProfileStore, Recommender and RecommendationsStorage, permanentSearchStorage and activityLog correctly instantiated");
+
+        categoriesMappingStorage =
+                new MybatisCategoriesMappingStorage(categoriesMappingStorageStorageConfiguration.getProperties());
+        //init a dbpedia enricher and pass to calculator
+        shortTermUserProfileCalculator = new ShortTermUserProfileCalculator();
         calculateRecommendationsForUsers();
         calculateRecommendationsForProjects();
         calculateRecommendationsForSearches();
@@ -130,6 +148,74 @@ public class Runner {
         String exceptionsString = stringifyMap(exceptions);
         logger.info("exceptions occurred: \n");        
         logger.info(exceptionsString);
+    }
+
+    private static void calculateShortTermProfileRecommendations(URI userId, UserProfile profile) {
+        //for each user taken from user profiles
+        //  get latest N resources mapped
+        //TODO get as config parameter
+        int amount = 10;
+        //or since last period of time?
+        List<MappedResource> latestMappedResources = Lists.newArrayList();
+        //TODO extract userId
+        Long userIdLong = 0L;
+        try {
+            latestMappedResources.addAll( categoriesMappingStorage.getLatestMappedResources(userIdLong, amount) );
+        } catch (CategoriesMappingStorageException e) {
+            final String emsg = "couldnt load latest mapped resources for user '" + userId.toString() + "'";
+            throw new RuntimeException(emsg, e);
+        }
+        //  for each one, enrich the com.collective.resources.Enricher class service (or from jar maybe?...)
+        //
+        ShortTermUserProfile shortTermUserProfile = shortTermUserProfileCalculator.updateProfile(userId, latestMappedResources);
+
+        //  do a query to get latest resources that match those URIs
+        //this specific method uses the 'interests' field
+        Set<WebResourceEnhanced> recommendations = Sets.newHashSet();
+        try {
+             recommendations = recommender.getResourceRecommendations(shortTermUserProfile);
+        } catch (RecommenderException e) {
+            final String emsg = "error while calculating recommendations for user '" + userId.toString() + "'";
+            throw new RuntimeException(emsg, e);
+        }
+
+        // delete old recs
+        try {
+            recommendationsStorage.deleteShortTermResourceRecommendations(userId);
+        } catch (RecommendationsStorageException e) {
+            final String errMsg = "error while deleting old short term recommendations for user '" + userId.toString() + "'";
+            logger.error(errMsg, e);
+            System.exit(-1);
+            return;
+        }
+
+        //  write them back to the KVstore
+        try {
+            recommendationsStorage.storeShortTermResourceRecommendations(
+                    userId,
+                    new ArrayList<WebResourceEnhanced>(recommendations)
+            );
+        } catch (RecommendationsStorageException e) {
+            final String errMsg = "Error while storing short term recs for user: '" + userId + "'";
+            logger.error(errMsg, e);
+            System.exit(-1);
+            return;
+        }
+
+    }
+
+    private static List<Resource> getAllSubjectUris(URI usersGraph) {
+        List<Resource> userIdList = new ArrayList<Resource>();
+        try {
+            userIdList = profileStore.getAllTriplesSubjectsFromGraphIndex(usersGraph);
+        } catch (ProfileStoreException e) {
+            final String errMsg = "Error while getting all Users from ProfileStorage using graph: '"
+                    + usersGraph.toString() + "'";
+            logger.error(errMsg, e);
+            System.exit(-1);
+            //return;
+        }
+        return userIdList;
     }
 
     private static String stringifyMap(HashMap<String, String> exceptions) {
@@ -174,7 +260,7 @@ public class Runner {
         }
     }
 
-    private static RDFizer getRDFizer() throws TypeHandlerRegistryException {
+    private static Be3 getRDFizer() throws TypeHandlerRegistryException {
         TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
         URIResourceTypeHandler uriResourceTypeHandler = new URIResourceTypeHandler();
         StringValueTypeHandler stringValueTypeHandler = new StringValueTypeHandler();
@@ -189,7 +275,7 @@ public class Runner {
         typeHandlerRegistry.registerTypeHandler(urlResourceTypeHandler, URL.class, XMLSchema.ANYURI);
         typeHandlerRegistry.registerTypeHandler(dateValueTypeHandler, Date.class, XMLSchema.DATE);
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
-        return new TypedRDFizer(null, typeHandlerRegistry);
+        return new DefaultTypedBe3Impl(null, typeHandlerRegistry);
     }
 
     private static void calculateRecommendationsForProjects() {
@@ -295,7 +381,7 @@ public class Runner {
 	        try {
 	            recommendationsStorage.deleteResourceRecommendations(projectId);
 	        } catch (RecommendationsStorageException e) {
-	            final String errMsg = "Error while removing Reccomendations for Project: '" + projectId + "'";
+	            final String errMsg = "Error while removing Recomendations for Project: '" + projectId + "'";
 	            logger.error(errMsg, e);
 	            System.exit(-1);
 	            return;
@@ -375,6 +461,7 @@ public class Runner {
             }
             calculateResourceRecommendations(userId, profile);
             calculateProjectsRecommendations(userId, profile);
+            calculateShortTermProfileRecommendations(userId, profile);
         }
 	}
 

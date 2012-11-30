@@ -1,12 +1,10 @@
 package com.collective.recommender.proxy.filtering;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.RDFizerException;
-import com.collective.rdfizer.annotations.RDFClassType;
 import com.collective.recommender.proxy.SparqlProxy;
-import com.collective.recommender.proxy.filtering.Filter;
-import com.collective.recommender.proxy.filtering.FilterException;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.RDFizerException;
+import org.nnsoft.be3.annotations.RDFClassType;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -65,7 +63,7 @@ public class WebResourceEnhancedFilter implements Filter<WebResourceEnhanced> {
         throw new IllegalArgumentException("Did you provide a correct Query Type?");
     }
 
-    public List<WebResourceEnhanced> getObjects(List<Statement> statements, RDFizer rdfizer)
+    public List<WebResourceEnhanced> getObjects(List<Statement> statements, Be3 rdfizer)
             throws FilterException {
         List<WebResourceEnhanced> resources = new ArrayList<WebResourceEnhanced>();
         Set<URI> uniqueSubjects = new HashSet<URI>();

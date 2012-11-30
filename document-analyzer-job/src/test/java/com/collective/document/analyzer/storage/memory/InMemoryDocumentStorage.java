@@ -2,8 +2,8 @@ package com.collective.document.analyzer.storage.memory;
 
 import com.collective.analyzer.storage.DocumentStorageException;
 import com.collective.analyzer.storage.SesameVirtuosoDocumentStorage;
-import com.collective.rdfizer.RDFizer;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
 import org.openrdf.model.Statement;
 import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.MalformedQueryException;
@@ -27,7 +27,7 @@ public class InMemoryDocumentStorage extends SesameVirtuosoDocumentStorage
 
     private static final Logger logger = Logger.getLogger(InMemoryDocumentStorage.class);
 
-    public InMemoryDocumentStorage(RDFizer rdfizer,
+    public InMemoryDocumentStorage(Be3 rdfizer,
                                    URI defaultGraph,
                                    URI usersAnnotationsTemplate) {
 

@@ -5,7 +5,7 @@ import java.util.Properties;
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
-public class RecommendationsStorageConfiguration {
+public class RecommendationsStorageConfiguration extends PropertiesProvider {
 
     private String host;
 
@@ -25,6 +25,7 @@ public class RecommendationsStorageConfiguration {
         this.password = password;
     }
 
+    @Override
     public Properties getProperties() {
         Properties properties = new Properties();
         properties.setProperty("driver", "com.mysql.jdbc.Driver");

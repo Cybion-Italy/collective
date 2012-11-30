@@ -1,14 +1,13 @@
 package com.collective.profiler.storage;
 
-import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.model.profile.Profile;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.SearchProfile;
 import com.collective.model.profile.UserProfile;
-import com.collective.rdfizer.RDFizer;
-import com.collective.rdfizer.RDFizerException;
-import com.collective.rdfizer.annotations.RDFClassType;
 import org.apache.log4j.Logger;
+import org.nnsoft.be3.Be3;
+import org.nnsoft.be3.RDFizerException;
+import org.nnsoft.be3.annotations.RDFClassType;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.impl.StatementImpl;
@@ -18,7 +17,6 @@ import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.RepositoryResult;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import virtuoso.sesame2.driver.VirtuosoRepository;
 import org.openrdf.model.vocabulary.RDF;
 
@@ -40,7 +38,7 @@ public class SesameVirtuosoProfileStore implements ProfileStore {
 
     private Repository repository;
 
-    protected RDFizer rdfizer;
+    protected Be3 rdfizer;
 
     private ProfileStoreConfiguration profileStoreConfiguration;
 
@@ -48,7 +46,7 @@ public class SesameVirtuosoProfileStore implements ProfileStore {
 
     public SesameVirtuosoProfileStore(
             ProfileStoreConfiguration profileStoreConfiguration,
-            RDFizer rdfizer
+            Be3 rdfizer
     ) {
         this.profileStoreConfiguration = profileStoreConfiguration;
         this.repository = getRepository(this.profileStoreConfiguration);
@@ -65,7 +63,7 @@ public class SesameVirtuosoProfileStore implements ProfileStore {
 
     public SesameVirtuosoProfileStore(
             ProfileStoreConfiguration profileStoreConfiguration,
-            RDFizer rdfizer,
+            Be3 rdfizer,
             URI defaultGraph
     ) {
         this.profileStoreConfiguration = profileStoreConfiguration;

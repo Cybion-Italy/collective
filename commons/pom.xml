@@ -18,7 +18,7 @@
     <name>Collective commons</name>
 
     <modules>
-        <module>rdfizer</module>
+        <!--<module>rdfizer</module>-->
         <module>collective-autocomplete</module>
     </modules>
 </project>
