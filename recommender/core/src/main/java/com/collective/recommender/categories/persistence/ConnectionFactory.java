@@ -1,5 +1,6 @@
 package com.collective.recommender.categories.persistence;
 
+import com.collective.recommender.categories.model.MappedResource;
 import com.collective.recommender.categories.persistence.mappers.MappedResourceMapper;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.joda.time.DateTime;
 
 import java.util.Properties;
 
@@ -32,6 +34,9 @@ public class ConnectionFactory {
             TransactionFactory transactionFactory = new JdbcTransactionFactory();
             Environment environment = new Environment("development", transactionFactory, pds);
             Configuration configuration = new Configuration(environment);
+
+            /* aliases */
+            configuration.getTypeAliasRegistry().registerAlias("mappedresource", MappedResource.class);
 
             /* mappers */
             configuration.addMapper(MappedResourceMapper.class);

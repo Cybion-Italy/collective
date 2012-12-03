@@ -170,7 +170,7 @@ public class Runner {
         ShortTermUserProfile shortTermUserProfile = shortTermUserProfileCalculator.updateProfile(userId, latestMappedResources);
 
         //  do a query to get latest resources that match those URIs
-        //this specific method uses the 'interests' field
+        // this specific method uses the 'interests' field
         Set<WebResourceEnhanced> recommendations = Sets.newHashSet();
         try {
              recommendations = recommender.getResourceRecommendations(shortTermUserProfile);

@@ -1,6 +1,7 @@
 package com.collective.recommender.categories.persistence.mappers;
 
 import com.collective.recommender.categories.model.MappedResource;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface MappedResourceMapper {
 
-    List<MappedResource> selectByUserId(Long userId, int amount);
+    List<MappedResource> selectLatestMappingsByUserId(@Param("userId") Long userId,
+                                                      @Param ("maxAmount") int amount);
 
 }

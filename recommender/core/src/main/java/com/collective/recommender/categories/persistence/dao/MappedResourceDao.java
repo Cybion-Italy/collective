@@ -4,7 +4,6 @@ import com.collective.recommender.categories.exceptions.DaoException;
 import com.collective.recommender.categories.model.MappedResource;
 import com.collective.recommender.categories.persistence.ConnectionFactory;
 import com.collective.recommender.categories.persistence.mappers.MappedResourceMapper;
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -29,10 +28,10 @@ public class MappedResourceDao extends ConfigurableDao {
 
         try {
             MappedResourceMapper mappedResourceMapper = session.getMapper(MappedResourceMapper.class);
-            List<MappedResource> mappedResources = mappedResourceMapper.selectByUserId(userId, limit);
+            List<MappedResource> mappedResources = mappedResourceMapper.selectLatestMappingsByUserId(userId, limit);
             return mappedResources;
         } catch (Exception e) {
-            String emsg = "";
+            String emsg = "error while getting latest mapped resources for userId " + userId;
             throw new DaoException(emsg, e);
         } finally {
             session.close();

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collective.recommender.categories.persistence.mappers.MappedResourceMapper">
+
+    <resultMap id="MapperResourceResultMapJoin" type="mappedresource">
+        <result column="c_u_id"   property="userId"      jdbcType="BIGINT"/>
+        <result column="m_tstamp" property="happenedAt"  jdbcType="BIGINT"/>
+        <result column="r_url"    property="resourceUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectLatestMappingsByUserId" parameterType="map" resultMap="MapperResourceResultMapJoin">
+        SELECT
+        c.userId      AS c_u_id,
+        m.Timestamp   AS m_tstamp,
+        r.ResourceUrl AS r_url
+        FROM  `categories` AS  `c`
+        JOIN  `mapping`    AS  `m` ON c.CategoryId = m.CategoryId
+        JOIN  `resources`  AS  `r` ON m.ResourceId = r.ResourceId
+        WHERE c.userId = #{userId}
+        ORDER BY m.Timestamp DESC
+        LIMIT 0 , #{maxAmount}
+    </select>
+</mapper>

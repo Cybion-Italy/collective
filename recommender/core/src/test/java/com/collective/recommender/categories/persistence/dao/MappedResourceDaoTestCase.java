@@ -42,7 +42,7 @@ public class MappedResourceDaoTestCase {
 
     @Test
     public void shouldSelectLatestMappedResources() throws DaoException {
-        Long userId = 21L;
+        Long userId = 20L;
         int limit = 10;
         List<MappedResource> mappedResources = this.mappedResourceDao.getLatestMappedResources(userId, limit);
         assertTrue(mappedResources.size() > 0);
