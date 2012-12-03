@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Properties;
 
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -20,6 +21,7 @@ public class MappedResourceDaoTestCase {
 
     @BeforeClass
     public void setUp() {
+
         Properties testDbConnection = new Properties();
         String host = "gaia.cybion.eu";
         String port = "3306";
@@ -45,6 +47,8 @@ public class MappedResourceDaoTestCase {
         Long userId = 20L;
         int limit = 10;
         List<MappedResource> mappedResources = this.mappedResourceDao.getLatestMappedResources(userId, limit);
+        assertNotNull(mappedResources);
         assertTrue(mappedResources.size() > 0);
+        assertTrue(mappedResources.size() <= 10);
     }
 }

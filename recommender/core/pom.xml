@@ -36,7 +36,7 @@
             <groupId>com.collective.permanentsearch</groupId>
             <artifactId>persistence</artifactId>
         </dependency>
-        <!-- to read mappings from db -->
+        <!-- to read categories mappings from db -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -119,6 +119,10 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
         <dependency>
             <groupId>com.collective.profiler</groupId>
