@@ -2,8 +2,10 @@
 
 class KrDbConfiguration {
 
-        const host     = 'cibionte.cybion.eu';
+//        const host     = 'cibionte.cybion.eu';
 //        const host     = 'gaia.cybion.eu';
+        //gaia ip for emergency
+        const host     = '31.169.104.152';
 	const user     = 'collective-cat';
         const password = 'categories';
         const db       = 'collective-categories';

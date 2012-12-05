@@ -26,7 +26,7 @@ $configuration = new KrEndpointConfiguration();
 $recommendations_rest_client = new KrPermanentSearchWSClient($configuration);
 
 //TODO print them in a different section
-// $recommendations_list = $recommendations_rest_client->get_all_recommendations($user_id, $amount);
+ $recommendations_list = $recommendations_rest_client->get_all_recommendations($user_id, $amount);
 
 // $short_term_recommendations_list = $recommendations_rest_client->get_short_term_recommendations($user_id, $amount);
 
@@ -75,7 +75,8 @@ for ($i = 1; $i <= $max_recs; $i++) {
 //echo "recommendations_list<br/>";
 //var_dump($recommendations_list);
 
-$recommendations_to_show_list = calculateRecsToShow($fake_recs);
+//$recommendations_to_show_list = calculateRecsToShow($fake_recs);
+$recommendations_to_show_list = calculateRecsToShow($recommendations_list);
 
 
 // filter recommendations array, removing the ones the user already gave feedback
