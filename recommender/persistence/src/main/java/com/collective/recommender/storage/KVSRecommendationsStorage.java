@@ -71,17 +71,33 @@ public class KVSRecommendationsStorage implements RecommendationsStorage {
 
     @Override
     public List<WebResourceEnhanced> getShortTermResourceRecommendations(URI userId) throws RecommendationsStorageException {
-        throw new UnsupportedOperationException("NIY");
+        try {
+            return (List<WebResourceEnhanced>) kvs.getValue(SHORT_TERM_RESOURCES,
+                    userId.toString());
+        } catch (KVStoreException e) {
+            throw new RecommendationsStorageException("Error while getting " +
+                    "short term recs for user '" + userId + "'", e);
+        }
     }
 
     @Override
     public void deleteShortTermResourceRecommendations(URI userId) throws RecommendationsStorageException {
-        throw new UnsupportedOperationException("NIY");
+        try {
+            kvs.deleteValue(SHORT_TERM_RESOURCES, userId.toString());
+        } catch (KVStoreException e) {
+            throw new RecommendationsStorageException("Error while deleting " +
+                    "short term recs for user '" + userId + "'", e);
+        }
     }
 
     @Override
     public void storeShortTermResourceRecommendations(URI userId, List<WebResourceEnhanced> resourceRecommendations) throws RecommendationsStorageException {
-        throw new UnsupportedOperationException("NIY");
+        try {
+            kvs.setValue(SHORT_TERM_RESOURCES, userId.toString(), resourceRecommendations);
+        } catch (KVStoreException e) {
+            throw new RecommendationsStorageException("Error while storing " +
+                    "short term recs for user '" + userId + "'", e);
+        }
     }
 
     @Override

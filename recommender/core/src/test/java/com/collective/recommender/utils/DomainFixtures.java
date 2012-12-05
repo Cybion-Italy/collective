@@ -36,7 +36,7 @@ public class DomainFixtures {
                                                           List<URI> customConcepts) {
         WebResourceEnhanced webResource = new WebResourceEnhanced();
 
-        webResource.setId(Integer.parseInt(id));
+        webResource.setId(Integer.parseInt( "" + id ));
         webResource.setTitolo("fake title " + id);
         try {
             webResource.setUrl(new URL("http://www.fakeurl.com/" + id));

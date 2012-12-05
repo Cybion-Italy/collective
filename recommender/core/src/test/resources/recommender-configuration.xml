@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <profiler-configuration>
     <storage>
-        <host>cibionte.cybion.eu</host>
+        <host>localhost</host>
         <port>3306</port>
         <db>kvs</db>
         <username>kvs</username>
         <password>kvs</password>
     </storage>
     <permanent-search>
-        <host>cibionte.cybion.eu</host>
+        <host>gaia.cybion.eu</host>
         <port>3306</port>
         <db>collective-permanent-search</db>
         <username>collective</username>
         <password>collective</password>
     </permanent-search>
     <recommender>
-        <host>cibionte.cybion.eu</host>
+        <host>gaia.cybion.eu</host>
         <port>1111</port>
         <username>dba</username>
         <password>cybiondba</password>
@@ -43,16 +43,25 @@
         </indexes>
     </recommender>
     <profile-store>
-        <host>cibionte.cybion.eu</host>
+        <host>gaia.cybion.eu</host>
         <port>1111</port>
         <username>dba</username>
         <password>cybiondba</password>
     </profile-store>
     <logger>
-        <host>cibionte.cybion.eu</host>
+
+        <host>localhost</host>
         <port>3306</port>
         <db>collective-alog</db>
         <username>collective</username>
         <password>collective</password>
     </logger>
+    <categories-mapping>
+
+        <host>gaia.cybion.eu</host>
+        <port>3306</port>
+        <db>collective-categories</db>
+        <username>collective-cat</username>
+        <password>categories</password>
+    </categories-mapping>
 </profiler-configuration>

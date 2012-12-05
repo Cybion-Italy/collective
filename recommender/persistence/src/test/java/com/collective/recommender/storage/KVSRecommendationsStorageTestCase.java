@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import static org.testng.Assert.*;
+
 /**
  *
  * TODO this should not hit the database
@@ -101,5 +103,39 @@ public class KVSRecommendationsStorageTestCase {
         Assert.assertNotNull(actual);
         Assert.assertEqualsNoOrder(actual.toArray(), expected.toArray());
         recommendationsStorage.deleteExpertsRecommandationsForProject(new URI(PROJECT_URI));
+    }
+
+    @Test
+    public void shouldTestCRUDShortTermRecommendations() throws URISyntaxException, MalformedURLException {
+        try {
+            recommendationsStorage.deleteShortTermResourceRecommendations(new URI(USER_URI));
+        } catch (RecommendationsStorageException e) {
+            fail("failed deleting short term recs");
+        }
+
+        List<WebResourceEnhanced> expectedRecs = PersistenceDomainFixtures.getResources();
+        try {
+            recommendationsStorage.storeShortTermResourceRecommendations(
+                    new URI(USER_URI),
+                    expectedRecs);
+        } catch (RecommendationsStorageException e) {
+            fail("failed storing short term recs");
+        }
+
+        List<WebResourceEnhanced> actualRecs = new ArrayList<WebResourceEnhanced>();
+        try {
+            actualRecs.addAll(recommendationsStorage.getShortTermResourceRecommendations(new URI(USER_URI)));
+        } catch (RecommendationsStorageException e) {
+            fail("failed getting short term recs");
+        }
+
+        assertNotNull(actualRecs);
+        assertEqualsNoOrder(actualRecs.toArray(), expectedRecs.toArray());
+
+        try {
+            recommendationsStorage.deleteShortTermResourceRecommendations(new URI(USER_URI));
+        } catch (RecommendationsStorageException e) {
+            fail("failed deleting short term recs");
+        }
     }
 }

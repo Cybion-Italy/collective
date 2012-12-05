@@ -17,6 +17,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.collective.analyzer</groupId>
+            <artifactId>document-analyser-job</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.collective</groupId>
+            <artifactId>content-extractor</artifactId>
+        </dependency>
+        <dependency>
             <groupId>tv.notube.commons.alog</groupId>
             <artifactId>core</artifactId>
         </dependency>
@@ -172,6 +180,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*TestCase.java</include>
+                    </includes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

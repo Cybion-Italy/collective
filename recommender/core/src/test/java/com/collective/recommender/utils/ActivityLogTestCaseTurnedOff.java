@@ -20,12 +20,12 @@ import tv.notube.commons.storage.model.fields.StringField;
  *
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
  */
-public class ActivityLogTestCase
+public class ActivityLogTestCaseTurnedOff
 {
 
-    private static Logger logger = Logger.getLogger(ActivityLogTestCase.class);
+    private static Logger logger = Logger.getLogger(ActivityLogTestCaseTurnedOff.class);
 
-    private final static String CONFIG_FILE = "recommender-configuration.xml";
+    private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 
     private ActivityLog activityLog;
 

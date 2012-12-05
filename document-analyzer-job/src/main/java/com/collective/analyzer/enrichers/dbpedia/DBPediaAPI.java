@@ -95,15 +95,6 @@ public class DBPediaAPI implements EnrichmentService
         postMethod.setHeader("Accept", "application/json");
         postMethod.setHeader(HTTP.CONTENT_TYPE, "application/x-www-form-urlencoded");
 
-
-//        postMethod.setParams(params); setParameter("disambiguator", "Document");
-//        postMethod.setParameter("confidence", CONFIDENCE_VALUE);
-//        postMethod.setParameter("support", SUPPORT_VALUE);
-//        postMethod.setParameter("text", encodedText);
-//        postMethod.setRequestHeader("Accept", "application/json");
-//        postMethod.setRequestHeader(HTTP.CONTENT_TYPE, "application/x-www-form-urlencoded");
-
-
         try {
             postMethod.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
         } catch (UnsupportedEncodingException e) {
@@ -115,35 +106,11 @@ public class DBPediaAPI implements EnrichmentService
         DBpediaAPIResponse response = null;
         ResponseHandler<DBpediaAPIResponse> responseHandler = new DbPediaAPIResponseHandler(gson);
         try {
-
             response = httpClient.execute(postMethod, responseHandler);
         } catch (IOException e) {
             throw new DBpediaAPIException("failed when executing POST to dbpedia api", e);
         }
-//        HttpEntity entity = response.getEntity();
 
-//        PostMethod postMethod = new PostMethod(endpoint);
-//        postMethod.setParams(params); setParameter("disambiguator", "Document");
-//        postMethod.setParameter("confidence", CONFIDENCE_VALUE);
-//        postMethod.setParameter("support", SUPPORT_VALUE);
-//        postMethod.setParameter("text", encodedText);
-//        postMethod.setRequestHeader("Accept", "application/json");
-//        postMethod.setRequestHeader(HTTP.CONTENT_TYPE, "application/x-www-form-urlencoded");
-//
-
-//        DBpediaAPIResponse dBpediaAPIResponse = null;
-
-//        int result = 0;
-//        try {
-//            result = client.executeMethod(postMethod);
-//            String responseBody = new String(postMethod.getResponseBody());
-//            logger.debug(postMethod.getStatusCode());
-//            logger.debug(responseBody);
-//            dBpediaAPIResponse = gson.fromJson(responseBody, DBpediaAPIResponse.class);
-//        } catch (IOException e) {
-//            String emsg = "failed to execute POST - code: " + result;
-//            throw new DBpediaAPIException(emsg, e);
-//        }
         return response;
     }
 

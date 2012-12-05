@@ -1,5 +1,7 @@
 package com.collective.recommender.runner;
 
+import com.collective.analyzer.enrichers.EnrichmentService;
+import com.collective.analyzer.enrichers.dbpedia.DBPediaAPI;
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.UserProfile;
@@ -29,6 +31,7 @@ import com.collective.recommender.utils.UserIdParser;
 import com.collective.recommender.utils.UserIdParserException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import it.cybion.extractor.ContentExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import org.nnsoft.be3.Be3;
@@ -139,11 +142,19 @@ public class Runner {
 
         categoriesMappingStorage =
                 new MybatisCategoriesMappingStorage(categoriesMappingStorageStorageConfiguration.getProperties());
-        //init a dbpedia enricher and pass to calculator
-        shortTermUserProfileCalculator = new ShortTermUserProfileCalculator();
+
+        //TODO make it configurable
+        EnrichmentService dbPediaEnrichmentService = new DBPediaAPI();
+        ContentExtractor boilerPipeContentExtractor = new ContentExtractor();
+
+        shortTermUserProfileCalculator = new ShortTermUserProfileCalculator(
+                dbPediaEnrichmentService,
+                boilerPipeContentExtractor);
+
         calculateRecommendationsForUsers();
-        calculateRecommendationsForProjects();
-        calculateRecommendationsForSearches();
+        //TODO reenable
+//        calculateRecommendationsForProjects();
+//        calculateRecommendationsForSearches();
 
         String exceptionsString = stringifyMap(exceptions);
         logger.info("exceptions occurred: \n");        
@@ -169,11 +180,13 @@ public class Runner {
         //
         ShortTermUserProfile shortTermUserProfile = shortTermUserProfileCalculator.updateProfile(userId, latestMappedResources);
 
+        logger.debug("short term user interests: " + shortTermUserProfile.toString());
+
         //  do a query to get latest resources that match those URIs
         // this specific method uses the 'interests' field
         Set<WebResourceEnhanced> recommendations = Sets.newHashSet();
         try {
-             recommendations = recommender.getResourceRecommendations(shortTermUserProfile);
+             recommendations.addAll( recommender.getResourceRecommendations(shortTermUserProfile) );
         } catch (RecommenderException e) {
             final String emsg = "error while calculating recommendations for user '" + userId.toString() + "'";
             throw new RuntimeException(emsg, e);
@@ -535,11 +548,13 @@ public class Runner {
             fields[1] = userIdField;
             fields[2] = projectRecommendationsListField;
 
+            /*
             try {
                 activityLog.log(RECOMMENDER_NAME, "new project recommendations for user", fields);
             } catch (ActivityLogException e) {
                 logger.error("can't log to activityLogger: " + e.getMessage());
             }
+            */
         }
 
         try {
@@ -639,11 +654,13 @@ public class Runner {
             fields[1] = userIdField;
             fields[2] = recommendationsListField;
 
+            /*
             try {
                 activityLog.log(RECOMMENDER_NAME, "new resource recommendations for user", fields);
             } catch (ActivityLogException e) {
                 logger.error("can't log to activityLogger: " + e.getMessage());
             }
+            */
         }
 
         try {
@@ -831,12 +848,14 @@ public class Runner {
         recAmountFields[1] = searchIdField;
         recAmountFields[2] = recommendationsListField;
 
+        /*
         try {
             activityLog.log(RECOMMENDER_NAME, "new resource recommendations for search",
                     recAmountFields);
         } catch (ActivityLogException e) {
             logger.error("can't log to activityLogger: " + e.getMessage());
         }
+        */
     }
 
     /* encodes a list of links in JSON */

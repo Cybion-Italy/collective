@@ -28,8 +28,15 @@
             <groupId>com.collective.profiler</groupId>
             <artifactId>storage</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -38,5 +45,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

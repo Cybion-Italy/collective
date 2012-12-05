@@ -33,9 +33,9 @@ import java.util.*;
  * TODO: med remove dependency from repository data
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
-public class SesameVirtuosoRecommenderTestCase {
+public class SesameVirtuosoRecommenderTestCaseTurnedOff {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCase.class);
+    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
 
     private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 
@@ -47,8 +47,8 @@ public class SesameVirtuosoRecommenderTestCase {
                 = ConfigurationManager.getInstance(CONFIG_FILE).getRecommenderConfiguration();
 
         //the rdfizer is configured in memory, not the sparql proxy
-        Sail sailStack = new MemoryStore();
-        Repository repository = new SailRepository(sailStack);
+        Sail inMemorySailStack = new MemoryStore();
+        Repository repository = new SailRepository(inMemorySailStack);
         repository.initialize();
         TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
         URIResourceTypeHandler uriResourceTypeHandler = new URIResourceTypeHandler();

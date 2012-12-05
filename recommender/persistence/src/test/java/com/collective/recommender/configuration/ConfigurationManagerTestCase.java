@@ -1,6 +1,7 @@
 package com.collective.recommender.configuration;
 
 import com.collective.profiler.storage.ProfileStoreConfiguration;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -9,6 +10,7 @@ import org.testng.annotations.Test;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
@@ -21,9 +23,11 @@ public class ConfigurationManagerTestCase {
 
     private ConfigurationManager configurationManager;
 
+    private static final Logger LOGGER = Logger.getLogger(ConfigurationManagerTestCase.class);
+
     @BeforeTest
     public void setUp() {
-        System.out.println("=========" + System.getProperty("user.dir"));
+        LOGGER.info("=========" + System.getProperty("user.dir"));
         configurationManager = ConfigurationManager.getInstance(CONFIG_FILE);        
     }
 
@@ -50,10 +54,9 @@ public class ConfigurationManagerTestCase {
         assertNotNull(recommenderConfiguration);
         assertNotNull(categoriesMappingStorageStorageConfiguration);
 
-
         URI customAnnotationsTemplate = new URI("http://collective.com/annotation/user/");
-        Assert.assertEquals(recommenderConfiguration.getIndexes().get("custom-annotations"),
-                            customAnnotationsTemplate);
+        assertEquals(recommenderConfiguration.getIndexes().get("custom-annotations"),
+                customAnnotationsTemplate);
 
         assertNotNull(recommendationsStorageConfiguration);
         assertNotNull(permanentSearchStorageConfiguration);

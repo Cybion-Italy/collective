@@ -1,7 +1,7 @@
 package com.collective.recommender.proxy;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
-import com.collective.recommender.SesameVirtuosoRecommenderTestCase;
+import com.collective.recommender.SesameVirtuosoRecommenderTestCaseTurnedOff;
 import com.collective.recommender.configuration.ConfigurationManager;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.filtering.WebResourceEnhancedFilter;
@@ -28,9 +28,9 @@ import java.util.List;
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
-public class SesameVirtuosoSparqlProxyTestCase {
+public class SesameVirtuosoSparqlProxyTestCaseTurnedOff {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCase.class);
+    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
 
     private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 

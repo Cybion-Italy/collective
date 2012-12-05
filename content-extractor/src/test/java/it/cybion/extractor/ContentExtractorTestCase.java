@@ -9,14 +9,15 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.testng.Assert.assertTrue;
+
 
 public class ContentExtractorTestCase
 {
-
     private Logger logger = Logger.getLogger(ContentExtractorTestCase.class);
 
     //TODO: refactor path file loading of test resources
-    @Test
+    @Test(enabled = false)
     public void testGetContentFromUrl() throws IOException
     {
         ContentExtractor ce = new ContentExtractor();
@@ -37,7 +38,7 @@ public class ContentExtractorTestCase
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testGetContentFromPDFUrl()
     {
         ContentExtractor ce = new ContentExtractor();
@@ -58,7 +59,7 @@ public class ContentExtractorTestCase
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testLotsOfAnalysis() throws MalformedURLException, BoilerpipeProcessingException
     {
         //failing url
@@ -105,13 +106,22 @@ public class ContentExtractorTestCase
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void tempTest() throws IOException
     {
         InputStream inputStream = (new URL("file:resources/test_extracted_test")).openStream();
         logger.info(readFromFile(inputStream));
     }
 
+    @Test
+    public void shouldExtractFromContent() throws MalformedURLException, BoilerpipeProcessingException {
+        ContentExtractor ce = new ContentExtractor();
+        String extractedContent = ce.getContentFromUrl(new URL("http://www.businessinsider.com/profits-versus-wages"));
+        logger.info(extractedContent);
+        assertTrue(extractedContent.length() > 0);
+    }
+
+    //TODO move to commons
     private String readFromFile(InputStream inputStream) throws IOException
     {
         Writer writer = new StringWriter();
