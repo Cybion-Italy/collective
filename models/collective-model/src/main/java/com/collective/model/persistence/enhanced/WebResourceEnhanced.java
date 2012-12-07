@@ -23,7 +23,7 @@ public class WebResourceEnhanced extends WebResource {
 
     @Expose
     private List<URI> topics = new ArrayList<URI>();
-    private int id;
+//    private int id;
 
     public WebResourceEnhanced() {}
 
@@ -102,4 +102,8 @@ public class WebResourceEnhanced extends WebResource {
                 ", topics=" + topics +
                 '}';
     }
+
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 }

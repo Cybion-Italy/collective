@@ -32,7 +32,8 @@ public class WebResourceEnhancedTest {
         object.setSourceRssEnhanced(getSourceRssEnhanced());
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        logger.debug("gson: \n" + gson.toJson(object));
+        String objectJson = gson.toJson(object);
+        logger.debug("gson: \n" + objectJson);
     }
 
     private WebResourceEnhanced getWebResourceEnhanced() throws MalformedURLException {
@@ -59,6 +60,4 @@ public class WebResourceEnhancedTest {
         source.setUrl(new URL("http://www.url.com"));
         return source;
     }
-
-
 }
