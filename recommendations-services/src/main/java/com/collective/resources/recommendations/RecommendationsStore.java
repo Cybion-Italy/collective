@@ -79,4 +79,15 @@ public class RecommendationsStore {
             throw new RecommendationsStoreException(errMsg, e);
         }
     }
+
+    public List<WebResourceEnhanced> getResourceRecommendationsForShortTermProfile(URI userURI) throws RecommendationsStoreException {
+
+        try {
+            return recommendationsStorage.getShortTermResourceRecommendations(userURI);
+        } catch (RecommendationsStorageException e) {
+            final String errMsg = "Error while getting short term profile resource recommendations " +
+                    "for user '" + userURI + "'";
+            throw new RecommendationsStoreException(errMsg, e);
+        }
+    }
 }

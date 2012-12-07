@@ -51,31 +51,32 @@ public class LoaderInstanceManager
     //reads data from gaia
 
     /* recommendations store */
-//    private static final String host = "gaia.cybion.eu";
-    private static final String host = "cibionte.cybion.eu";
+    private static final String host = "gaia.cybion.eu";
+//    private static final String host = "cibionte.cybion.eu";
+//    private static final String host = "localhost";
     private static final String port = "3306";
     private static final String database = "kvs";
     private static final String username = "kvs";
     private static final String password = "kvs";
 
     //connection parameters for triple store
-//    private static final String hostVirtuoso = "gaia.cybion.eu";
-    private static final String hostVirtuoso = "cibionte.cybion.eu";
+    private static final String hostVirtuoso = "gaia.cybion.eu";
+//    private static final String hostVirtuoso = "cibionte.cybion.eu";
     private static final String portVirtuoso = "1111";
     private static final String usernameVirtuoso = "dba";
     private static final String passwordVirtuoso = "cybiondba";
 
     //connection parameters for searchDao repository
-//    private static final String hostSearch = "gaia.cybion.eu";
-    private static final String hostSearch = "cibionte.cybion.eu";
+    private static final String hostSearch = "gaia.cybion.eu";
+//    private static final String hostSearch = "cibionte.cybion.eu";
     private static final String portSearch = "3306";
     private static final String databaseSearch = "collective-permanent-search";
     private static final String usernameSearch = "collective";
     private static final String passwordSearch = "collective";
 
     //connection parameters for userfeedbacks repository
-//    private static final String hostFeedback = "gaia.cybion.eu";
-    private static final String hostFeedback = "cibionte.cybion.eu";
+    private static final String hostFeedback = "gaia.cybion.eu";
+//    private static final String hostFeedback = "cibionte.cybion.eu";
     private static final String portFeedback = "3306";
     private static final String databaseFeedback = "collective-test";
     private static final String usernameFeedback = "collective";

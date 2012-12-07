@@ -7,12 +7,12 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.log4j.Logger;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
 
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -51,8 +51,8 @@ public class UserRecommendationTestCase extends AbstractJerseyRESTTestCase {
 //        logger.debug("projectProfile: " + responseBody);
 
         //check it
-        Assert.assertNotNull(projectProfiles);
-        Assert.assertTrue((projectProfiles.size() >= 0) &&
+        assertNotNull(projectProfiles);
+        assertTrue((projectProfiles.size() >= 0) &&
                           (projectProfiles.size() <= maxItems));
     }
 
@@ -82,8 +82,8 @@ public class UserRecommendationTestCase extends AbstractJerseyRESTTestCase {
                 gson.fromJson(responseBody, new TypeToken<List<WebResourceEnhanced>>(){}.getType());
 
         //check it
-        Assert.assertNotNull(webResourceEnhancedList);
-        Assert.assertTrue((webResourceEnhancedList.size() >= 0) &&
+        assertNotNull(webResourceEnhancedList);
+        assertTrue((webResourceEnhancedList.size() >= 0) &&
                           (webResourceEnhancedList.size() <= maxItems));
     }
 
@@ -110,7 +110,31 @@ public class UserRecommendationTestCase extends AbstractJerseyRESTTestCase {
     }
 
     @Test
-    public void shouldGetShortTermProfileRecommendations() {
-        assertTrue(true);
+    public void shouldGetShortTermProfileRecommendations() throws IOException {
+        int userId = 105;
+        int maxItems = 3;
+
+        //use it to query the service for webmagazines recommendations
+        final String query = "userrecommendation/"
+                + AbstractRecommendation.SHORT_TERM_PROFILE + "/"
+                + userId + "/" + maxItems;
+        // Perform GET
+        GetMethod getMethod = new GetMethod(base_uri + query);
+        HttpClient client = new HttpClient();
+        int result = client.executeMethod(getMethod);
+        String responseBody = new String(getMethod.getResponseBody());
+        logger.info("result code: " + result);
+        logger.info("method: " + getMethod.getName() + " at uri: " + base_uri + query);
+        logger.info("response body: " + responseBody);
+        assert result == HttpStatus.SC_OK : "Unexpected result: \n" + result;
+
+        //deserialize responseBody with gson
+        List<WebResourceEnhanced> webResourceEnhancedList =
+                gson.fromJson(responseBody, new TypeToken<List<WebResourceEnhanced>>(){}.getType());
+
+        //check it
+        assertNotNull(webResourceEnhancedList);
+        assertTrue((webResourceEnhancedList.size() >= 0) &&
+                (webResourceEnhancedList.size() <= maxItems));
     }
 }

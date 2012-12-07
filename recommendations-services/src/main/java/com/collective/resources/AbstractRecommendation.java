@@ -16,7 +16,9 @@ public interface AbstractRecommendation {
 
     public static String USERS = "users";
 
-    public static final String PROJECTS = "projects";    
+    public static final String PROJECTS = "projects";
+
+    public static String SHORT_TERM_PROFILE = "short-term";
 
     public static int MAX_RECOMMENDATIONS = 50;
 

@@ -59,19 +59,22 @@ public class UserRecommendation implements AbstractRecommendation {
         } catch (URISyntaxException e) {
             final String errMsg = "UserId: '" + userId + "' is not well formed";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
 
         List<WebResourceEnhanced> webResources = new ArrayList<WebResourceEnhanced>();
         try {
-            webResources.addAll(instanceManager.getRecommendationsStore().getResourceRecommendationsForUser(
+
+            List<WebResourceEnhanced> wre = instanceManager.getRecommendationsStore().getResourceRecommendationsForUser(
                     uriUserId,
                     ResourceRecommendationType.WEBMAGAZINE
-            ));
+            );
+
+            webResources.addAll(wre);
         } catch (RecommendationsStoreException e) {
             final String errMsg = "Error while getting recommendations for user: '" + uriUserId + "'";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
 
         if (maxItems < webResources.size()) {
@@ -101,19 +104,20 @@ public class UserRecommendation implements AbstractRecommendation {
         } catch (URISyntaxException e) {
             final String errMsg = "UserId: '" + userId + "' is not well formed";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
 
         List<WebResourceEnhanced> webResources = new ArrayList<WebResourceEnhanced>();
         try {
-            webResources.addAll(instanceManager.getRecommendationsStore().getResourceRecommendationsForUser(
+            List<WebResourceEnhanced> wre = instanceManager.getRecommendationsStore().getResourceRecommendationsForUser(
                     uriUserId,
                     ResourceRecommendationType.RUMOURS
-            ));
+            );
+            webResources.addAll(wre);
         } catch (RecommendationsStoreException e) {
             final String errMsg = "Error while getting recommendations for user: '" + uriUserId + "'";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
 
         if (maxItems < webResources.size()) {
@@ -129,13 +133,11 @@ public class UserRecommendation implements AbstractRecommendation {
     @Path(USERS + "/{userId}/{maxItems}")
     public List<UserProfile> getExpertsRecommendations(
             @PathParam("userId") String userId,
-            @PathParam("maxItems") int maxItems) {
-        /* should return serializations of URLArticleResource */
+            @PathParam("maxItems") int maxItems)
+    {
 
         logger.debug("got userId: " + userId);
-
         instanceManager.getLimitChecker().checkRequestedItemsAmount(maxItems);
-
         throw new UnsupportedOperationException("not implemented yet");
     }
 
@@ -157,18 +159,19 @@ public class UserRecommendation implements AbstractRecommendation {
         } catch (URISyntaxException e) {
             final String errMsg = "UserId: '" + userId + "' is not well formed";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
         logger.debug("getting projects for user: " + uriUserId);
 
         List<ProjectProfile> projects = new ArrayList<ProjectProfile>();
         try {
-            projects.addAll(instanceManager.getRecommendationsStore()
-                    .getProjectRecommendationsForUser(uriUserId));
+            List<ProjectProfile> pp = instanceManager.getRecommendationsStore()
+                    .getProjectRecommendationsForUser(uriUserId);
+            projects.addAll(pp);
         } catch (RecommendationsStoreException e) {
             final String errMsg = "Error while getting recommendations for user: '" + uriUserId + "'";
             logger.error(errMsg, e);
-            throw new RuntimeException(errMsg);
+            throw new RuntimeException(errMsg, e);
         }
         if (maxItems < projects.size()) {
             List<ProjectProfile> cutProjects = new ArrayList<ProjectProfile>();
@@ -188,7 +191,38 @@ public class UserRecommendation implements AbstractRecommendation {
             @PathParam("userId") String userId,
             @PathParam("maxItems") int maxItems
     ) {
-        //TODO
-        throw new UnsupportedOperationException("NIY");
+        logger.debug("got userId: " + userId);
+
+        instanceManager.getLimitChecker().checkRequestedItemsAmount(maxItems);
+
+        // build the URI identifier for user
+        URI uriUserId;
+        try {
+            uriUserId = new URI(USER_BASE_URI + userId);
+        } catch (URISyntaxException e) {
+            final String errMsg = "UserId: '" + userId + "' is not well formed";
+            logger.error(errMsg, e);
+            throw new RuntimeException(errMsg, e);
+        }
+
+        List<WebResourceEnhanced> webResources = new ArrayList<WebResourceEnhanced>();
+
+        try {
+            List<WebResourceEnhanced> shortProfileRecs = instanceManager.getRecommendationsStore()
+                    .getResourceRecommendationsForShortTermProfile(uriUserId);
+            webResources.addAll(shortProfileRecs);
+        } catch (RecommendationsStoreException e) {
+            final String errMsg = "Error while getting short term profile recommendations for user: '" + uriUserId + "'";
+            logger.error(errMsg, e);
+            throw new RuntimeException(errMsg, e);
+        }
+
+        if (maxItems < webResources.size()) {
+            List<WebResourceEnhanced> cutWebResources = new ArrayList<WebResourceEnhanced>();
+            cutWebResources.addAll(webResources.subList(0, maxItems));
+            return cutWebResources;
+        }
+
+        return webResources;
     }
 }

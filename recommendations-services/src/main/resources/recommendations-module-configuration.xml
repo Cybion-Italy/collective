@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-        <!-- right now it is NOT USED, refactor the LoaderIntstanceManager to use this -->
+<!-- TODO right now it is NOT USED, refactor the LoaderIntstanceManager to use this -->
 <profiler-configuration>
     <rec-storage>
         <host>cibionte.cybion.eu</host>
