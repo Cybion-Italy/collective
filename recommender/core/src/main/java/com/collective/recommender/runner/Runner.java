@@ -151,8 +151,8 @@ public class Runner {
 
         calculateRecommendationsForUsers();
         //TODO (high) reenable
-//        calculateRecommendationsForProjects();
-//        calculateRecommendationsForSearches();
+        calculateRecommendationsForProjects();
+        calculateRecommendationsForSearches();
 
         String exceptionsString = stringifyMap(exceptions);
         logger.info("exceptions occurred: \n");        
