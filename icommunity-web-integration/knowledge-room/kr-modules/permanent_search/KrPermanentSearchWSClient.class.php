@@ -75,8 +75,7 @@ class KrPermanentSearchWSClient {
         //TODO test functioning 
         $short_term_recs_path = 
             self::BASE_DIR.self::SHORT_TERM_RECOMMENDATIONS."/$user_id/$amount";
-        
-        //var_dump($short_term_recs_path);
+                
         //get short term recs for the user
         $headers = array('Accept: application/json');
         $get_result = '';
@@ -86,7 +85,7 @@ class KrPermanentSearchWSClient {
                                            $this->endpointConfiguration->get_port())
                                                 ->silentMode(false)
                                                 ->setHeaders($headers)
-                                                ->get($get_recs_for_user_path)
+                                                ->get($short_term_recs_path)
                                                 ->run();
         } catch (Http_Exception $e) {
             echo 'http exception: '. $e;
@@ -101,7 +100,8 @@ class KrPermanentSearchWSClient {
                 if ($intermediate_result['status'] !== 'FAIL') {                      
                     $deserialized_resources = json_decode($get_result[0], true);
                 }                
-        }                
+        }       
+        
         return $deserialized_resources;        
     }
     
