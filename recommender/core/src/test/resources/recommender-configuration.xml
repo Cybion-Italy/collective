@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <profiler-configuration>
+    <!-- recommendations storage -->
     <storage>
         <host>localhost</host>
         <port>3306</port>
@@ -14,6 +15,7 @@
         <username>collective</username>
         <password>collective</password>
     </permanent-search>
+    <!-- triple store with resources -->
     <recommender>
         <host>gaia.cybion.eu</host>
         <port>1111</port>
@@ -42,22 +44,23 @@
             </index>
         </indexes>
     </recommender>
+    <!-- triple store with user profiles -->
     <profile-store>
         <host>gaia.cybion.eu</host>
         <port>1111</port>
         <username>dba</username>
         <password>cybiondba</password>
     </profile-store>
+    <!-- logging database -->
     <logger>
-
         <host>localhost</host>
         <port>3306</port>
         <db>collective-alog</db>
         <username>collective</username>
         <password>collective</password>
     </logger>
+    <!-- user mapped categories database -->
     <categories-mapping>
-
         <host>gaia.cybion.eu</host>
         <port>3306</port>
         <db>collective-categories</db>

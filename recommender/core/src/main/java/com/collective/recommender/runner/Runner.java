@@ -5,7 +5,6 @@ import com.collective.analyzer.enrichers.dbpedia.DBPediaAPI;
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.model.profile.ProjectProfile;
 import com.collective.model.profile.UserProfile;
-
 import com.collective.permanentsearch.model.Search;
 import com.collective.profiler.storage.ProfileStore;
 import com.collective.profiler.storage.ProfileStoreConfiguration;
@@ -14,10 +13,10 @@ import com.collective.profiler.storage.SesameVirtuosoProfileStore;
 import com.collective.recommender.Recommender;
 import com.collective.recommender.RecommenderException;
 import com.collective.recommender.SesameVirtuosoRecommender;
-import com.collective.recommender.categories.persistence.CategoriesMappingStorage;
-import com.collective.recommender.categories.model.MappedResource;
-import com.collective.recommender.categories.persistence.MybatisCategoriesMappingStorage;
 import com.collective.recommender.categories.exceptions.CategoriesMappingStorageException;
+import com.collective.recommender.categories.model.MappedResource;
+import com.collective.recommender.categories.persistence.CategoriesMappingStorage;
+import com.collective.recommender.categories.persistence.MybatisCategoriesMappingStorage;
 import com.collective.recommender.configuration.*;
 import com.collective.recommender.dynamicprofiler.ShortTermUserProfile;
 import com.collective.recommender.dynamicprofiler.ShortTermUserProfileCalculator;
@@ -41,7 +40,6 @@ import org.openrdf.model.Resource;
 import org.openrdf.model.vocabulary.XMLSchema;
 import tv.notube.commons.storage.alog.DefaultActivityLogImpl;
 import tv.notube.commons.storage.model.ActivityLog;
-import tv.notube.commons.storage.model.ActivityLogException;
 import tv.notube.commons.storage.model.fields.Field;
 import tv.notube.commons.storage.model.fields.IntegerField;
 import tv.notube.commons.storage.model.fields.StringField;
@@ -152,7 +150,7 @@ public class Runner {
                 boilerPipeContentExtractor);
 
         calculateRecommendationsForUsers();
-        //TODO reenable
+        //TODO (high) reenable
 //        calculateRecommendationsForProjects();
 //        calculateRecommendationsForSearches();
 
@@ -168,8 +166,13 @@ public class Runner {
         int amount = 10;
         //or since last period of time?
         List<MappedResource> latestMappedResources = Lists.newArrayList();
-        //TODO extract userId
         Long userIdLong = 0L;
+        UserIdParser uidp = new UserIdParser();
+        try {
+            userIdLong = uidp.getUserId(userId);
+        } catch (UserIdParserException e) {
+            logger.error("error while parsing userId from uri: '" + userId.toString() + "'");
+        }
         try {
             latestMappedResources.addAll( categoriesMappingStorage.getLatestMappedResources(userIdLong, amount) );
         } catch (CategoriesMappingStorageException e) {
