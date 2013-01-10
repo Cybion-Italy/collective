@@ -1,5 +1,6 @@
 package com.collective.messages.persistence.configuration;
 
+import it.cybion.commons.FileHelper;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
@@ -18,19 +19,21 @@ public class ConfigurationManager {
 
     private MessagesPersistenceConfiguration messagesPersistenceConfiguration;
 
-    private static final Logger logger = Logger.getLogger(ConfigurationManager.class);
+    private static final Logger LOGGER = Logger.getLogger(ConfigurationManager.class);
 
     private ConfigurationManager(String configurationFilePath) {
-        if(configurationFilePath == null)
-            throw new IllegalArgumentException("Configuration file path cannot be null");
 
-        File configurationFile = new File(configurationFilePath);
+        if(configurationFilePath == null) {
+            throw new IllegalArgumentException("Configuration file path cannot be null");
+        }
+        File configurationFile = FileHelper.readFromClasspath(configurationFilePath);
         if(!configurationFile.exists()) {
-            logger.error("Configuration file: '" +
+            LOGGER.error("Configuration file: '" +
                     configurationFilePath + "' does not exists");
             throw new IllegalArgumentException("Configuration file: '" +
                     configurationFilePath + "' does not exists");
         }
+
         try {
             xmlConfiguration = new XMLConfiguration(configurationFile.getAbsolutePath());
         } catch (ConfigurationException e) {

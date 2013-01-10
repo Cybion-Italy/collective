@@ -7,6 +7,11 @@ import java.util.Properties;
  */
 public class MessagesPersistenceConfiguration {
 
+    public static final String DRIVER = "driver";
+    public static final String URL = "url";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+
     private String host;
 
     private int port;
@@ -27,10 +32,10 @@ public class MessagesPersistenceConfiguration {
 
     public Properties getProperties() {
         Properties properties = new Properties();
-        properties.setProperty("driver", "com.mysql.jdbc.Driver");
-        properties.setProperty("url", "jdbc:mysql://" + host + ":" + port + "/" + db);
-        properties.setProperty("username", username);
-        properties.setProperty("password", password);
+        properties.setProperty(DRIVER, "com.mysql.jdbc.Driver");
+        properties.setProperty(URL, "jdbc:mysql://" + host + ":" + port + "/" + db);
+        properties.setProperty(USERNAME, username);
+        properties.setProperty(PASSWORD, password);
         return properties;
     }
 
