@@ -83,7 +83,9 @@
         </repository>
         <repository>
             <id>jboss-public-repository-group</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <url>
+                https://repository.jboss.org/nexus/content/groups/public-jboss/
+            </url>
         </repository>
         <repository>
             <id>glassfish-maven2-repository.dev.java.net</id>
@@ -112,10 +114,28 @@
             <id>boilerpipe</id>
             <url>http://boilerpipe.googlecode.com/svn/repo</url>
         </repository>
-        <!--<repository>-->
-        <!--<id>jboss</id>-->
-        <!--<url>http://repository.jboss.org/maven2/</url>-->
-        <!--</repository>-->
+        <repository>
+            <id>cybion-maven-repo-snapshots.googlecode.com</id>
+            <name>Cybion Commons SNAPSHOTS Artifacts repository</name>
+            <url>https://cybion-maven-repo.googlecode.com/svn/m2/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>cybion-maven-repo-releases.googlecode.com</id>
+            <name>Cybion Commons RELEASES Artifacts repository</name>
+            <url>https://cybion-maven-repo.googlecode.com/svn/m2/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <distributionManagement>
