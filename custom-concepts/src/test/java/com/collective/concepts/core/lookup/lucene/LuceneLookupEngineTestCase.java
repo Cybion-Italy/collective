@@ -9,7 +9,6 @@ import com.collective.concepts.core.lookup.UserDefinedConceptLookupEngineExcepti
 import com.collective.concepts.core.lookup.result.InMemoryResultListener;
 import com.collective.concepts.core.lookup.result.ResultListener;
 import com.collective.concepts.core.lookup.result.ResultListnerException;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import tv.notube.commons.storage.kvs.KVStore;
@@ -17,12 +16,9 @@ import tv.notube.commons.storage.kvs.configuration.ConfigurationManager;
 import tv.notube.commons.storage.kvs.mybatis.MyBatisKVStore;
 import tv.notube.commons.storage.model.fields.serialization.SerializationManager;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
@@ -59,7 +55,7 @@ public class LuceneLookupEngineTestCase
         } finally {
             conceptStore.deleteAllConcepts(userId);
         }
-        Assert.assertTrue(resultListener.getConcepts().size() > 0);
+        assertTrue(resultListener.getConcepts().size() > 0);
     }
 
     private String getText(String file) throws IOException

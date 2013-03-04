@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptStore {
 
-    private static Logger logger = Logger.getLogger(DefaultUserDefinedConceptStoreImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(DefaultUserDefinedConceptStoreImpl.class);
 
     private static final String TABLE = "concepts";
 
@@ -33,7 +33,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
                     kvStore.getValue(TABLE, String.valueOf(userId));
         } catch (KVStoreException e) {
             final String errMsg = "Error while retrieving user '" + userId + "' concepts";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(
                     errMsg,
                     e
@@ -47,7 +47,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
                 kvStore.setValue(TABLE, String.valueOf(userId), conceptsToStore, o);
             } catch (KVStoreException e) {
                 final String errMsg = "Error while storing concept '" + concept + "' to user '" + userId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new UserDefinedConceptStoreException(
                         errMsg,
                         e
@@ -60,7 +60,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
             kvStore.deleteValue(TABLE, String.valueOf(userId));
         } catch (KVStoreException e) {
             final String errMsg = "Error while deleting existing concepts for user '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(
                     errMsg,
                     e
@@ -71,7 +71,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
             kvStore.setValue(TABLE, String.valueOf(userId), concepts, o);
         } catch (KVStoreException e) {
             final String errMsg = "Error while storing concept '" + concept + "' to user '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(
                     errMsg,
                     e
@@ -85,7 +85,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
             return (List<Concept>) kvStore.getValue(TABLE, String.valueOf(userId));
         } catch (KVStoreException e) {
             final String errMsg = "Error while retrieving concepts for user '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(errMsg, e);
         }
     }
@@ -104,7 +104,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
                 kvStore.deleteValue(TABLE, String.valueOf(userId));
             } catch (KVStoreException e) {
                 final String errMsg = "Error while deleting existing values for user '" + userId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new UserDefinedConceptStoreException(errMsg, e);
             }
             StringField o = new StringField("owner", String.valueOf(userId));
@@ -112,7 +112,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
                 kvStore.setValue(TABLE, String.valueOf(userId), newConcepts, o);
             } catch (KVStoreException e) {
                 final String errMsg = "Error while storing concepts for user '" + userId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new UserDefinedConceptStoreException(errMsg, e);
             }
         }
@@ -123,7 +123,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
             kvStore.deleteValue(TABLE, String.valueOf(userId));
         } catch (KVStoreException e) {
             final String errMsg = "Error while storing concepts for user '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(errMsg, e);
         }
     }
@@ -134,7 +134,7 @@ public class DefaultUserDefinedConceptStoreImpl implements UserDefinedConceptSto
             userIds = kvStore.search(TABLE);
         } catch (KVStoreException e) {
             final String errMsg = "Error while getting user IDs";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new UserDefinedConceptStoreException(errMsg, e);
         }
         List<Long> result = new ArrayList<Long>();
