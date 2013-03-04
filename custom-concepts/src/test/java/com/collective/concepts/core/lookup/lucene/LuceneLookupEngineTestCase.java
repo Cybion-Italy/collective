@@ -26,9 +26,9 @@ import static org.testng.Assert.assertTrue;
 public class LuceneLookupEngineTestCase
 {
 
-    private static String CONFIGURATION = "kvs-configuration.xml";
+    private static final String CONFIGURATION = "kvs-configuration.xml";
 
-    private static final String file = "src/test/resources/test.txt";
+    private static final String TEST_FILE = "src/test/resources/test.txt";
 
     private UserDefinedConceptStore conceptStore;
 
@@ -48,7 +48,7 @@ public class LuceneLookupEngineTestCase
     public void testLookUp() throws IOException,
             UserDefinedConceptLookupEngineException, ResultListnerException, UserDefinedConceptStoreException
     {
-        String text = getText(file);
+        String text = getText(TEST_FILE);
         ResultListener resultListener = new InMemoryResultListener();
         try {
             engine.lookup(text, userId, resultListener);

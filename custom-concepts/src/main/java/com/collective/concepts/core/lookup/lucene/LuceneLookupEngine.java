@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
  */
 public class LuceneLookupEngine extends AbstractLookupEngine {
 
-    private static Logger logger = Logger.getLogger(LuceneLookupEngine.class);
+    private static final Logger LOGGER = Logger.getLogger(LuceneLookupEngine.class);
 
     private int processes;
 
@@ -90,7 +90,7 @@ public class LuceneLookupEngine extends AbstractLookupEngine {
             } catch (ExecutionException e) {
                 throw new UserDefinedConceptLookupEngineException("", e);
             }
-            logger.info("Lookup report: " + report);
+            LOGGER.info("Lookup report: " + report);
         }
     }
 

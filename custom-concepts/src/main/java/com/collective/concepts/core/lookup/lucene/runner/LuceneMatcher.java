@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
  */
 public class LuceneMatcher implements Callable<LookupReport> {
 
-    private static final String matcher = "MATCHER-";
+    private static final String MATCHER = "MATCHER-";
 
     private int index;
 
@@ -40,7 +40,7 @@ public class LuceneMatcher implements Callable<LookupReport> {
     }
 
     public String getIdentifier() {
-        return matcher + index;
+        return MATCHER + index;
     }
 
 }

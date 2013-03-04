@@ -1,7 +1,6 @@
 package com.collective.concepts.core;
 
 import org.apache.log4j.Logger;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import tv.notube.commons.storage.kvs.KVStore;
@@ -12,15 +11,17 @@ import tv.notube.commons.storage.model.fields.serialization.SerializationManager
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.Assert.*;
+
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
 public class UserDefinedConceptStoreTestCase {
 
-    private static String CONFIGURATION = "kvs-configuration.xml";
+    private static final String CONFIGURATION = "kvs-configuration.xml";
 
     private UserDefinedConceptStore store;
-    private static final Logger logger =
+    private static final Logger LOGGER =
             Logger.getLogger(UserDefinedConceptStoreTestCase.class);
 
     @BeforeTest
@@ -63,28 +64,27 @@ public class UserDefinedConceptStoreTestCase {
         //get ALL user concepts
         List<Concept> actual = store.getUserConcepts(userId);
         //check
-        Assert.assertNotNull(actual);
-        Assert.assertEquals(actual.size(), 1);
+        assertNotNull(actual);
+        assertEquals(actual.size(), 1);
         Concept actualConcept = actual.get(0);
-        logger.debug("got concept from db: " + actualConcept.toString());
-        Assert.assertEquals(actualConcept, concept);
-        Assert.assertEquals(actualConcept.getKeywords(), keywords);
+        LOGGER.debug("got concept from db: " + actualConcept.toString());
+        assertEquals(actualConcept, concept);
+        assertEquals(actualConcept.getKeywords(), keywords);
 
         store.deleteConcept(userId, concept.getURL());
         actual = store.getUserConcepts(userId);
-        Assert.assertNotNull(actual);
-        Assert.assertEquals(actual.size(), 0);
+        assertNotNull(actual);
+        assertEquals(actual.size(), 0);
 
         store.storeConcept(userId, concept);
         actual = store.getUserConcepts(userId);
-        Assert.assertNotNull(actual);
-        Assert.assertEquals(actual.size(), 1);
-        Assert.assertEquals(actual.get(0), concept);
+        assertNotNull(actual);
+        assertEquals(actual.size(), 1);
+        assertEquals(actual.get(0), concept);
 
         store.deleteAllConcepts(userId);
         actual = store.getUserConcepts(userId);
-        Assert.assertNull(actual);
-
+        assertNull(actual);
     }
 
 }
