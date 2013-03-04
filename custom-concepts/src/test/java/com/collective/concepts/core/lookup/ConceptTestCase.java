@@ -1,8 +1,9 @@
 package com.collective.concepts.core.lookup;
 
 import com.collective.concepts.core.Concept;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
@@ -19,10 +20,10 @@ public class ConceptTestCase
 
         Concept concept = new  Concept(company, owner, name, label);
         concept.addKeyword("unigram");
-        Assert.assertEquals(concept.getMaximumNgramSize(), 1);
+        assertEquals(concept.getMaximumNgramSize(), 1);
         concept.addKeyword("bi gram");
-        Assert.assertEquals(concept.getMaximumNgramSize(), 2);
+        assertEquals(concept.getMaximumNgramSize(), 2);
         concept.addKeyword("tri gr am");
-        Assert.assertEquals(concept.getMaximumNgramSize(), 3);
+        assertEquals(concept.getMaximumNgramSize(), 3);
     }
 }
