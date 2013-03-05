@@ -9,13 +9,13 @@ import java.net.URL;
 
 public class ContentExtractor {
 
-    private static Logger logger = Logger.getLogger(ContentExtractor.class);
+    private static final Logger LOGGER = Logger.getLogger(ContentExtractor.class);
 
     public String getContentFromUrl(URL url) throws BoilerpipeProcessingException {
         // NOTE: Use ArticleExtractor unless DefaultExtractor gives better results for you
         String content = "";
         String urlString = url.toString();
-        logger.debug("getting content from url: " + urlString);
+        LOGGER.debug("getting content from url: " + urlString);
         int l = urlString.length();
         int point = urlString.lastIndexOf(".");
         String urlExtension = urlString.substring(point + 1, l);

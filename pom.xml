@@ -384,7 +384,7 @@
                 <artifactId>httpclient</artifactId>
                 <version>${httpclient.version}</version>
             </dependency>
-            <!--TODO remove from dependencies, obsolete -->
+            <!--TODO remove from dependencies, obsolete and should be deprecated -->
             <dependency>
                 <groupId>commons-httpclient</groupId>
                 <artifactId>commons-httpclient</artifactId>
