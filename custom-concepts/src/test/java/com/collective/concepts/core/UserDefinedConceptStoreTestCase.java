@@ -11,7 +11,9 @@ import tv.notube.commons.storage.model.fields.serialization.SerializationManager
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
@@ -67,6 +69,7 @@ public class UserDefinedConceptStoreTestCase {
         assertNotNull(actual);
         assertEquals(actual.size(), 1);
         Concept actualConcept = actual.get(0);
+
         LOGGER.debug("got concept from db: " + actualConcept.toString());
         assertEquals(actualConcept, concept);
         assertEquals(actualConcept.getKeywords(), keywords);

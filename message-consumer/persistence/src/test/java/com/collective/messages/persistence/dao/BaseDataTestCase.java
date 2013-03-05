@@ -30,8 +30,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-//TODO move to commons
 public abstract class BaseDataTestCase {
+
+    public static final String DRIVER = "driver";
+    public static final String URL = "url";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
 
     public static UnpooledDataSource createUnpooledDataSource(String resource)
             throws IOException {
@@ -42,10 +46,10 @@ public abstract class BaseDataTestCase {
 
     private static UnpooledDataSource createUnpooledDataSource(Properties props) {
         UnpooledDataSource ds = new UnpooledDataSource();
-        ds.setDriver(props.getProperty("driver"));
-        ds.setUrl(props.getProperty("url"));
-        ds.setUsername(props.getProperty("username"));
-        ds.setPassword(props.getProperty("password"));
+        ds.setDriver(props.getProperty(DRIVER));
+        ds.setUrl(props.getProperty(URL));
+        ds.setUsername(props.getProperty(USERNAME));
+        ds.setPassword(props.getProperty(PASSWORD));
         return ds;
     }
 
@@ -58,10 +62,10 @@ public abstract class BaseDataTestCase {
 
     public static PooledDataSource createPooledDataSource(Properties props) {
         PooledDataSource ds = new PooledDataSource();
-        ds.setDriver(props.getProperty("driver"));
-        ds.setUrl(props.getProperty("url"));
-        ds.setUsername(props.getProperty("username"));
-        ds.setPassword(props.getProperty("password"));
+        ds.setDriver(props.getProperty(DRIVER));
+        ds.setUrl(props.getProperty(URL));
+        ds.setUsername(props.getProperty(USERNAME));
+        ds.setPassword(props.getProperty(PASSWORD));
         return ds;
     }
 
