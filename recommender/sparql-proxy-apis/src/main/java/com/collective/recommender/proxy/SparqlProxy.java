@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
-// TODO (high) add cache!
 public interface SparqlProxy {
 
     public enum TYPE {

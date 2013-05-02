@@ -87,23 +87,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.collective.rdfizer</groupId>-->
-            <!--<artifactId>rdfizer-core</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.99soft.be3</groupId>
             <artifactId>be3-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.openrdf.sesame</groupId>
-            <artifactId>sesame-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openrdf.sesame</groupId>
-            <artifactId>sesame-query</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-rio-rdfxml</artifactId>
@@ -135,6 +122,10 @@
         <dependency>
             <groupId>com.collective.profiler</groupId>
             <artifactId>storage</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.collective.recommender</groupId>
+            <artifactId>sparql-proxy-apis</artifactId>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
