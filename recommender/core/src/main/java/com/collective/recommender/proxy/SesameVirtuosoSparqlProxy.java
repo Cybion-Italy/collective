@@ -68,6 +68,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
         );
     }
 
+    @Override
     public void registerQuery(
             String id,
             String queryTemplate,
@@ -83,6 +84,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
         queries.put(id, new QueryRecord(queryTemplate, queryType, filter, ranker));
     }
 
+    @Override
     public <T> List<T> getList(String id, T returnType, String... args) throws SparqlProxyException {
         if (!queries.containsKey(id)) {
             final String errMsg = "Error: query with id: '" + id + "' does not exists";
