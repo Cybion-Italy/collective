@@ -50,8 +50,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rome.version>0.9</rome.version>
         <servlet-api.version>2.4</servlet-api.version>
-        <sesame.version>2.0</sesame.version>
-        <sesame-model.version>2.3.2</sesame-model.version>
+        <sesame-virtuoso.version>2.0</sesame-virtuoso.version>
+        <sesame-model.version>2.6.10</sesame-model.version>
+        <!--<sesame-model.version>2.3.2</sesame-model.version>-->
         <slf4j-api.version>1.6.1</slf4j-api.version>
         <testng.version>6.3.1</testng.version>
         <virtuoso-jdbc-3.version>3.0</virtuoso-jdbc-3.version>
@@ -449,6 +450,16 @@
             </dependency>
             <dependency>
                 <groupId>org.openrdf.sesame</groupId>
+                <artifactId>sesame-repository-http</artifactId>
+                <version>${sesame-model.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openrdf.sesame</groupId>
+                <artifactId>sesame-queryresultio-binary</artifactId>
+                <version>${sesame-model.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openrdf.sesame</groupId>
                 <artifactId>sesame-model</artifactId>
                 <version>${sesame-model.version}</version>
             </dependency>
@@ -490,7 +501,7 @@
             <dependency>
                 <groupId>com.openlink.virtuoso</groupId>
                 <artifactId>sesame</artifactId>
-                <version>${sesame.version}</version>
+                <version>${sesame-virtuoso.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.openlink.virtuoso</groupId>
