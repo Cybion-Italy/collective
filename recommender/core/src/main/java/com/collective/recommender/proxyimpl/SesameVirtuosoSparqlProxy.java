@@ -100,11 +100,11 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         final String queryInstance = valorizeQuery(queryTemplate, args);
         final RepositoryConnection repositoryConnection = getConnection();
         final Query query = getQuery(queryRecord, queryInstance, repositoryConnection);
-        final Filter filter = getFilter(queryRecord);
+        final Filter filter = getFilterInstance(queryRecord);
         final List<Statement> statements = getStatements(queryRecord, filter, query);
         releaseConnection(repositoryConnection);
         final List<T> unorderedObjects = deserializeObjects(filter, statements);
-        final Ranker ranker = getRanker(queryRecord);
+        final Ranker ranker = getRankerInstance(queryRecord);
         return rankObjects(ranker, unorderedObjects);
     }
 
@@ -174,7 +174,7 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         }
     }
 
-    private void closeGraphResult(GraphQueryResult queryResult) throws SparqlProxyException {
+    private void closeGraphResult(final GraphQueryResult queryResult) throws SparqlProxyException {
 
         try {
             queryResult.close();
@@ -185,8 +185,9 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         }
     }
 
-    private List<Statement> getStatementsFromGraph(QueryRecord queryRecord, Filter filter,
-                                                   GraphQueryResult queryResult)
+    private List<Statement> getStatementsFromGraph(final QueryRecord queryRecord,
+                                                   final Filter filter,
+                                                   final GraphQueryResult queryResult)
             throws SparqlProxyException {
 
         List<Statement> statements;
@@ -200,8 +201,9 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         return statements;
     }
 
-    private List<Statement> getStatementsFromTuples(QueryRecord queryRecord, Filter filter,
-                                                    TupleQueryResult queryResult)
+    private List<Statement> getStatementsFromTuples(final QueryRecord queryRecord,
+                                                    final Filter filter,
+                                                    final TupleQueryResult queryResult)
             throws SparqlProxyException {
 
         List<Statement> statements;
@@ -215,8 +217,9 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         return statements;
     }
 
-    private Query getQuery(QueryRecord queryRecord, String queryInstance,
-                           RepositoryConnection repositoryConnection) throws SparqlProxyException {
+    private Query getQuery(final QueryRecord queryRecord, final String queryInstance,
+                           final RepositoryConnection repositoryConnection)
+            throws SparqlProxyException {
 
         Query query;
         try {
@@ -233,7 +236,7 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         return query;
     }
 
-    private Ranker getRanker(QueryRecord queryRecord) throws SparqlProxyException {
+    private Ranker getRankerInstance(QueryRecord queryRecord) throws SparqlProxyException {
 
         Ranker ranker;
         try {
@@ -248,7 +251,7 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         return ranker;
     }
 
-    private Filter getFilter(QueryRecord queryRecord) throws SparqlProxyException {
+    private Filter getFilterInstance(QueryRecord queryRecord) throws SparqlProxyException {
 
         Filter filter;
         try {
@@ -263,17 +266,6 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
             throw new SparqlProxyException(errMsg, e);
         }
         return filter;
-    }
-
-    protected void releaseConnection(RepositoryConnection repositoryConnection)
-            throws SparqlProxyException {
-        try {
-            repositoryConnection.close();
-        } catch (RepositoryException e) {
-            final String errMsg = "Error while closing session on Virtuoso";
-            LOGGER.error(errMsg);
-            throw new SparqlProxyException(errMsg, e);
-        }
     }
 
     private String valorizeQuery(String queryTemplate, String[] args) {

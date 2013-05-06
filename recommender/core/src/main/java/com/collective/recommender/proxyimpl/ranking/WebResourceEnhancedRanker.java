@@ -15,6 +15,7 @@ public class WebResourceEnhancedRanker implements Ranker<WebResourceEnhanced> {
 
     private int limit = 10;
 
+    @Override
     public List<WebResourceEnhanced> rank(List<WebResourceEnhanced> objects) throws
             RankerException {
         Collections.sort(objects, Collections.reverseOrder(new WebResourceEnhancedComparator()));
@@ -24,10 +25,12 @@ public class WebResourceEnhancedRanker implements Ranker<WebResourceEnhanced> {
         return limitedResources;
     }
 
+    @Override
     public void setLimit(int limit) {
         this.limit = limit;
     }
 
+    @Override
     public int getLimit() {
         return limit;
     }

@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 public class WebResourceEnhancedComparator implements Comparator<WebResourceEnhanced> {
 
+    @Override
     public int compare(
             WebResourceEnhanced webResourceEnhanced,
             WebResourceEnhanced webResourceEnhanced1
@@ -17,6 +18,7 @@ public class WebResourceEnhancedComparator implements Comparator<WebResourceEnha
         return 0;
     }
 
+    @Override
     public boolean equals(Object o) {
         return false;
     }

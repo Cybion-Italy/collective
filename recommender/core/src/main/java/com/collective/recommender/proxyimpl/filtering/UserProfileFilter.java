@@ -87,6 +87,12 @@ public class UserProfileFilter implements Filter<UserProfile> {
         return usersProfiles;
     }
 
+    @Override
+    public UserProfile getObject(List<Statement> statements, Be3 be3) throws FilterException {
+
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     private List<Statement> filterStatementBySubject(
             URI subject,
             List<Statement> statements) {

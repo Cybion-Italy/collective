@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 public class ProjectProfileComparator implements Comparator<ProjectProfile> {
 
+    @Override
     public int compare(
             ProjectProfile projectProfile,
             ProjectProfile projectProfile1
@@ -17,6 +18,7 @@ public class ProjectProfileComparator implements Comparator<ProjectProfile> {
         return 0;
     }
 
+    @Override
     public boolean equals(Object o) {
         return false;
     }

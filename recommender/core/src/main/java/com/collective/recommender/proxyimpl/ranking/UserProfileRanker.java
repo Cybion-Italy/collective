@@ -14,6 +14,7 @@ public class UserProfileRanker implements Ranker<UserProfile> {
 
     private int limit = 10;
 
+    @Override
     public List<UserProfile> rank(List<UserProfile> objects) throws RankerException {
         List<UserProfile> limitedUsers = new ArrayList<UserProfile>();
         for(int i=0; (i < limit) && (i < objects.size()); i++)
@@ -21,10 +22,12 @@ public class UserProfileRanker implements Ranker<UserProfile> {
         return limitedUsers;
     }
 
+    @Override
     public void setLimit(int limit) {
         this.limit = limit;
     }
 
+    @Override
     public int getLimit() {
         return limit;
     }
