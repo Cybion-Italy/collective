@@ -31,7 +31,7 @@ public abstract class InMemorySparqlProxyProviderTestCase {
     private static final Logger LOGGER =
             Logger.getLogger(InMemorySparqlProxyProviderTestCase.class);
 
-    protected SesameInMemorySparqlProxy sparqlProxy;
+    protected InMemorySesameSparqlProxy sparqlProxy;
 
     protected String userId;
 
@@ -63,7 +63,7 @@ public abstract class InMemorySparqlProxyProviderTestCase {
         typeHandlerRegistry.registerTypeHandler(longValueTypeHandler, Long.class, XMLSchema.LONG);
 
         DefaultTypedBe3Impl typedRdfizer = new DefaultTypedBe3Impl(repository, typeHandlerRegistry);
-        this.sparqlProxy = new SesameInMemorySparqlProxy(typedRdfizer);
+        this.sparqlProxy = new InMemorySesameSparqlProxy(typedRdfizer);
         //prepare data for tests
         setUpCustomConceptsData();
     }

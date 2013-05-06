@@ -26,11 +26,11 @@ import java.util.List;
  * only in order to enable easier testing (write graphs, delete graphs etc... )
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
  */
-public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
+public class InMemorySesameSparqlProxy extends SesameVirtuosoSparqlProxy {
 
-    private static final Logger LOGGER = Logger.getLogger(SesameInMemorySparqlProxy.class);
+    private static final Logger LOGGER = Logger.getLogger(InMemorySesameSparqlProxy.class);
 
-    public SesameInMemorySparqlProxy(Be3 rdFizer) {
+    public InMemorySesameSparqlProxy(Be3 rdFizer) {
 
         //init in memory repository
         this.repository = new SailRepository(new MemoryStore());

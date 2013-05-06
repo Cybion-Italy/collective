@@ -25,11 +25,11 @@ import java.util.Set;
  *
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
  */
-public class SesameInMemorySparqlProxyTestCase
+public class InMemorySesameSparqlProxyTestCase
         extends InMemorySparqlProxyProviderTestCase {
 
     private static final Logger LOGGER =
-            Logger.getLogger(SesameInMemorySparqlProxyTestCase.class);
+            Logger.getLogger(InMemorySesameSparqlProxyTestCase.class);
 
     //use the already declared query
     private static final String RESOURCES_CUSTOM_CONCEPTS_PERMANENT_SEARCH =
