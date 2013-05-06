@@ -18,7 +18,6 @@
     <name>Collective Recommender Parent</name>
 
     <modules>
-        <module>sparql-proxy-apis</module>
         <module>core</module>
         <module>persistence</module>
     </modules>
