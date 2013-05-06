@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public class SesameVirtuosoSparqlProxy implements SparqlProxy {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoSparqlProxy.class);
+    private static final Logger LOGGER = Logger.getLogger(SesameVirtuosoSparqlProxy.class);
 
     protected Repository repository;
 
@@ -52,10 +52,10 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
         this.repository = getRepository(this.recommenderConfiguration);
         try {
             repository.initialize();
-            logger.info("Virtuoso connection initialized.");
+            LOGGER.info("Virtuoso connection initialized.");
         } catch (RepositoryException e) {
             final String errMsg = "Error while initializing connection to Virtuoso";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new RuntimeException(errMsg, e);
         }
         this.rdfizer = rdFizer;
@@ -81,7 +81,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             throws SparqlProxyException {
         if (queries.containsKey(id)) {
             final String errMsg = "Error: query with id: '" + id + "' is already registered";
-            logger.error(errMsg);
+            LOGGER.error(errMsg);
             throw new SparqlProxyException(errMsg);
         }
         queries.put(id, new QueryRecord(queryTemplate, queryType, filter, ranker));
@@ -91,7 +91,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
     public <T> List<T> getList(String id, T returnType, String... args) throws SparqlProxyException {
         if (!queries.containsKey(id)) {
             final String errMsg = "Error: query with id: '" + id + "' does not exists";
-            logger.error(errMsg);
+            LOGGER.error(errMsg);
             throw new SparqlProxyException(errMsg);
         }
         String queryTemplate = queries.get(id).getQueryTemplate();
@@ -100,11 +100,11 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             filter = queries.get(id).getFilter().newInstance();
         } catch (InstantiationException e) {
             final String errMsg = "Error while instantiating filter";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } catch (IllegalAccessException e) {
             final String errMsg = "Error while accessing to filter";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         }
         Ranker ranker;
@@ -124,11 +124,11 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             query = queries.get(id).prepareQuery(repositoryConnection, queryInstance);
         } catch (RepositoryException e) {
             final String errMsg = "Error while accessing to the triple store";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } catch (MalformedQueryException e) {
             final String errMsg = "Provided SPARQL query is not well-formed";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         }
         List<Statement> statements = new ArrayList<Statement>();
@@ -138,21 +138,21 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
                 queryResult = ((TupleQuery) query).evaluate();
             } catch (QueryEvaluationException e) {
                 final String errMsg = "Error during the evaluation of the SPARQL query";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
             try {
                 statements = filter.getStatements(queryResult, queries.get(id).queryType);
             } catch (FilterException e) {
                 final String errMsg = "Error while inspecting the query result";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
             try {
                 queryResult.close();
             } catch (QueryEvaluationException e) {
                 final String errMsg = "Error while closing queryresult";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
         } else if(queries.get(id).queryType.equals(SparqlQuery.TYPE.GRAPH)) {
@@ -161,21 +161,21 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
                 queryResult = ((GraphQuery) query).evaluate();
             } catch (QueryEvaluationException e) {
                 final String errMsg = "Error during the evaluation of the SPARQL query";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
             try {
                 statements = filter.getStatements(queryResult, queries.get(id).queryType);
             } catch (FilterException e) {
                 final String errMsg = "Error while inspecting the query result";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
             try {
                 queryResult.close();
             } catch (QueryEvaluationException e) {
                 final String errMsg = "Error while closing queryresult";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
         }
@@ -184,11 +184,11 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             return ranker.rank(filter.getObjects(statements, this.rdfizer));
         } catch (FilterException e) {
             final String errMsg = "Error while filtering query results";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } catch (RankerException e) {
             final String errMsg = "Error while ranking query results";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         }
     }
@@ -199,7 +199,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             repositoryConnection.close();
         } catch (RepositoryException e) {
             final String errMsg = "Error while closing session on Virtuoso";
-            logger.error(errMsg);
+            LOGGER.error(errMsg);
             throw new SparqlProxyException(errMsg, e);
         }
     }
@@ -220,7 +220,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             repository.shutDown();
         } catch (RepositoryException e) {
             final String errMsg = "Error while shutting down the connection with Virtuoso";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new RecommenderException(errMsg, e);
         }
     }
@@ -230,7 +230,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             return repository.getConnection();
         } catch (RepositoryException e) {
             final String errMsg = "Error while getting session on Virtuoso";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException("Error while getting session on Virtuoso", e);
         }
     }
