@@ -6,12 +6,13 @@ import com.collective.model.profile.UserProfile;
 import com.collective.permanentsearch.model.LabelledURI;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.*;
-import com.collective.recommender.proxy.filtering.ProjectProfileFilter;
-import com.collective.recommender.proxy.filtering.UserProfileFilter;
-import com.collective.recommender.proxy.filtering.WebResourceEnhancedFilter;
-import com.collective.recommender.proxy.ranking.ProjectProfileRanker;
-import com.collective.recommender.proxy.ranking.UserProfileRanker;
-import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
+import com.collective.recommender.proxyimpl.SesameVirtuosoSparqlProxy;
+import com.collective.recommender.proxyimpl.filtering.ProjectProfileFilter;
+import com.collective.recommender.proxyimpl.filtering.UserProfileFilter;
+import com.collective.recommender.proxyimpl.filtering.WebResourceEnhancedFilter;
+import com.collective.recommender.proxyimpl.ranking.ProjectProfileRanker;
+import com.collective.recommender.proxyimpl.ranking.UserProfileRanker;
+import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
 import org.nnsoft.be3.Be3;
 
@@ -22,7 +23,7 @@ import java.util.*;
 //TODO: (high) refactor APIs to return Lists instead of Sets, to maintain sorting order
 public class SesameVirtuosoRecommender implements Recommender {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommender.class);
+    private static final Logger LOGGER = Logger.getLogger(SesameVirtuosoRecommender.class);
 
     private RecommenderConfiguration recommenderConfiguration;
 
@@ -90,7 +91,7 @@ public class SesameVirtuosoRecommender implements Recommender {
             this.sparqlProxy.registerQuery(
                     "resources-to-users",
                     RESOURCES_TO_USERS, 
-                    SparqlProxy.TYPE.GRAPH,
+                    SparqlQuery.TYPE.GRAPH,
                     WebResourceEnhancedFilter.class,
                     WebResourceEnhancedRanker.class
             );
@@ -101,7 +102,7 @@ public class SesameVirtuosoRecommender implements Recommender {
             this.sparqlProxy.registerQuery(
                     "projects-to-users",
                     PROJECTS_TO_USERS,
-                    SparqlProxy.TYPE.GRAPH,
+                    SparqlQuery.TYPE.GRAPH,
                     ProjectProfileFilter.class,
                     ProjectProfileRanker.class
             );
@@ -113,7 +114,7 @@ public class SesameVirtuosoRecommender implements Recommender {
             this.sparqlProxy.registerQuery(
                     "resources-to-projects",
                     RESOURCES_TO_USERS,
-                    SparqlProxy.TYPE.GRAPH,
+                    SparqlQuery.TYPE.GRAPH,
                     WebResourceEnhancedFilter.class,
                     WebResourceEnhancedRanker.class
             );
@@ -123,8 +124,8 @@ public class SesameVirtuosoRecommender implements Recommender {
         try {
             this.sparqlProxy.registerQuery(
                     "users-to-project",
-                    USERS_TO_PROJECT, 
-                    SparqlProxy.TYPE.TUPLE,
+                    USERS_TO_PROJECT,
+                    SparqlQuery.TYPE.TUPLE,
                     UserProfileFilter.class,
                     UserProfileRanker.class
             );
@@ -135,7 +136,7 @@ public class SesameVirtuosoRecommender implements Recommender {
             this.sparqlProxy.registerQuery(
                     "resources-custom-concepts-to-permanent-search",
                     RESOURCES_CUSTOM_CONCEPTS_PERMANENT_SEARCH,
-                    SparqlProxy.TYPE.GRAPH,
+                    SparqlQuery.TYPE.GRAPH,
                     WebResourceEnhancedFilter.class,
                     WebResourceEnhancedRanker.class
             );

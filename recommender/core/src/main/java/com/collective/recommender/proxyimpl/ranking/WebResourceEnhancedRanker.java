@@ -1,6 +1,8 @@
-package com.collective.recommender.proxy.ranking;
+package com.collective.recommender.proxyimpl.ranking;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
+import com.collective.recommender.proxy.ranking.Ranker;
+import com.collective.recommender.proxy.ranking.RankerException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +15,8 @@ public class WebResourceEnhancedRanker implements Ranker<WebResourceEnhanced> {
 
     private int limit = 10;
 
-    public List<WebResourceEnhanced> rank(List<WebResourceEnhanced> objects) throws RankerException {
+    public List<WebResourceEnhanced> rank(List<WebResourceEnhanced> objects) throws
+            RankerException {
         Collections.sort(objects, Collections.reverseOrder(new WebResourceEnhancedComparator()));
         List<WebResourceEnhanced> limitedResources = new ArrayList<WebResourceEnhanced>();
         for(int i=0; (i < limit) && (i < objects.size()); i++)

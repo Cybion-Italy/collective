@@ -1,6 +1,8 @@
-package com.collective.recommender.proxy.ranking;
+package com.collective.recommender.proxyimpl.ranking;
 
 import com.collective.model.profile.ProjectProfile;
+import com.collective.recommender.proxy.ranking.Ranker;
+import com.collective.recommender.proxy.ranking.RankerException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +15,7 @@ public class ProjectProfileRanker implements Ranker<ProjectProfile> {
 
     private int limit = 10;
 
+    @Override
     public List<ProjectProfile> rank(List<ProjectProfile> objects) throws RankerException {
         Collections.sort(objects, Collections.reverseOrder(new ProjectProfileComparator()));
         List<ProjectProfile> limitedProjectProfiles = new ArrayList<ProjectProfile>();
@@ -21,10 +24,12 @@ public class ProjectProfileRanker implements Ranker<ProjectProfile> {
         return limitedProjectProfiles;
     }
 
+    @Override
     public void setLimit(int limit) {
         this.limit = limit;
     }
 
+    @Override
     public int getLimit() {
         return limit;
     }

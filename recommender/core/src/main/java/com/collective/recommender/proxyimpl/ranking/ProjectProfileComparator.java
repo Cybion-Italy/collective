@@ -1,4 +1,4 @@
-package com.collective.recommender.proxy.ranking;
+package com.collective.recommender.proxyimpl.ranking;
 
 import com.collective.model.profile.ProjectProfile;
 

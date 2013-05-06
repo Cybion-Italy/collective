@@ -1,11 +1,13 @@
-package com.collective.recommender.proxy;
+package com.collective.recommender.proxyimpl;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.permanentsearch.model.LabelledURI;
 import com.collective.recommender.RecommenderException;
 import com.collective.recommender.SesameVirtuosoRecommender;
-import com.collective.recommender.proxy.filtering.WebResourceEnhancedFilter;
-import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
+import com.collective.recommender.proxy.SparqlProxyException;
+import com.collective.recommender.proxy.SparqlQuery;
+import com.collective.recommender.proxyimpl.filtering.WebResourceEnhancedFilter;
+import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import com.collective.recommender.utils.DomainFixtures;
 import org.apache.log4j.Logger;
 import org.openrdf.model.Statement;
@@ -58,7 +60,7 @@ public class SesameInMemorySparqlProxyTestCase
             this.sparqlProxy.registerQuery(
                     "resources-custom-concepts-to-permanent-search",
                     RESOURCES_CUSTOM_CONCEPTS_PERMANENT_SEARCH,
-                    SparqlProxy.TYPE.GRAPH,
+                    SparqlQuery.TYPE.GRAPH,
                     WebResourceEnhancedFilter.class,
                     WebResourceEnhancedRanker.class
             );

@@ -10,15 +10,11 @@ import java.util.List;
  */
 public interface SparqlProxy {
 
-    public enum TYPE {
-        GRAPH,
-        TUPLE
-    }
 
     public void registerQuery(
             String id,
             String queryTemplate,
-            SparqlProxy.TYPE queryType,
+            SparqlQuery.TYPE queryType,
             Class<? extends Filter> filter,
             Class<? extends Ranker> ranker)
             throws SparqlProxyException;

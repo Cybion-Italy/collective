@@ -1,6 +1,7 @@
-package com.collective.recommender.proxy;
+package com.collective.recommender.proxyimpl;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
+import com.collective.recommender.proxy.SparqlProxyException;
 import org.apache.log4j.Logger;
 import org.nnsoft.be3.Be3;
 import org.nnsoft.be3.RDFizerException;

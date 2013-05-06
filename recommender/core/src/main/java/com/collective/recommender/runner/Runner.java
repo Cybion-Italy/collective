@@ -22,7 +22,7 @@ import com.collective.recommender.dynamicprofiler.ShortTermUserProfile;
 import com.collective.recommender.dynamicprofiler.ShortTermUserProfileCalculator;
 import com.collective.recommender.proxy.ranking.Ranker;
 import com.collective.recommender.proxy.ranking.RankerException;
-import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
+import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import com.collective.recommender.storage.KVSRecommendationsStorage;
 import com.collective.recommender.storage.RecommendationsStorage;
 import com.collective.recommender.storage.RecommendationsStorageException;
@@ -55,7 +55,7 @@ import java.util.*;
 /*TODO: (high) refactor xml nodes names since they are unclear and there could be a duplicate section */
 public class Runner {
 
-    private static final Logger logger = Logger.getLogger(Runner.class);
+    private static final Logger LOGGER = Logger.getLogger(Runner.class);
 
     private static ProfileStore profileStore;
 
@@ -94,7 +94,7 @@ public class Runner {
         try {
             commandLine = commandLineParser.parse(options, args);
         } catch (ParseException e) {
-            logger.error("Error while parsing arguments", e);
+            LOGGER.error("Error while parsing arguments", e);
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("Runner", options);
             System.exit(-1);
@@ -104,7 +104,7 @@ public class Runner {
         /**
          * Parse the configuration file and instantiates all the needed dependencies
          */
-        logger.info("Loading configuration from: '" + confFilePath + "'");
+        LOGGER.info("Loading configuration from: '" + confFilePath + "'");
         configurationManager =
                 ConfigurationManager.getInstance(confFilePath);
 
@@ -124,7 +124,7 @@ public class Runner {
             rdFizer = getRDFizer();
         } catch (TypeHandlerRegistryException e) {
             final String errMsg = "Error while instantiating the rdf-izer";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new RuntimeException(errMsg, e);
         }
 
@@ -136,7 +136,8 @@ public class Runner {
         permanentSearchStorage = new MyBatisPermanentSearchStorage(permanentSearchStorageConfiguration.getProperties());
         activityLog = new DefaultActivityLogImpl(configurationManager.getActivityLogConfiguration());
 
-        logger.info("ProfileStore, Recommender and RecommendationsStorage, permanentSearchStorage and activityLog correctly instantiated");
+        LOGGER.info(
+                "ProfileStore, Recommender and RecommendationsStorage, permanentSearchStorage and activityLog correctly instantiated");
 
         categoriesMappingStorage =
                 new MybatisCategoriesMappingStorage(categoriesMappingStorageStorageConfiguration.getProperties());
@@ -155,8 +156,8 @@ public class Runner {
         calculateRecommendationsForSearches();
 
         String exceptionsString = stringifyMap(exceptions);
-        logger.info("exceptions occurred: \n");        
-        logger.info(exceptionsString);
+        LOGGER.info("exceptions occurred: \n");
+        LOGGER.info(exceptionsString);
     }
 
     private static void calculateShortTermProfileRecommendations(URI userId, UserProfile profile) {
@@ -171,7 +172,7 @@ public class Runner {
         try {
             userIdLong = uidp.getUserId(userId);
         } catch (UserIdParserException e) {
-            logger.error("error while parsing userId from uri: '" + userId.toString() + "'");
+            LOGGER.error("error while parsing userId from uri: '" + userId.toString() + "'");
         }
         try {
             latestMappedResources.addAll( categoriesMappingStorage.getLatestMappedResources(userIdLong, amount) );
@@ -183,7 +184,7 @@ public class Runner {
         //
         ShortTermUserProfile shortTermUserProfile = shortTermUserProfileCalculator.updateProfile(userId, latestMappedResources);
 
-        logger.debug("short term user interests: " + shortTermUserProfile.toString());
+        LOGGER.debug("short term user interests: " + shortTermUserProfile.toString());
 
         //  do a query to get latest resources that match those URIs
         // this specific method uses the 'interests' field
@@ -200,7 +201,7 @@ public class Runner {
             recommendationsStorage.deleteShortTermResourceRecommendations(userId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "error while deleting old short term recommendations for user '" + userId.toString() + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -213,7 +214,7 @@ public class Runner {
             );
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while storing short term recs for user: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -227,7 +228,7 @@ public class Runner {
         } catch (ProfileStoreException e) {
             final String errMsg = "Error while getting all Users from ProfileStorage using graph: '"
                     + usersGraph.toString() + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             //return;
         }
@@ -267,7 +268,7 @@ public class Runner {
             try {
                 searchIdURI = new URI(searchGraph + searchId);
             } catch (URISyntaxException e) {
-                logger.error("error when building searchURI: " + e.getMessage());
+                LOGGER.error("error when building searchURI: " + e.getMessage());
             }
 
 
@@ -307,7 +308,7 @@ public class Runner {
         	projectIdList = profileStore.getAllTriplesSubjectsFromGraphIndex(projectGraph);
         } catch (ProfileStoreException e) {
             final String errMsg = "Error while getting all Projects from ProfileStorage using graph: '" + projectGraph.toString() + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -327,7 +328,7 @@ public class Runner {
                 profile = profileStore.getProjectProfile(projectId);
             } catch (ProfileStoreException e) {
                 final String errMsg = "Error while getting Profile for Project: '" + projectId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 System.exit(-1);
                 return;
             }
@@ -340,32 +341,32 @@ public class Runner {
             URI projectId,
             ProjectProfile projectProfile
     ) {
-        logger.info("Calculating Expert users for project: '" + projectId + "'");
+        LOGGER.info("Calculating Expert users for project: '" + projectId + "'");
         Set<UserProfile> userProfiles;
         try {
             userProfiles = recommender.getExpertUsersForProject(projectProfile);
         } catch (RecommenderException e) {
             final String errMsg = "Error while getting Recommendations for Project: '" + projectId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Removing old recommendations for project: '" + projectId + "'");
+        LOGGER.info("Removing old recommendations for project: '" + projectId + "'");
         try {
             recommendationsStorage.deleteExpertsRecommandationsForProject(projectId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while removing Reccomendations for Project: '" + projectId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Got " + userProfiles.size() + " recommendations");
-        logger.info("--- START: PRINTING RECS --- ");
+        LOGGER.info("Got " + userProfiles.size() + " recommendations");
+        LOGGER.info("--- START: PRINTING RECS --- ");
         for (UserProfile userProfile : userProfiles) {
-            logger.info(userProfile.getId());
-            logger.info(userProfile.getSkills());
+            LOGGER.info(userProfile.getId());
+            LOGGER.info(userProfile.getSkills());
         }
-        logger.info("--- END: PRINTING RECS --- ");
+        LOGGER.info("--- END: PRINTING RECS --- ");
         try {
             recommendationsStorage.storeExpertsRecommendations(
                     projectId,
@@ -373,7 +374,7 @@ public class Runner {
             );
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while storing Recommendations for Project: '" + projectId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -381,7 +382,7 @@ public class Runner {
 
     private static void calculateResourceRecommandationsForProject(
 			URI projectId, ProjectProfile profile) {
-		 logger.info("Calculating Resource recommendations for project: '" + projectId + "'");
+		 LOGGER.info("Calculating Resource recommendations for project: '" + projectId + "'");
 	        Set<WebResourceEnhanced> resourceRecommendations;
 	        try {
 	            resourceRecommendations = recommender.getResourceRecommendations(
@@ -389,26 +390,26 @@ public class Runner {
                 );
 	        } catch (RecommenderException e) {
 	            final String errMsg = "Error while getting Recommendations for Project: '" + projectId + "'";
-	            logger.error(errMsg, e);
+	            LOGGER.error(errMsg, e);
 	            System.exit(-1);
 	            return;
 	        }
-	        logger.info("Removing old recommendations for project: '" + projectId + "'");
+	        LOGGER.info("Removing old recommendations for project: '" + projectId + "'");
 	        try {
 	            recommendationsStorage.deleteResourceRecommendations(projectId);
 	        } catch (RecommendationsStorageException e) {
 	            final String errMsg = "Error while removing Recomendations for Project: '" + projectId + "'";
-	            logger.error(errMsg, e);
+	            LOGGER.error(errMsg, e);
 	            System.exit(-1);
 	            return;
 	        }
-	        logger.info("Got " + resourceRecommendations.size() + " recommendations");
-	        logger.info("--- START: PRINTING RECS --- ");
+	        LOGGER.info("Got " + resourceRecommendations.size() + " recommendations");
+	        LOGGER.info("--- START: PRINTING RECS --- ");
 	        for (WebResourceEnhanced resource : resourceRecommendations) {
-	            logger.info(resource.getUrl());
-	            logger.info(resource.getTopics());
+	            LOGGER.info(resource.getUrl());
+	            LOGGER.info(resource.getTopics());
 	        }
-	        logger.info("--- END: PRINTING RECS --- ");
+	        LOGGER.info("--- END: PRINTING RECS --- ");
 
             //TODO: (high) move to proper class!!
             //sort recommendations
@@ -419,7 +420,7 @@ public class Runner {
                 ranker.rank(recommendationsList);
             } catch (RankerException e) {
                 final String errMsg = "Error while sorting Recommendations for Project: '" + projectId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 System.exit(-1);
                 return;
             }
@@ -431,7 +432,7 @@ public class Runner {
                 );
 	        } catch (RecommendationsStorageException e) {
 	            final String errMsg = "Error while storing Reccomendations for Project: '" + projectId + "'";
-	            logger.error(errMsg, e);
+	            LOGGER.error(errMsg, e);
 	            System.exit(-1);
 	            return;
 	        }		
@@ -450,7 +451,7 @@ public class Runner {
             userIdList = profileStore.getAllTriplesSubjectsFromGraphIndex(usersGraph);
         } catch (ProfileStoreException e) {
             final String errMsg = "Error while getting all Users from ProfileStorage using graph: '" + usersGraph.toString() + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -471,7 +472,7 @@ public class Runner {
                 profile = profileStore.getUserProfile(userId);
             } catch (ProfileStoreException e) {
                 final String errMsg = "Error while getting Profile for User: '" + userId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 System.exit(-1);
                 return;
             }
@@ -482,7 +483,7 @@ public class Runner {
 	}
 
     private static void calculateProjectsRecommendations(URI userId, UserProfile profile) {
-        logger.info("Calculating Projects recommendations for user: '" + userId + "'");
+        LOGGER.info("Calculating Projects recommendations for user: '" + userId + "'");
         Set<ProjectProfile> projectProfileRecommendations;
         try {
             projectProfileRecommendations = recommender.getProjectRecommendations(
@@ -490,12 +491,12 @@ public class Runner {
             );
         } catch (RecommenderException e) {
             final String errMsg = "Error while getting Recommendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
 
-        logger.info("Getting old project recommendations for userId: '" + userId + "'");
+        LOGGER.info("Getting old project recommendations for userId: '" + userId + "'");
 
         Set<ProjectProfile> oldRecommendations = new HashSet<ProjectProfile>();
         List<ProjectProfile> oldRecommendationsList = null;
@@ -504,29 +505,29 @@ public class Runner {
             oldRecommendationsList = recommendationsStorage.getProjectRecommendations(userId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while getting old project Recommendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
         }
 
         if (oldRecommendationsList != null) {
             oldRecommendations.addAll(oldRecommendationsList);
         }
 
-        logger.info("Removing old recommendations for user: '" + userId + "'");
+        LOGGER.info("Removing old recommendations for user: '" + userId + "'");
         try {
             recommendationsStorage.deleteProjectProfileRecommendations(userId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while removing Reccomendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Got " + projectProfileRecommendations.size() + " recommendations");
-        logger.info("--- START: PRINTING RECS --- ");
+        LOGGER.info("Got " + projectProfileRecommendations.size() + " recommendations");
+        LOGGER.info("--- START: PRINTING RECS --- ");
         for (ProjectProfile projectProfile : projectProfileRecommendations) {
-            logger.info(projectProfile.getId());
-            logger.info(projectProfile.getManifestoConcepts());
+            LOGGER.info(projectProfile.getId());
+            LOGGER.info(projectProfile.getManifestoConcepts());
         }
-        logger.info("--- END: PRINTING RECS --- ");
+        LOGGER.info("--- END: PRINTING RECS --- ");
 
         /* filtering old recommendations from new ones */
         Set<ProjectProfile> newProjectProfileRecommendations =
@@ -567,14 +568,14 @@ public class Runner {
             );
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while storing Reccomendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
     }
 
     private static void calculateResourceRecommendations(URI userId, UserProfile profile) {
-        logger.info("Calculating Resource recommendations for user: '" + userId + "'");
+        LOGGER.info("Calculating Resource recommendations for user: '" + userId + "'");
         Set<WebResourceEnhanced> resourceRecommendations;
         try {
             resourceRecommendations = recommender.getResourceRecommendations(
@@ -582,11 +583,11 @@ public class Runner {
             );
         } catch (RecommenderException e) {
             final String errMsg = "Error while getting Recommendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Getting old recommendations for user: '" + userId + "'");
+        LOGGER.info("Getting old recommendations for user: '" + userId + "'");
 
         Set<WebResourceEnhanced> oldRecommendations = new HashSet<WebResourceEnhanced>();
         List<WebResourceEnhanced> oldRecommendationsList = null;
@@ -596,29 +597,29 @@ public class Runner {
                     recommendationsStorage.getResourceRecommendations(userId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while getting old Recommendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
         }
 
         if (oldRecommendationsList != null) {
             oldRecommendations.addAll(oldRecommendationsList);
         }
 
-        logger.info("Removing old recommendations for user: '" + userId + "'");
+        LOGGER.info("Removing old recommendations for user: '" + userId + "'");
         try {
             recommendationsStorage.deleteResourceRecommendations(userId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while removing Reccomendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Got " + resourceRecommendations.size() + " recommendations for user " + userId);
-        logger.info("--- START: PRINTING RECS --- ");
+        LOGGER.info("Got " + resourceRecommendations.size() + " recommendations for user " + userId);
+        LOGGER.info("--- START: PRINTING RECS --- ");
         for (WebResourceEnhanced resource : resourceRecommendations) {
-            logger.info(resource.getUrl());
-            logger.info(resource.getTopics());
+            LOGGER.info(resource.getUrl());
+            LOGGER.info(resource.getTopics());
         }
-        logger.info("--- END: PRINTING RECS --- ");
+        LOGGER.info("--- END: PRINTING RECS --- ");
         //TODO: (high) move ranking to proper class!!
         //sort list
         Ranker ranker = new WebResourceEnhancedRanker();
@@ -628,7 +629,7 @@ public class Runner {
             ranker.rank(recommendationsList);
         } catch (RankerException e) {
             final String errMsg = "Error while sorting Recommendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -673,7 +674,7 @@ public class Runner {
             );
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while storing Reccomendations for User: '" + userId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -691,8 +692,8 @@ public class Runner {
 
         if (search.getCommonUris().size() > 0) {
 
-            logger.info("Calculating Resource recommendations for " +
-                    "common concepts of search: '" + searchId + "'");
+            LOGGER.info("Calculating Resource recommendations for " +
+                        "common concepts of search: '" + searchId + "'");
 
             try {
                 resourceRecommendations = recommender.getResourceRecommendations(
@@ -700,7 +701,7 @@ public class Runner {
                 );
             } catch (RecommenderException e) {
                 final String errMsg = "Error while getting Recommendations for Search: '" + searchId + "'";
-                logger.error(errMsg, e);
+                LOGGER.error(errMsg, e);
                 System.exit(-1);
                 return;
             }
@@ -710,7 +711,7 @@ public class Runner {
          * calculate its recommendations */
 
         if (search.getCustomUris().size() > 0) {
-            logger.info("Calculating custom concepts resource " +
+            LOGGER.info("Calculating custom concepts resource " +
                         "recommendations for search: '" + searchId + "'");
 
         /* get the userId in order for the runner to be able to search only the
@@ -726,12 +727,12 @@ public class Runner {
                 final String errMsg = "Error while parsing " +
                         "userId owner from url: '"
                         + customConceptUrl + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             }
 
-            logger.debug("customConceptUrl: " + customConceptUrl);
-            logger.debug("parsed owner of custom concept - userId: " + userId);
+            LOGGER.debug("customConceptUrl: " + customConceptUrl);
+            LOGGER.debug("parsed owner of custom concept - userId: " + userId);
 
             try {
                 resourceRecommendations.addAll(
@@ -745,19 +746,19 @@ public class Runner {
                         "Recommendations for Search: '" + searchId + "' in " +
                         "annotations graph '"
                         + customAnnotationsGraphPrefix.toString() + "'";
-                logger.warn(errMsg, e);
+                LOGGER.warn(errMsg, e);
                 //store exceptions messages
                 final String graphId = customAnnotationsGraphPrefix.toString() + userId;
                 exceptions.put(graphId, e.toString());
             }
 
-            logger.info("Calculated '" + resourceRecommendations.size()
-                    + "' recommendations for search '" + searchId + "' " +
-                    "from annotations graph '" + customAnnotationsGraphPrefix.toString()
-                    + userId + "'");
+            LOGGER.info("Calculated '" + resourceRecommendations.size() +
+                        "' recommendations for search '" + searchId + "' " +
+                        "from annotations graph '" + customAnnotationsGraphPrefix.toString() +
+                        userId + "'");
         }
 
-        logger.info("Getting old recommendations for search: '" + searchId + "'");
+        LOGGER.info("Getting old recommendations for search: '" + searchId + "'");
 
         Set<WebResourceEnhanced> oldRecommendations = new HashSet<WebResourceEnhanced>();
         List<WebResourceEnhanced> oldRecommendationsList = null;
@@ -766,30 +767,30 @@ public class Runner {
             oldRecommendationsList = recommendationsStorage.getResourceRecommendations(searchId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while getting old Recommendations for Search: '" + searchId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
         }
 
         if (oldRecommendationsList != null) {
             oldRecommendations.addAll(oldRecommendationsList);
         }
 
-        logger.info("Removing old recommendations for search: '" + searchId + "'");
+        LOGGER.info("Removing old recommendations for search: '" + searchId + "'");
         try {
             recommendationsStorage.deleteResourceRecommendations(searchId);
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while removing " +
                     "Recommendations for search: '" + searchId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("Got " + resourceRecommendations.size() + " recommendations");
-        logger.info("--- START: PRINTING RECS --- ");
+        LOGGER.info("Got " + resourceRecommendations.size() + " recommendations");
+        LOGGER.info("--- START: PRINTING RECS --- ");
         for (WebResourceEnhanced resource : resourceRecommendations) {
-            logger.info(resource.getUrl());
-            logger.info(resource.getTopics());
+            LOGGER.info(resource.getUrl());
+            LOGGER.info(resource.getTopics());
         }
-        logger.info("--- END: PRINTING RECS --- ");
+        LOGGER.info("--- END: PRINTING RECS --- ");
         //TODO: (high) move ranking to proper class!!
         //sort list
         Ranker ranker = new WebResourceEnhancedRanker();
@@ -800,7 +801,7 @@ public class Runner {
             ranker.rank(recommendationsList);
         } catch (RankerException e) {
             final String errMsg = "Error while sorting Recommendations for Search: '" + searchId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
@@ -825,11 +826,12 @@ public class Runner {
         } catch (RecommendationsStorageException e) {
             final String errMsg = "Error while storing " +
                     "Recomendations for Search: '" + searchId + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             System.exit(-1);
             return;
         }
-        logger.info("stored " + recommendationsList.size() + " recommendations to '" + searchId.toString() + "' search Id");
+        LOGGER.info("stored " + recommendationsList.size() + " recommendations to '" +
+                    searchId.toString() + "' search Id");
     }
 
     private static void logRecommendationActivity(

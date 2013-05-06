@@ -1,7 +1,10 @@
-package com.collective.recommender.proxy;
+package com.collective.recommender.proxyimpl;
 
 import com.collective.recommender.*;
 import com.collective.recommender.configuration.RecommenderConfiguration;
+import com.collective.recommender.proxy.SparqlProxy;
+import com.collective.recommender.proxy.SparqlProxyException;
+import com.collective.recommender.proxy.SparqlQuery;
 import com.collective.recommender.proxy.filtering.Filter;
 import com.collective.recommender.proxy.filtering.FilterException;
 import com.collective.recommender.proxy.ranking.Ranker;
@@ -72,7 +75,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
     public void registerQuery(
             String id,
             String queryTemplate,
-            TYPE queryType,
+            SparqlQuery.TYPE queryType,
             Class<? extends Filter> filter,
             Class<? extends Ranker> ranker)
             throws SparqlProxyException {
@@ -129,7 +132,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
             throw new SparqlProxyException(errMsg, e);
         }
         List<Statement> statements = new ArrayList<Statement>();
-        if(queries.get(id).queryType.equals(TYPE.TUPLE)) {
+        if(queries.get(id).queryType.equals(SparqlQuery.TYPE.TUPLE)) {
             TupleQueryResult queryResult;
             try {
                 queryResult = ((TupleQuery) query).evaluate();
@@ -152,7 +155,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
                 logger.error(errMsg, e);
                 throw new SparqlProxyException(errMsg, e);
             }
-        } else if(queries.get(id).queryType.equals(TYPE.GRAPH)) {
+        } else if(queries.get(id).queryType.equals(SparqlQuery.TYPE.GRAPH)) {
             GraphQueryResult queryResult;
             try {
                 queryResult = ((GraphQuery) query).evaluate();
@@ -236,7 +239,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
 
         private String queryTemplate;
 
-        private TYPE queryType;
+        private SparqlQuery.TYPE queryType;
 
         private Class<? extends Filter> filter;
 
@@ -244,7 +247,7 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
 
         public QueryRecord(
                 String queryTemplate,
-                TYPE queryType,
+                SparqlQuery.TYPE queryType,
                 Class<? extends Filter> filter,
                 Class<? extends Ranker> ranker
         ) {
@@ -261,10 +264,10 @@ public class SesameVirtuosoSparqlProxy implements SparqlProxy {
         public Query prepareQuery(
                 RepositoryConnection repositoryConnection,
                 String queryInstance) throws MalformedQueryException, RepositoryException {
-            if (queryType.equals(SparqlProxy.TYPE.TUPLE)) {
+            if (queryType.equals(SparqlQuery.TYPE.TUPLE)) {
                 return repositoryConnection.prepareTupleQuery(QueryLanguage.SPARQL, queryInstance);
             }
-            if (queryType.equals(SparqlProxy.TYPE.GRAPH)) {
+            if (queryType.equals(SparqlQuery.TYPE.GRAPH)) {
                 return repositoryConnection.prepareGraphQuery(QueryLanguage.SPARQL, queryInstance);
             }
             throw new IllegalArgumentException("Unable to instantiate a proper query");

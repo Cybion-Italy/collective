@@ -1,4 +1,4 @@
-package com.collective.recommender.proxy;
+package com.collective.recommender.proxyimpl;
 
 import org.apache.log4j.Logger;
 import org.openrdf.query.*;

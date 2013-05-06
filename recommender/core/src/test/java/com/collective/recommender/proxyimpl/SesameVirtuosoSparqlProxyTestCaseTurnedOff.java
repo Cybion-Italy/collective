@@ -1,11 +1,15 @@
-package com.collective.recommender.proxy;
+package com.collective.recommender.proxyimpl;
 
 import com.collective.model.persistence.enhanced.WebResourceEnhanced;
 import com.collective.recommender.SesameVirtuosoRecommenderTestCaseTurnedOff;
 import com.collective.recommender.configuration.ConfigurationManager;
 import com.collective.recommender.configuration.RecommenderConfiguration;
-import com.collective.recommender.proxy.filtering.WebResourceEnhancedFilter;
-import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
+import com.collective.recommender.proxy.SparqlProxy;
+import com.collective.recommender.proxy.SparqlProxyException;
+import com.collective.recommender.proxy.SparqlQuery;
+import com.collective.recommender.proxyimpl.SesameVirtuosoSparqlProxy;
+import com.collective.recommender.proxyimpl.filtering.WebResourceEnhancedFilter;
+import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
 import org.nnsoft.be3.DefaultTypedBe3Impl;
 import org.nnsoft.be3.typehandler.*;
@@ -91,7 +95,7 @@ public class SesameVirtuosoSparqlProxyTestCaseTurnedOff {
         sparqlProxy.registerQuery(
                 queryId,
                 queryTemplate,
-                SparqlProxy.TYPE.GRAPH,
+                SparqlQuery.TYPE.GRAPH,
                 WebResourceEnhancedFilter.class,
                 WebResourceEnhancedRanker.class
 

@@ -1,6 +1,8 @@
-package com.collective.recommender.proxy.ranking;
+package com.collective.recommender.proxyimpl.ranking;
 
 import com.collective.model.profile.UserProfile;
+import com.collective.recommender.proxy.ranking.Ranker;
+import com.collective.recommender.proxy.ranking.RankerException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.collective.recommender.proxy.ranking;
 
-import com.collective.recommender.proxy.ranking.RankerException;
 
 import java.util.List;
 

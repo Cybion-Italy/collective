@@ -1,7 +1,9 @@
-package com.collective.recommender.proxy.filtering;
+package com.collective.recommender.proxyimpl.filtering;
 
 import com.collective.model.profile.ProjectProfile;
-import com.collective.recommender.proxy.SparqlProxy;
+import com.collective.recommender.proxy.SparqlQuery;
+import com.collective.recommender.proxy.filtering.Filter;
+import com.collective.recommender.proxy.filtering.FilterException;
 import org.nnsoft.be3.Be3;
 import org.nnsoft.be3.RDFizerException;
 import org.nnsoft.be3.annotations.RDFClassType;
@@ -23,9 +25,10 @@ import java.util.Set;
  */
 public class ProjectProfileFilter implements Filter<ProjectProfile> {
 
-    public List<Statement> getStatements(QueryResult queryResult, SparqlProxy.TYPE queryType)
+    @Override
+    public List<Statement> getStatements(QueryResult queryResult, SparqlQuery.TYPE queryType)
             throws FilterException {
-        if(queryType.equals(SparqlProxy.TYPE.TUPLE)) {
+        if(queryType.equals(SparqlQuery.TYPE.TUPLE)) {
             List<Statement> statements = new ArrayList<Statement>();
             TupleQueryResult tupleQueryResult = (TupleQueryResult) queryResult;
             try {
@@ -46,7 +49,7 @@ public class ProjectProfileFilter implements Filter<ProjectProfile> {
             }
             return statements;
         }
-        if(queryType.equals(SparqlProxy.TYPE.GRAPH)) {
+        if(queryType.equals(SparqlQuery.TYPE.GRAPH)) {
             List<Statement> statements = new ArrayList<Statement>();
             GraphQueryResult graphQueryResult = (GraphQueryResult) queryResult;
             try {
@@ -61,6 +64,7 @@ public class ProjectProfileFilter implements Filter<ProjectProfile> {
         throw new IllegalArgumentException("Did you provide a correct Query Type?");
     }
 
+    @Override
     public List<ProjectProfile> getObjects(List<Statement> statements, Be3 rdfizer)
             throws FilterException {
         List<ProjectProfile> resources = new ArrayList<ProjectProfile>();

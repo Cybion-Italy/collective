@@ -9,7 +9,7 @@ import com.collective.recommender.configuration.ConfigurationManager;
 import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.ranking.Ranker;
 import com.collective.recommender.proxy.ranking.RankerException;
-import com.collective.recommender.proxy.ranking.WebResourceEnhancedRanker;
+import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
 import org.nnsoft.be3.DefaultTypedBe3Impl;
 import org.nnsoft.be3.typehandler.*;
