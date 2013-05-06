@@ -55,7 +55,7 @@ public class InMemorySesameSparqlProxy extends SesameVirtuosoSparqlProxy {
 
     public List<Statement> getAllGraphStatements(String graphName)
             throws SparqlProxyException {
-        RepositoryConnection repositoryConnection = super.getConnection();
+        RepositoryConnection repositoryConnection = super.getConnection(repository);
         List<Statement> statements = new ArrayList<Statement>();
 
         String constructGraphQuery = "CONSTRUCT { ?s ?p ?o } " +
@@ -101,7 +101,7 @@ public class InMemorySesameSparqlProxy extends SesameVirtuosoSparqlProxy {
             WebResourceEnhanced webResourceEnhanced,
             Long userId
     ) throws SparqlProxyException {
-        RepositoryConnection repositoryConnection = super.getConnection();
+        RepositoryConnection repositoryConnection = super.getConnection(repository);
         List<Statement> statements;
         try {
             statements = rdfizer.getRDFStatements(webResourceEnhanced);

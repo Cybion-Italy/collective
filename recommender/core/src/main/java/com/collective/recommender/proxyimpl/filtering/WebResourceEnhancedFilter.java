@@ -90,12 +90,4 @@ public class WebResourceEnhancedFilter implements Filter<WebResourceEnhanced> {
         }
         return resources;
     }
-
-    @Override
-    public WebResourceEnhanced getObject(List<Statement> statements, Be3 be3)
-            throws FilterException {
-
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
 }

@@ -28,6 +28,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -107,7 +108,7 @@ public class SesameVirtuosoSparqlProxyTestCaseTurnedOff {
                 this.urlsGraphClass,
                 OPERATING_SYSTEM
         );
-        Assert.assertNotNull(resources);
+        assertNotNull(resources);
         LOGGER.info("found " + resources.size() + " about " + OPERATING_SYSTEM);
         assertTrue(resources.size() >= 9);
     }
