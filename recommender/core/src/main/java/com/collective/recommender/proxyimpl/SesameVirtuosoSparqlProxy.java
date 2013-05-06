@@ -93,7 +93,8 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         throw new UnsupportedOperationException("NIY");
     }
 
-    protected <T> List<T> deserializeObjects(Filter<T> filter, List<Statement> statements)
+    @Override
+    protected final <T> List<T> deserializeObjects(Filter<T> filter, List<Statement> statements)
             throws SparqlProxyException {
 
         final List<T> unorderedObjects;
@@ -107,7 +108,8 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
         return unorderedObjects;
     }
 
-    protected <T> T deserializeObject(Filter<T> filter, List<Statement> statements)
+    @Override
+    protected final <T> T deserializeObject(Filter<T> filter, List<Statement> statements)
             throws SparqlProxyException {
         throw new UnsupportedOperationException("NIY");
     }
