@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
 
-    private static final Logger logger = Logger.getLogger(SesameInMemorySparqlProxy.class);
+    private static final Logger LOGGER = Logger.getLogger(SesameInMemorySparqlProxy.class);
 
     public SesameInMemorySparqlProxy(Be3 rdFizer) {
 
@@ -44,10 +44,10 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
         }
         try {
             repository.initialize();
-            logger.info("in memory repository connection initialized.");
+            LOGGER.info("in memory repository connection initialized.");
         } catch (RepositoryException e) {
             final String errMsg = "Error while initializing connection to in memory repository";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new RuntimeException(errMsg, e);
         }
         this.rdfizer = rdFizer;
@@ -76,17 +76,17 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
         } catch (RepositoryException e) {
             final String errMsg = "Error while getting all tuples from graph '"
                     + graphName + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } catch (QueryEvaluationException e) {
             final String errMsg = "Error while evaluating query: '"
                     + constructGraphQuery + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } catch (MalformedQueryException e) {
             final String errMsg = "Malformed query: '"
                     + constructGraphQuery + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         } finally {
             super.releaseConnection(repositoryConnection);
@@ -108,7 +108,7 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
         } catch (RDFizerException e) {
             final String errMsg = "Error while serializing enhancedWebResource: '"
                     + webResourceEnhanced + "'";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         }
         for (Statement statement : statements) {
@@ -119,7 +119,7 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
                 final String errMsg = "Error while adding RDF statement: '"
                         + statement + "' when saving enhancedWebResource: '"
                         + webResourceEnhanced + "'";
-                logger.debug(errMsg, e);
+                LOGGER.debug(errMsg, e);
                 continue;
             }
         }
@@ -128,12 +128,12 @@ public class SesameInMemorySparqlProxy extends SesameVirtuosoSparqlProxy {
         } catch (RepositoryException e) {
             final String errMsg = "Error while committing enhancedWebResource: '"
                     + webResourceEnhanced + "' on Virtuoso";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
             throw new SparqlProxyException(errMsg, e);
         }
-        logger.info("enhancedWebResource: '" + webResourceEnhanced
-                + "' successfully stored on graph: '"
-                + usersCustomAnnotationsTemplate + userId + "'");
+        LOGGER.info("enhancedWebResource: '" + webResourceEnhanced +
+                    "' successfully stored on graph: '" + usersCustomAnnotationsTemplate + userId +
+                    "'");
         super.releaseConnection(repositoryConnection);
     }
 }

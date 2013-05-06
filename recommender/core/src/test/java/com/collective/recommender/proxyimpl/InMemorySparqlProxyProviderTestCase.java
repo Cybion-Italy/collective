@@ -28,7 +28,7 @@ import java.util.List;
  */
 public abstract class InMemorySparqlProxyProviderTestCase {
 
-    private static final Logger logger =
+    private static final Logger LOGGER =
             Logger.getLogger(InMemorySparqlProxyProviderTestCase.class);
 
     protected SesameInMemorySparqlProxy sparqlProxy;
@@ -41,7 +41,7 @@ public abstract class InMemorySparqlProxyProviderTestCase {
     public void setUpConfig() throws RepositoryException,
             TypeHandlerRegistryException {
 
-        logger.debug("initialising in memory stores");
+        LOGGER.debug("initialising in memory stores");
         //for rdfizer
         Sail sailStack = new MemoryStore();
         Repository repository = new SailRepository(sailStack);
@@ -76,11 +76,11 @@ public abstract class InMemorySparqlProxyProviderTestCase {
 
         /* writes some custom concepts webresource annotation in repository */
         for (WebResourceEnhanced webResourceEnhanced : savedResources) {
-            logger.debug("saving " + webResourceEnhanced.toString());
+            LOGGER.debug("saving " + webResourceEnhanced.toString());
             try {
                 sparqlProxy.storeUserWebResource(webResourceEnhanced, userIdLong);
             } catch (SparqlProxyException e) {
-                logger.error("failed to save test data to in memory repository");
+                LOGGER.error("failed to save test data to in memory repository");
                 e.printStackTrace();
             }
         }
@@ -89,7 +89,7 @@ public abstract class InMemorySparqlProxyProviderTestCase {
     @AfterClass
     public void tearDownConfig() {
         sparqlProxy = null;
-        logger.debug("tore down in-memory stores");
+        LOGGER.debug("tore down in-memory stores");
     }
 
 }

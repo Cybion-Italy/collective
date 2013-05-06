@@ -7,7 +7,6 @@ import com.collective.recommender.configuration.RecommenderConfiguration;
 import com.collective.recommender.proxy.SparqlProxy;
 import com.collective.recommender.proxy.SparqlProxyException;
 import com.collective.recommender.proxy.SparqlQuery;
-import com.collective.recommender.proxyimpl.SesameVirtuosoSparqlProxy;
 import com.collective.recommender.proxyimpl.filtering.WebResourceEnhancedFilter;
 import com.collective.recommender.proxyimpl.ranking.WebResourceEnhancedRanker;
 import org.apache.log4j.Logger;
@@ -29,12 +28,14 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
+import static org.testng.Assert.assertTrue;
+
 /**
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
 public class SesameVirtuosoSparqlProxyTestCaseTurnedOff {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
+    private static final Logger LOGGER = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
 
     private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 
@@ -107,7 +108,7 @@ public class SesameVirtuosoSparqlProxyTestCaseTurnedOff {
                 OPERATING_SYSTEM
         );
         Assert.assertNotNull(resources);
-        logger.info("found " + resources.size() + " about " + OPERATING_SYSTEM);
-        Assert.assertTrue(resources.size() >= 9);
+        LOGGER.info("found " + resources.size() + " about " + OPERATING_SYSTEM);
+        assertTrue(resources.size() >= 9);
     }
 }

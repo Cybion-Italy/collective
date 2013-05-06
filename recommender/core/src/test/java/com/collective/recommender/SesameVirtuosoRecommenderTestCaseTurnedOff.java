@@ -29,13 +29,16 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+
 /**
  * TODO: med remove dependency from repository data
  * @author Davide Palmisano ( dpalmisano@gmail.com )
  */
 public class SesameVirtuosoRecommenderTestCaseTurnedOff {
 
-    private static Logger logger = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
+    private static final Logger LOGGER = Logger.getLogger(SesameVirtuosoRecommenderTestCaseTurnedOff.class);
 
     private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 
@@ -83,15 +86,17 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
         profile.addManifestoConcept(new URI("http://dbpedia.org/resource/Software_engineering"));
 
         Set<WebResourceEnhanced> resources = recommender.getResourceRecommendations(profile);
-        logger.info("Number of resources: '"  + resources.size() + "'");
-        Assert.assertNotNull(resources);
-        Assert.assertTrue(resources.size() > 0);
+        LOGGER.info("Number of resources: '" + resources.size() + "'");
+        assertNotNull(resources);
+        assertTrue(resources.size() > 0);
         for(WebResourceEnhanced resource : resources) {
-            logger.info("Retrieved resource: '"  + resource.getTitolo()
-                    + " - " + resource.getTopics() + "'");
-            Assert.assertTrue(resource.getTopics().contains(
-                    new URI("http://dbpedia.org/resource/Operating_system"))
-                    || (resource.getTopics().contains(new URI("http://dbpedia.org/resource/Software_engineering"))));
+            LOGGER.info(
+                    "Retrieved resource: '" + resource.getTitolo() + " - " + resource.getTopics() +
+                    "'");
+            assertTrue(resource.getTopics().contains(new URI(
+                    "http://dbpedia.org/resource/Operating_system")) ||
+                       (resource.getTopics().contains(new URI(
+                               "http://dbpedia.org/resource/Software_engineering"))));
         }
     }
 
@@ -113,13 +118,13 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
             ranker.rank(recommendationsList);
         } catch (RankerException e) {
             final String errMsg = "Error while sorting Recommendations";
-            logger.error(errMsg, e);
+            LOGGER.error(errMsg, e);
         }
 
-        Assert.assertNotNull(recommendationsList);
-        Assert.assertTrue(recommendationsList.size() >= 0);
+        assertNotNull(recommendationsList);
+        assertTrue(recommendationsList.size() >= 0);
         for(WebResourceEnhanced resource : recommendationsList) {
-            logger.info("Retrieved resource: '"  + resource.getId() + "'");
+            LOGGER.info("Retrieved resource: '" + resource.getId() + "'");
         }
     }
 
@@ -132,10 +137,10 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
         profile.addInterest(new URI("http://dbpedia.org/resource/Google_Web_Toolkit"));
 
         Set<ProjectProfile> projectProfiles = recommender.getProjectRecommendations(profile);
-        Assert.assertNotNull(projectProfiles);
-        Assert.assertTrue(projectProfiles.size() > 0);
+        assertNotNull(projectProfiles);
+        assertTrue(projectProfiles.size() > 0);
         for(ProjectProfile projectProfile : projectProfiles) {
-            logger.info("Retrieved resource: '"  + projectProfile + "'");
+            LOGGER.info("Retrieved resource: '" + projectProfile + "'");
         }
     }
 
@@ -149,10 +154,10 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
         projectProfile.addManifestoConcept(new URI("http://dbpedia.org/resource/Semantic_Web"));
 
         Set<UserProfile> usersProfiles = recommender.getExpertUsersForProject(projectProfile);
-        Assert.assertNotNull(usersProfiles);
-        Assert.assertTrue(usersProfiles.size() > 0);
+        assertNotNull(usersProfiles);
+        assertTrue(usersProfiles.size() > 0);
         for (UserProfile userProfile : usersProfiles) {
-            logger.info("Retrieved user: '" + userProfile + "'");
+            LOGGER.info("Retrieved user: '" + userProfile + "'");
         }
     }
 
@@ -175,8 +180,8 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
         profile.addSkill(new URI("http://dbpedia.org/resource/Extreme_Programming"));
 
         Set<WebResourceEnhanced> resources = recommender.getResourceRecommendations(profile);
-        Assert.assertNotNull(resources);
-        Assert.assertTrue(resources.size() > 0);
+        assertNotNull(resources);
+        assertTrue(resources.size() > 0);
     }
 
     @Test
@@ -191,14 +196,15 @@ public class SesameVirtuosoRecommenderTestCaseTurnedOff {
 
         Set<WebResourceEnhanced> resources =
                 recommender.getResourceRecommendations(search.getCommonUris());
-        logger.info("Number of resources: '"  + resources.size() + "'");
-        Assert.assertNotNull(resources);
-        Assert.assertTrue(resources.size() > 0);
+        LOGGER.info("Number of resources: '" + resources.size() + "'");
+        assertNotNull(resources);
+        assertTrue(resources.size() > 0);
         for(WebResourceEnhanced resource : resources) {
-            logger.info("Retrieved resource: '"  + resource.getTitolo()
-                    + " - " + resource.getTopics() + "'");
-            Assert.assertTrue(resource.getTopics().contains(
-                    new URI("http://dbpedia.org/resource/Operating_system")));
+            LOGGER.info(
+                    "Retrieved resource: '" + resource.getTitolo() + " - " + resource.getTopics() +
+                    "'");
+            assertTrue(resource.getTopics().contains(new URI(
+                    "http://dbpedia.org/resource/Operating_system")));
         }
     }
 }

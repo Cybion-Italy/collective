@@ -28,7 +28,7 @@ import java.util.Set;
 public class SesameInMemorySparqlProxyTestCase
         extends InMemorySparqlProxyProviderTestCase {
 
-    private static final Logger logger =
+    private static final Logger LOGGER =
             Logger.getLogger(SesameInMemorySparqlProxyTestCase.class);
 
     //use the already declared query
@@ -44,10 +44,10 @@ public class SesameInMemorySparqlProxyTestCase
                             super.userId);
 
         //print statements found in graph in memory repository
-        logger.debug("triples found in graph '"
-                + super.sparqlProxy.usersCustomAnnotationsTemplate + super.userId + "'");
+        LOGGER.debug("triples found in graph '" + super.sparqlProxy.usersCustomAnnotationsTemplate +
+                     super.userId + "'");
         for (Statement stmt : statements) {
-            logger.debug(stmt.toString());
+            LOGGER.debug(stmt.toString());
         }
         //TODO (low) no asserts here, testing nothing but printing
     }
@@ -89,9 +89,9 @@ public class SesameInMemorySparqlProxyTestCase
         }
 
         //print results
-        logger.debug("matched webResources: ");
+        LOGGER.debug("matched webResources: ");
         for (WebResourceEnhanced webResourceEnhanced : matchingWebResources) {
-            logger.debug(webResourceEnhanced.toString());
+            LOGGER.debug(webResourceEnhanced.toString());
         }
 
         Set<WebResourceEnhanced> expectedResourcesSet =

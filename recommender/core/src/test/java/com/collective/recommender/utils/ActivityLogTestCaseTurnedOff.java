@@ -23,7 +23,7 @@ import tv.notube.commons.storage.model.fields.StringField;
 public class ActivityLogTestCaseTurnedOff
 {
 
-    private static Logger logger = Logger.getLogger(ActivityLogTestCaseTurnedOff.class);
+    private static final Logger LOGGER = Logger.getLogger(ActivityLogTestCaseTurnedOff.class);
 
     private final static String CONFIG_FILE = "src/test/resources/recommender-configuration.xml";
 
