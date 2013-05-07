@@ -29,7 +29,7 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
 
     private static final Logger LOGGER = Logger.getLogger(SesameVirtuosoSparqlProxy.class);
 
-    protected Repository repository;
+    private Repository repository;
 
     protected Be3 rdfizer;
 
@@ -89,8 +89,9 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
     }
 
     @Override
-    public <T> T getObject(String id, String... args) throws SparqlProxyException {
-        throw new UnsupportedOperationException("NIY");
+    public <T> T getObject(String s, Class<T> tClass, String... strings)
+            throws SparqlProxyException {
+        throw new UnsupportedOperationException("niy");
     }
 
     @Override
@@ -116,37 +117,5 @@ public class SesameVirtuosoSparqlProxy extends BaseSesameSparqlProxy {
 
     private String valorizeQuery(String queryTemplate, String[] args) {
         return String.format(queryTemplate, args);
-    }
-
-    protected Ranker getRankerInstance(QueryRecord queryRecord) throws SparqlProxyException {
-
-        Ranker ranker;
-        try {
-            ranker = queryRecord.getRanker().newInstance();
-        } catch (InstantiationException e) {
-            final String errMsg = "Error while instantiating the provided ranker";
-            throw new SparqlProxyException(errMsg, e);
-        } catch (IllegalAccessException e) {
-            final String errMsg = "Error while accessing the provided ranked";
-            throw new SparqlProxyException(errMsg, e);
-        }
-        return ranker;
-    }
-
-    protected Filter getFilterInstance(QueryRecord queryRecord) throws SparqlProxyException {
-
-        Filter filter;
-        try {
-            filter = queryRecord.getFilter().newInstance();
-        } catch (InstantiationException e) {
-            final String errMsg = "Error while instantiating filter";
-            LOGGER.error(errMsg, e);
-            throw new SparqlProxyException(errMsg, e);
-        } catch (IllegalAccessException e) {
-            final String errMsg = "Error while accessing to filter";
-            LOGGER.error(errMsg, e);
-            throw new SparqlProxyException(errMsg, e);
-        }
-        return filter;
     }
 }

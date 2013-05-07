@@ -89,4 +89,10 @@ public class ProjectProfileFilter implements Filter<ProjectProfile> {
         return resources;
     }
 
+    @Override
+    public ProjectProfile getObject(List<Statement> statements, Be3 be3) throws FilterException {
+
+        throw new UnsupportedOperationException("NIY");
+    }
+
 }

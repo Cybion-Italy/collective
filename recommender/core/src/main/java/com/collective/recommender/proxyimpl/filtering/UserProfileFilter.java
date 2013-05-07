@@ -87,6 +87,11 @@ public class UserProfileFilter implements Filter<UserProfile> {
         return usersProfiles;
     }
 
+    @Override
+    public UserProfile getObject(List<Statement> statements, Be3 be3) throws FilterException {
+
+        throw new UnsupportedOperationException("NIY");
+    }
 
     private List<Statement> filterStatementBySubject(
             URI subject,
