@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
  */
 public abstract class AbstractDaoTestCase {
 
-    private final static Logger logger = Logger.getLogger(AbstractDaoTestCase.class);
+    private final static Logger LOGGER = Logger.getLogger(AbstractDaoTestCase.class);
 
     //a shared configuration to be accessed from all extending classes
     protected WebResourcesPersistenceConfiguration webResourcePersistenceConfiguration;
@@ -27,11 +27,11 @@ public abstract class AbstractDaoTestCase {
 
     @BeforeClass
     public void setUp(){
-        logger.debug("starting daos tests");
+        LOGGER.debug("starting daos tests");
     }
 
     @AfterClass
     public void tearDown() {
-        logger.debug("ended daos tests");
+        LOGGER.debug("ended daos tests");
     }
 }

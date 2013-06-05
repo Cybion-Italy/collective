@@ -16,7 +16,7 @@ import java.util.*;
 
 public class WebSourcesRepository {
 
-    private static Logger logger = Logger.getLogger(WebSourcesRepository.class);
+    private static final Logger LOGGER = Logger.getLogger(WebSourcesRepository.class);
 	
 	private Map<Source, String> notAnalyedSources = new HashMap<Source, String>();
 
@@ -49,7 +49,7 @@ public class WebSourcesRepository {
 
         List<WebResource> webResourcesList = new ArrayList<WebResource>();
 
-        logger.info("getting all SourceRSS of Source: " + source.getUrl().toString());
+        LOGGER.info("getting all SourceRSS of Source: " + source.getUrl().toString());
 
         Source sourceWithSourcesRSS = fonteDao.selectFonteAndFontiRss(source.getId());
 
@@ -130,10 +130,11 @@ public class WebSourcesRepository {
                 insertErrors.put(webResource.getUrl().toString(), e.getMessage());
             }
         }
-        logger.info(allRetrievedWebResources.size() + " web resources have been iterated");
+        LOGGER.info(allRetrievedWebResources.size() + " web resources have been iterated");
         if (insertErrors.keySet().size() > 0) {
-            logger.error("Some webResources have been not saved (duplicates): '" +
-                    buildExceptionMessage(this.insertErrors));
+            LOGGER.error(
+                    "Some webResources have been not saved (duplicates): '" + buildExceptionMessage(
+                            this.insertErrors));
         }
     }
 

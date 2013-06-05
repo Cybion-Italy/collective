@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class WebResourceDao extends ConfigurableDao {
 
-    private Logger logger = Logger.getLogger(WebResourceDao.class);
+    private static final Logger LOGGER = Logger.getLogger(WebResourceDao.class);
 
     public WebResourceDao(Properties properties) {
         super(properties);
@@ -79,7 +79,7 @@ public class WebResourceDao extends ConfigurableDao {
     public List<WebResource> selectByExample(WebResource notAnalyzedWebResource, int maxUrls) {
         SqlSession session = ConnectionFactory.getSession(super.properties).openSession();
 //        RowBounds rowBounds = new RowBounds(RowBounds.NO_ROW_OFFSET, maxUrls);
-//        logger.debug("rowBounds: " + rowBounds.getLimit());
+//        LOGGER.debug("rowBounds: " + rowBounds.getLimit());
         try {
             WebResourceMapper webResourceMapper = session.getMapper(WebResourceMapper.class);
             List<WebResource> webResources = webResourceMapper.selectSomeUrlsByExample(

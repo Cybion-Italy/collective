@@ -6,7 +6,6 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 
 import java.io.File;
-import java.net.URISyntaxException;
 
 /**
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
@@ -19,7 +18,7 @@ public class ConfigurationManager {
 
     private WebResourcesPersistenceConfiguration webResourcePersistenceConfiguration;
 
-    private static final Logger logger = Logger.getLogger(ConfigurationManager.class);
+    private static final Logger LOGGER = Logger.getLogger(ConfigurationManager.class);
 
     private ConfigurationManager(String configurationFilePath) {
         if(configurationFilePath == null)
@@ -27,8 +26,8 @@ public class ConfigurationManager {
 
         File configurationFile = new File(configurationFilePath);
         if(!configurationFile.exists()) {
-            logger.error("Configuration file: '" +
-                    configurationFilePath + "' does not exists");
+            LOGGER.error("Configuration file: '" +
+                         configurationFilePath + "' does not exists");
             throw new IllegalArgumentException("Configuration file: '" +
                     configurationFilePath + "' does not exists");
         }

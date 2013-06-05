@@ -13,11 +13,11 @@ public class ConfigurationManagerTestCase {
 
     private static final String CONFIG_FILE = "persistence-configuration-tests.xml";
     private ConfigurationManager configurationManager;
-    private Logger logger = Logger.getLogger(ConfigurationManagerTestCase.class);
+    private static final Logger LOGGER = Logger.getLogger(ConfigurationManagerTestCase.class);
 
     @BeforeClass
     public void setUp() {
-        logger.debug("=========" + System.getProperty("user.dir"));
+        LOGGER.debug("=========" + System.getProperty("user.dir"));
         configurationManager = ConfigurationManager.getInstance(CONFIG_FILE);
     }
 

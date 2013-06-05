@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class EntriesFilter {
 
-    private static final Logger logger = Logger.getLogger(EntriesFilter.class);
+    private static final Logger LOGGER = Logger.getLogger(EntriesFilter.class);
 
     public List<SyndEntry> selectOnlyRecentEntries(List syndEntriesToFilter,
                                                    DateTime dataUltimaEstrazione,
                                                    WebResource lastExtractedUrl)
     {
-        logger.debug("last extracted url: " + lastExtractedUrl.getUrl()
-                + " title: " + lastExtractedUrl.getTitolo());
+        LOGGER.debug("last extracted url: " + lastExtractedUrl.getUrl() + " title: " +
+                     lastExtractedUrl.getTitolo());
 
         List<SyndEntry> filteredSyndEntries = new ArrayList<SyndEntry>();
 
@@ -31,16 +31,16 @@ public class EntriesFilter {
             SyndEntry entry = iterator.next();
             // removed if clause: (publishedDate.compareTo(lastExtractionDate) == 0)
             if (entry.getLink().equals(lastExtractedUrl.getUrl().toString())) {
-                logger.debug("reached oldest syndEntry, it was already downloaded " +
-                        "- not adding it to the list and terminating iterations");
-                logger.debug("'" + entry.getTitle() + "' and old one was '"
-                        + lastExtractedUrl.getTitolo() + "'");
+                LOGGER.debug("reached oldest syndEntry, it was already downloaded " +
+                             "- not adding it to the list and terminating iterations");
+                LOGGER.debug("'" + entry.getTitle() + "' and old one was '" +
+                             lastExtractedUrl.getTitolo() + "'");
                 newEntry = false;
             } else {
                 // it is newer
-                logger.debug("adding url: '"  + entry.getLink() + "'");
-                logger.debug("with title: '"  + entry.getTitle()+ "'");
-                logger.debug("lastExtractedUrl title: " + lastExtractedUrl.getTitolo());
+                LOGGER.debug("adding url: '" + entry.getLink() + "'");
+                LOGGER.debug("with title: '" + entry.getTitle() + "'");
+                LOGGER.debug("lastExtractedUrl title: " + lastExtractedUrl.getTitolo());
                 filteredSyndEntries.add(entry);
             }
         }
@@ -53,8 +53,8 @@ public class EntriesFilter {
         Iterator<SyndEntry> iterator = syndEntries.iterator();
         while (iterator.hasNext()) {
             SyndEntry entry = iterator.next();
-            logger.debug("adding url " + entry.getLink());
-            logger.debug("with title: " + entry.getTitle());
+            LOGGER.debug("adding url " + entry.getLink());
+            LOGGER.debug("with title: " + entry.getTitle());
             listSyndEntries.add(entry);
         }
         return listSyndEntries;

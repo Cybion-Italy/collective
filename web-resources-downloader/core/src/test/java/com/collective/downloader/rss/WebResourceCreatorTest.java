@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class WebResourceCreatorTest {
 
-    private static Logger logger = Logger.getLogger(WebResourceCreatorTest.class);
+    private static final Logger LOGGER = Logger.getLogger(WebResourceCreatorTest.class);
 
     @Test
     public void shouldCreateUrlFromSource() throws MalformedURLException, BoilerpipeProcessingException {
@@ -30,7 +30,7 @@ public class WebResourceCreatorTest {
         createdUrl = webResourceCreator.createWebResourceFromSyndEntry(entry, fonteRss);
         Assert.assertNotNull(createdUrl);
         Assert.assertTrue(entry.getTitle().equals(createdUrl.getTitolo()));
-//        logger.info("URL '" + createdUrl.toString() + "' correctly created");
+//        LOGGER.info("URL '" + createdUrl.toString() + "' correctly created");
     }
 
 }

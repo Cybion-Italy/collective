@@ -16,7 +16,7 @@ import java.util.List;
 public class SourceDaoTestCase extends AbstractDaoTestCase {
 
     private SourceDao sourceDao;
-    private Logger logger = Logger.getLogger(SourceDaoTestCase.class);
+    private static final Logger LOGGER = Logger.getLogger(SourceDaoTestCase.class);
 
 
     public SourceDaoTestCase() {
@@ -46,7 +46,7 @@ public class SourceDaoTestCase extends AbstractDaoTestCase {
                 Assert.assertNotNull(sourceRss);
                 Assert.assertTrue(sourceRss.isValid());
             }
-            logger.debug("src: " + source.toString());
+            LOGGER.debug("src: " + source.toString());
         }
     }
 }

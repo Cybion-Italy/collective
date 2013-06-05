@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 public class XmlEncodingContentCleaner {
 
-    private static Logger logger = Logger.getLogger(XmlEncodingContentCleaner.class);
+    private static final Logger LOGGER = Logger.getLogger(XmlEncodingContentCleaner.class);
 	
 	public static final String ENCODING = "UTF-8";
 
@@ -38,7 +38,7 @@ public class XmlEncodingContentCleaner {
 		try {
 			bytes = str.getBytes(ENCODING);
 		} catch (UnsupportedEncodingException e) {
-            logger.error("Unsupported encoding", e);
+            LOGGER.error("Unsupported encoding", e);
             throw new RuntimeException("Unsupported encoding", e);
 		}
 		return new ByteArrayInputStream(bytes);
@@ -57,7 +57,7 @@ public class XmlEncodingContentCleaner {
 				stringBuilder.append(cleanedLine + "\n");
 			}
 		} catch (IOException e) {
-            logger.error("Error while reading from stream: '" + feedInputStream + "'", e);            
+            LOGGER.error("Error while reading from stream: '" + feedInputStream + "'", e);
             throw new RuntimeException("Error while reading from stream: '" + feedInputStream + "'", e);
 		}
 

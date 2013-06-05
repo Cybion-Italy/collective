@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class Runner {
 
-    private static final Logger logger = Logger.getLogger(Runner.class);
+    private static final Logger LOGGER = Logger.getLogger(Runner.class);
 
     private static ConfigurationManager configurationManager;
 
@@ -51,7 +51,7 @@ public class Runner {
         try {
             commandLine = commandLineParser.parse(options, args);
         } catch (ParseException e) {
-            logger.error("Error while parsing arguments", e);
+            LOGGER.error("Error while parsing arguments", e);
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("Runner", options);
             System.exit(-1);
@@ -61,7 +61,7 @@ public class Runner {
         /**
          * Parse the configuration file and instantiates all the needed dependencies
          */
-        logger.info("Loading configuration from: '" + confFilePath + "'");
+        LOGGER.info("Loading configuration from: '" + confFilePath + "'");
         configurationManager =
                 ConfigurationManager.getInstance(confFilePath);
 
@@ -91,10 +91,10 @@ public class Runner {
 
         webSourcesRepository.saveAllWebResources(allRetrievedWebResources);
 
-        logger.info(allRetrievedWebResources.size() + " web resources have been extracted");
+        LOGGER.info(allRetrievedWebResources.size() + " web resources have been extracted");
 		if (webSourcesRepository.getNotAnalyedSources().size() > 0) {
-            logger.error("Some sources have been not analyzed: '" +
-                    buildExceptionMessage(webSourcesRepository.getNotAnalyedSources()) + "'");
+            LOGGER.error("Some sources have been not analyzed: '" +
+                         buildExceptionMessage(webSourcesRepository.getNotAnalyedSources()) + "'");
         }
 	}
 	

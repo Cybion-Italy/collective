@@ -18,8 +18,8 @@ import java.net.URL;
 
 public class SourceRssDaoTestCase extends AbstractDaoTestCase {
 
+    private static final Logger LOGGER = Logger.getLogger(SourceRssDaoTestCase.class);
     private SourceRssDao sourceRssDao;
-    private Logger logger = Logger.getLogger(SourceRssDaoTestCase.class);
 
     public SourceRssDaoTestCase() {
         super();
@@ -157,11 +157,11 @@ public class SourceRssDaoTestCase extends AbstractDaoTestCase {
         try {
             sourceRssDao.insert(expectedSourceRss);
             Assert.assertNotNull(expectedSourceRss.getId());
-            logger.debug("saved sourceRss with id: " + expectedSourceRss.getId());
+            LOGGER.debug("saved sourceRss with id: " + expectedSourceRss.getId());
             //retrieve it
             SourceRss retrievedSourceRss = sourceRssDao.selectById(expectedSourceRss.getId());
-            logger.debug("expected:  " + expectedSourceRss.toString());
-            logger.debug("retrieved: " + retrievedSourceRss.toString());
+            LOGGER.debug("expected:  " + expectedSourceRss.toString());
+            LOGGER.debug("retrieved: " + retrievedSourceRss.toString());
             //check if equals
             Assert.assertEquals(expectedSourceRss.getLingua(), retrievedSourceRss.getLingua());
             Assert.assertEquals(expectedSourceRss, retrievedSourceRss);

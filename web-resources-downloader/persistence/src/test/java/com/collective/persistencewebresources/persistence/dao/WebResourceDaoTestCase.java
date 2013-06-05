@@ -18,7 +18,7 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
     //TODO manage exceptions better!
     private WebResourceDao webResourceDao;
     private SourceRssDao sourceRssDao;
-    private static final Logger logger =
+    private static final Logger LOGGER =
             Logger.getLogger(WebResourceDaoTestCase.class);
 
     public WebResourceDaoTestCase() {
@@ -83,7 +83,7 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
                     != originalValue);
 
         } catch (Exception e) {
-            logger.debug("exception during test: " + e);
+            LOGGER.debug("exception during test: " + e);
         } finally {
             // delete it
             this.webResourceDao.delete(webResourceToBeRetrieved);
@@ -103,8 +103,8 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
 
         try {
             this.webResourceDao.insert(webResource);
-            logger.debug("selecting urls by example");
-            logger.debug(webResource.toString());
+            LOGGER.debug("selecting urls by example");
+            LOGGER.debug(webResource.toString());
             List<WebResource> notAnalyzedWebResources =
                     this.webResourceDao.selectByExample(webResource, amount);
             Assert.assertTrue(notAnalyzedWebResources.size() >= 0);
@@ -112,8 +112,8 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
             Assert.assertEquals(notAnalyzedWebResources.get(0), webResource);
 
         } catch (Exception e) {
-            logger.error("error: " + e.getMessage()
-                    + " when searching for webResource " + webResource.getId());
+            LOGGER.error("error: " + e.getMessage() + " when searching for webResource " +
+                         webResource.getId());
             e.printStackTrace();
         } finally {
             this.webResourceDao.delete(webResource);
@@ -144,8 +144,8 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
             List<WebResource> lastExtractedWebResources = webResourceDao
                     .selectLastExtractedFrom(sourceRss);
             WebResource lastExtractedWebResource = lastExtractedWebResources.get(0);
-            logger.debug("sourceRss: " + sourceRss);
-            logger.debug("lastExtractedWeb: " + lastExtractedWebResource);
+            LOGGER.debug("sourceRss: " + sourceRss);
+            LOGGER.debug("lastExtractedWeb: " + lastExtractedWebResource);
 
             //assert that i get the expected one
             Assert.assertTrue(expectedWebResource.getDataEstrazione()
@@ -154,7 +154,7 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
                     .compareTo(otherWebResource.getDataEstrazione()) > 0);
             Assert.assertNotNull(lastExtractedWebResource.getUrl());
         } catch (Exception e) {
-            logger.error("exception during tests: " + e);
+            LOGGER.error("exception during tests: " + e);
         } finally {
             //remove sourceRss and its webResources
             webResourceDao.delete(expectedWebResource);
@@ -183,7 +183,7 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
             //it should be = 0
             Assert.assertEquals(lastExtractedWebResource.size(), 0);
         } catch (Exception e) {
-            logger.error("exception during tests: " + e);
+            LOGGER.error("exception during tests: " + e);
         } finally {
             sourceRssDao.delete(sourceRss.getId());
             //check they are deleted
@@ -216,7 +216,7 @@ public class WebResourceDaoTestCase extends AbstractDaoTestCase {
             }
 
         } catch (Exception e) {
-            logger.error("error in shouldFindUrlsLimited: " + e.getMessage());
+            LOGGER.error("error in shouldFindUrlsLimited: " + e.getMessage());
         } finally {
             // delete the inserted urls
             for (WebResource webResourceToBeDeleted : urlsToBeAnalyzed) {

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
  */
 public class SimpleRegexHtmlCleanerTest {
 
-    private static Logger logger = Logger.getLogger(SimpleRegexHtmlCleanerTest.class);
+    private static final Logger LOGGER = Logger.getLogger(SimpleRegexHtmlCleanerTest.class);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -25,10 +25,10 @@ public class SimpleRegexHtmlCleanerTest {
 	@Test
 	public void shouldCleanString() {
 		String htmlString = "<a>to clean</a> <b>html string</b><a href=\"\" property=\"bbb\"></a><br/>";
-        logger.info("trying to strip: '" + htmlString + "'");
+        LOGGER.info("trying to strip: '" + htmlString + "'");
 		SimpleRegexHtmlCleaner cleaner = new SimpleRegexHtmlCleaner();
 		String cleanedString = cleaner.stripHtml(htmlString);
-        logger.info("stripped string: '" + cleanedString + "'");
+        LOGGER.info("stripped string: '" + cleanedString + "'");
 		Assert.assertTrue(cleanedString.equals("to clean html string"));
 	}
 }
