@@ -45,10 +45,10 @@ public class Runner {
 
         //TODO: get a list of queues to listen/monitor and spawn processes that each process/consume each queue
         /* build a gateway */
-        QueueGateway queueGateway = new QueueGateway(configurationManager.getQueueGatewayConfiguration());
+        final QueueGateway queueGateway = new QueueGateway(configurationManager.getQueueGatewayConfiguration());
 
         /* build a dispatcher with persistence configuration */
-        MessageListenerDispatcher messageListenerDispatcher =
+        final MessageListenerDispatcher messageListenerDispatcher =
                 new MessageListenerDispatcher(configurationManager.getMessagesPersistenceConfiguration());
 
         /* set the dispatcher to the queueGateway */

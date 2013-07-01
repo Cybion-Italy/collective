@@ -13,7 +13,7 @@ import javax.jms.*;
  */
 public class MessageListenerDispatcher implements MessageListener, ExceptionListener {
 
-    private final static Logger logger = Logger.getLogger(MessageListenerDispatcher.class);
+    private final static Logger LOGGER = Logger.getLogger(MessageListenerDispatcher.class);
     private MessageBeanDeserializer messageDeserializer;
     private MessageDao messageDao;
 
@@ -23,35 +23,36 @@ public class MessageListenerDispatcher implements MessageListener, ExceptionList
     }
 
     public void onException(JMSException e) {
-        logger.debug("JMS Exception occured.  Shutting down client.");
+        LOGGER.debug("JMS Exception occured.  Shutting down client.");
         System.exit(1);
     }
 
     public void onMessage(Message message) {
-        logger.debug("onMessage method");
+        LOGGER.debug("onMessage method");
         if (message instanceof TextMessage) {
             TextMessage textMessage = (TextMessage) message;
             try {
-                logger.debug("Received plain text message: " + textMessage.getText());
+                LOGGER.debug("Received plain text message: " + textMessage.getText());
                 String jsonMessage = textMessage.getText();
                 //TODO rename class in messages-persistence to prevent ambiguity?
                 com.collective.messages.persistence.model.Message messageBean =
                         messageDeserializer.deserializeMessageBean(jsonMessage);
-                logger.debug("deserialized to messageBean: " + messageBean);
+                LOGGER.debug("deserialized to messageBean: " + messageBean);
 
                 //set current time
                 messageBean.setTime(new DateTime());
 
                 //store on database
-                messageDao.insertMessage(messageBean);
-                logger.debug("end of processing phase for message: " + messageBean.toString());
+                this.messageDao.insertMessage(messageBean);
+                LOGGER.debug("end of processing phase for message: " + messageBean.toString());
             } catch (JMSException ex) {
                 //TODO manage error
                 final String eMessage = "Error reading message. ";
-                logger.error(eMessage + ex.getMessage());
+                LOGGER.error(eMessage + ex.getMessage());
             }
         } else {
-            logger.debug("Received other type of message, not an instance of TextMessage: " + message.toString());
+            LOGGER.debug("Received other type of message, not an instance of TextMessage: " +
+                         message.toString());
         }
     }
 }

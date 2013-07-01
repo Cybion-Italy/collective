@@ -11,7 +11,8 @@ import org.apache.log4j.Logger;
  */
 public class MessageBeanDeserializer {
 
-    private final static Logger logger = Logger.getLogger(MessageBeanDeserializer.class);
+    private final static Logger LOGGER = Logger.getLogger(MessageBeanDeserializer.class);
+
     private JsonParser parser;
 
     public MessageBeanDeserializer() {

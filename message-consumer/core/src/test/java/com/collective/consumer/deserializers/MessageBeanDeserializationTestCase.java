@@ -3,10 +3,12 @@ package com.collective.consumer.deserializers;
 import com.collective.consumer.domain.TestFixtures;
 import com.collective.messages.persistence.model.Message;
 import org.apache.log4j.Logger;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Matteo Moci ( matteo.moci@gmail.com )
@@ -15,7 +17,7 @@ public class MessageBeanDeserializationTestCase {
 
     private MessageBeanDeserializer gsonMessageBeanDeserializer;
 
-    private final static Logger logger = Logger.getLogger(MessageBeanDeserializationTestCase.class);
+    private final static Logger LOGGER = Logger.getLogger(MessageBeanDeserializationTestCase.class);
 
     @BeforeTest
     public void setUp() {
@@ -30,13 +32,13 @@ public class MessageBeanDeserializationTestCase {
     @Test
     public void shouldDeserializeMessageBean() {
         String jsonMessage = TestFixtures.jsonMessage;
-        logger.debug("deserializing message: " + jsonMessage);
+        LOGGER.debug("deserializing message: " + jsonMessage);
         Message messageBean = gsonMessageBeanDeserializer.deserializeMessageBean(jsonMessage);
-        logger.debug("into messageBean: " + messageBean);
-        Assert.assertTrue(messageBean.getAction().equals("update"));
-        Assert.assertTrue(messageBean.getType().equals("user"));
-        Assert.assertNotNull(messageBean.getObject());
-        Assert.assertTrue(messageBean.getObject().equals(TestFixtures.jsonUser));
+        LOGGER.debug("into messageBean: " + messageBean);
+        assertTrue(messageBean.getAction().equals("update"));
+        assertTrue(messageBean.getType().equals("user"));
+        assertNotNull(messageBean.getObject());
+        assertTrue(messageBean.getObject().equals(TestFixtures.jsonUser));
     }
 
 }

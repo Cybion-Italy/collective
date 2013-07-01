@@ -1,12 +1,14 @@
 package com.collective.messages.persistence.configuration;
 
 import org.apache.log4j.Logger;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.Properties;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Matteo Moci ( matteo.moci (at) gmail.com )
@@ -38,10 +40,10 @@ public class MessagesPersistenceConfigurationTestCase {
         Properties dbProperties = messagesPersistenceConfiguration.getProperties();
 
         //simple test of setup properties
-        Assert.assertEquals("com.mysql.jdbc.Driver", dbProperties.getProperty("driver"));
-        Assert.assertTrue(dbProperties.getProperty("url").contains(host));
-        Assert.assertEquals("jdbc:mysql://cibionte.cybion.eu:3306/" + db, dbProperties.getProperty("url"));
-        Assert.assertEquals(username, dbProperties.getProperty("username"));
-        Assert.assertEquals(password, dbProperties.getProperty("password"));
+       assertEquals("com.mysql.jdbc.Driver", dbProperties.getProperty("driver"));
+       assertTrue(dbProperties.getProperty("url").contains(host));
+       assertEquals("jdbc:mysql://cibionte.cybion.eu:3306/" + db, dbProperties.getProperty("url"));
+       assertEquals(username, dbProperties.getProperty("username"));
+       assertEquals(password, dbProperties.getProperty("password"));
     }
 }

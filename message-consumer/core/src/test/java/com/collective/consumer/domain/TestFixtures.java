@@ -1,7 +1,5 @@
 package com.collective.consumer.domain;
 
-import com.collective.model.User;
-
 /**
  * @author Matteo Moci ( matteo.moci@gmail.com )
  */
